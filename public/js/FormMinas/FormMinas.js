@@ -6,6 +6,8 @@
 
 $('#juridico').load('pestanaJuridico');
 $('#minero').load('pestanaMinero');
-$('#ambiental').load('/help.html');
+$('#ambiental').load('pestanaAmbiental');
+$('#siso').load('pestanaSiso');
+$('#biodiversidad').load('pestanaBiodiversidad');
 
 

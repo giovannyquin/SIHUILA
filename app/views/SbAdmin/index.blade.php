@@ -8,13 +8,13 @@
     <meta name="author" content="">
     <title>@yield("Titulo")</title>
     <!-- Bootstrap Core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    {{HTML::style('bootstrap/css/bootstrap.min.css')}}
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    {{HTML::style('css/sb-admin.css')}}
     <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
+    {{HTML::style('css/plugins/morris.css')}}
     <!-- Custom Fonts -->
-    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    {{HTML::style('font-awesome-4.1.0/css/font-awesome.min.css')}}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -144,12 +144,12 @@
                         <a href="usuario"><i class="fa fa-fw fa-edit"></i> Usuarios</a>
                     </li>
                     <li>
-                        <a href="formMinas"><i class="fa fa-fw fa-desktop"></i> Ejecución Minas</a>
-                    </li>
-                    <!--<li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                        <a href="listaMina"><i class="fa fa-fw fa-desktop"></i> Ejecución Minas</a>
                     </li>
                     <li>
+                        <a href="datosMina"><i class="fa fa-fw fa-wrench"></i> Crear Minas</a>
+                    </li>
+                    <!--<li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
@@ -187,13 +187,13 @@
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
-    <script src="bootstrap/js/jquery.js"></script>
+    {{ HTML::script('bootstrap/js/jquery.js') }}
     <!-- Bootstrap Core JavaScript -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    {{ HTML::script('bootstrap/js/bootstrap.min.js') }}
     <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
+    {{ HTML::script('js/plugins/morris/raphael.min.js') }}
+    {{ HTML::script('js/plugins/morris/morris.min.js') }}
+    {{ HTML::script('js/plugins/morris/morris-data.js') }}
     <!-- Seccion para adjuntar mas js o jquery -->
     @yield("JsJQuery")
 </body>

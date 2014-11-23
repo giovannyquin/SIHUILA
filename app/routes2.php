@@ -96,36 +96,24 @@ Route::group(array("before" => "auth"), function(){
     Route::post("producto", "ProductoController@crearProductos");
     
     Route::get("usuario", "UsuariosController@mostrarUsuarios");
-    Route::post("usuario", "UsuariosController@crearUsuarios");
+#    Route::post("usuario", "UsuariosController@crearUsuarios");
     
     Route::get("formMinas", function()
     {
         return View::make("FormMinas.FormMinas");
     });
-    Route::get("formMinas/{id}", "FormMinaController@cargarPestanas");
     /* Grupo de Rutas para las pestañas*/
     Route::get("pestanaJuridico", function()
     {
         return View::make("Pestanas.pestanaJuridico");
     });
-    Route::get("pestanaMinero", function()
+     Route::get("pestanaMinero", function()
     {
         return View::make("Pestanas.pestanaMinero");
     });
-    Route::get("pestanaAmbiental", function()
-    {
-        return View::make("Pestanas.pestanaAmbiental");
-    });
-    Route::get("pestanaSiso", function()
-    {
-        return View::make("Pestanas.pestanaSiso");
-    });
-    Route::get("pestanaBiodiversidad", function()
-    {
-        return View::make("Pestanas.pestanaBiodiversidad");
-    });
-    /***********************************/
-    Route::get("listaMina", "ListaMinaController@listarMinas");
+    
+    Route::resource('pestanaMinero', 'PestanaMineroController');
     Route::resource('datosMina', 'DatosMinaController');
-    Route::resource('pestanaMineroPost', 'PestanaMineroController');
+    /***********************************/
+#    Route::get("datosMina","DatosMinaController@create");
 });

@@ -1,5 +1,8 @@
 <div class="marketing">
-    {{ Form::open(array("url" => "pestanaMinero")) }}
+    @if(Session::get("id_mina"))
+            <div class="alert alert-success">{{ Session::get("id_mina")}}</div>
+        @endif
+    {{ Form::open(array("url" => "pestanaMineroPost")) }}
     <p class="bg-primary">Fecha de la Visita</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
@@ -7,6 +10,15 @@
             {{ Form::text("txtFecha", Input::old("txtFecha"), array("class" => "form-control col-xs-12 col-sm-4", "placeholder" => "Fecha Visita", "autocomplete" => "off")) }}
             @if($errors->has("txtFecha"))
                 @foreach($errors->get("txtFecha") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+        </div>
+        <div class="form-group form-group-sm col-xs-12 col-sm-3">
+            <label for="txtMina" class="control-label">fecha en que se realizó la visita</label>
+            {{ Form::text("txtMina", Session::get("id_mina"), Input::old("txtMina"), array("class" => "form-control col-xs-12 col-sm-4", "placeholder" => "Fecha Visita", "autocomplete" => "off")) }}
+            @if($errors->has("txtMina"))
+                @foreach($errors->get("txtMina") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
