@@ -8,4 +8,5 @@
     class DetalleMina extends Eloquent{
         protected $table = 'SIdetalle_minas';
         protected $primaryKey = 'id_mina';
+        public $timestamps = false;
     }

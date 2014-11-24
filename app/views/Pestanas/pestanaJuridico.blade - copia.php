@@ -1,17 +1,4 @@
-@extends("SbAdmin.index")
-
-@section("Titulo")
-    Pestañas de Mineria
-@stop
-
-@section("NombrePagina")
-    Pestañas de Mineria
-@stop
-@section("JsJQuery")
-    {{ HTML::script('js/FormMinas/FormMinas.js') }}
-@stop
-@section("SeccionTrabajo")
-<div class="container-fluid">
+<div class="marketing">
     @foreach ($minas as $mina)
     <div class="row">{{$mina->nombre_mina}}</div>
     @endforeach
@@ -21,20 +8,10 @@
     @foreach ($titular as $titular)
     <div class="row">{{$titular->primer_nombre}}</div>
     @endforeach
-    <div class="tabbable" style="margin-bottom: 18px;">
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="#juridico" data-toggle="tab">Juridico</a></li>
-            <li class="">{{ link_to("pestanaMinero/{$mina->id_mina}", "Minero") }}</li>
-            <li class="">{{ link_to("pestanaAmbiental/{$mina->id_mina}", "Ambiental") }}</li>
-            <li class="">{{ link_to("pestanaSiso/{$mina->id_mina}", "Siso") }}</li>
-            <li class="">{{ link_to("pestanaBiodiversidad/{$mina->id_mina}", "Biodiversidad") }}</li>
-          </ul>
-    </div>
-</div>
-<div class="marketing">
+    
     {{ Form::open(array("route" => "pestanaJuridico.store")) }}
-    <p class="bg-primary text-center"  style="alignment-adjust: center">Identificación de población sujeto y grado de formalización</p>
-    <p class="bg-primary text-center" >Amparo de algún título minero</p>
+    <p class="bg-primary" style="alignment-adjust: center">Identificación de población sujeto y grado de formalización</p>
+    <p class="bg-primary">Amparo de algún título minero</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             <label for="selOperacion">Las operaciones mineras se encuentran bajo el amparo de algún títulos minero?</label>
@@ -91,7 +68,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Algún Instrumento para la formalización</p>
+    <p class="bg-primary">Algún Instrumento para la formalización</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             <label for="selInstForma">Las operaciones mineras se encuentran bajo algún instrumento para la formalización</label>
@@ -122,7 +99,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Superposición sobre algún título minero</p>
+    <p class="bg-primary">Superposición sobre algún título minero</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             <label for="selSupTit">Las operaciones mineras se desarrollan superpuestas sobre algún título minero</label>
@@ -275,11 +252,10 @@
             @endif
         </div>
     </div>
-    <br />
     <div id="" align="center" style="right: 0px; bottom: 0px; width: 100%; z-index: 200; height: 30px; position: fixed; background-color: #72317d; background-repeat:repeat-x; display:block">
         <input type="submit" class="btn btn-primary" name="btnGrabar" id="btnGrabar" value="Grabar">
     </div>
     {{ Form::hidden("hidMina",$mina->id_mina) }}
     {{ Form::close() }}
 </div>
-@stop
+

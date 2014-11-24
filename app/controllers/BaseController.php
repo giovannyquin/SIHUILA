@@ -14,5 +14,17 @@ class BaseController extends Controller {
 			$this->layout = View::make($this->layout);
 		}
 	}
+        
+        /*
+         * Metodo que crea para vaildar si un dato existe y no esta en blanco
+         */
+        protected function noBlanco($dato)
+        {
+            if (isset($dato) && !empty($dato) && !is_null($dato)) {
+            return true;
+            } else {
+                return false;
+            }
+    }
 
 }

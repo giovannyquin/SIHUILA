@@ -123,7 +123,8 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="cerrarSesion"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
+<!--                            {{ link_to("cerrarSesion", "Cerrar Sesión", array("class" => "fa fa-fw fa-power-off")) }}-->
+                        <a href="{{ URL::to("cerrarSesion") }}"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
                         </li>
                     </ul>
                 </li>
@@ -141,13 +142,16 @@
                         <a href="producto"><i class="fa fa-fw fa-table"></i> Productos</a>
                     </li>-->
                     <li>
-                        <a href="usuario"><i class="fa fa-fw fa-edit"></i> Usuarios</a>
+                        <!--{{ link_to("usuario", "Usuarios", array("class" => "fa fa-fw fa-edit")) }}-->
+                        <a href="{{ URL::to("usuario") }}"><i class="fa fa-fw fa-edit"></i> Usuarios</a>
                     </li>
                     <li>
-                        <a href="listaMina"><i class="fa fa-fw fa-desktop"></i> Ejecución Minas</a>
+                        <!--{{ link_to("listaMina", "Ejecución Minas", array("class" => "fa fa-fw fa-edit")) }}-->
+                        <a href="{{ URL::to("listaMina") }}"><i class="fa fa-fw fa-desktop"></i> Ejecución Minas</a>
                     </li>
                     <li>
-                        <a href="datosMina"><i class="fa fa-fw fa-wrench"></i> Crear Minas</a>
+<!--                        {{ link_to("datosMina", "Crear Minas", array("class" => "fa fa-fw fa-edit")) }}-->
+                        <a href="{{ URL::to("datosMina") }}"><i class="fa fa-fw fa-wrench"></i> Crear Minas</a>
                     </li>
                     <!--<li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>

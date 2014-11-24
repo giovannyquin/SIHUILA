@@ -26,6 +26,7 @@
           <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
                 <div class="tab-pane active" id="juridico">
                     <p>Placeholder 1</p>
+                    @include('Pestanas.PestanaJuridico')
                 </div>
                 <div class="tab-pane" id="minero">
                     <p>Placeholder 2</p>

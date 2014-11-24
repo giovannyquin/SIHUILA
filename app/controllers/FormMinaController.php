@@ -10,8 +10,12 @@ class FormMinaController extends BaseController
 {
     public function cargarPestanas($id)
     {
-        Session::put("id_mina", $id);
-        Session::flash("id_mina", $id);
+        if(!Session::get("id_mina"))
+        {
+            Session::put("id_mina", $id);
+            Session::flash("id_mina", $id);
+        }
+        
        $mina=Mina::find($id);
        $deptno=Departamento::all();
        $combox=$deptno->lists('nombre_departamento','id_departamento');
@@ -28,4 +32,31 @@ class FormMinaController extends BaseController
        return Redirect::to('formMinas')->with('mina',$mina);
        //return Redirect::to('formMinas');
     }
+    public function index() {
+            
+    }
+    
+    public function show($id) {
+        $mina= Mina::find($id);
+        //return Redirect::to('formMinas')->with('mina',$mina);
+        return View::make("FormMinas.FormMinas", array("mina", $mina));
+    }
+    public function create() { 
+      
+    }
+    public function store() {
+        
+    }
+    
+    public function edit($id) { 
+       
+   }
+   
+   public function update($id) { 
+
+   }
+   
+   public function destroy($id) { 
+       
+   }
 }

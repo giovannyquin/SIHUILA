@@ -1,33 +1,15 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
-
 Route::get('/', function()
 {
 	return View::make('hello');
 });
-
-
-
 
 Route::get("/vendedores", function()
 {
     $vendedores = Vendedor::with("productos")->get();
     return View::make("Vendedor.vendedores", array("vendedores" => $vendedores));
 });        
-        
-
-
-
 
 // esta será la ruta inicial del proyecto 
 // aquí va a estar el formulario para registrarse y para inicio de sesión
@@ -102,16 +84,16 @@ Route::group(array("before" => "auth"), function(){
     {
         return View::make("FormMinas.FormMinas");
     });
-    Route::get("formMinas/{id}", "FormMinaController@cargarPestanas");
+    //Route::get("formMinas/{id}", "FormMinaController@cargarPestanas");
     /* Grupo de Rutas para las pestañas*/
     Route::get("pestanaJuridico", function()
     {
         return View::make("Pestanas.pestanaJuridico");
     });
-    Route::get("pestanaMinero", function()
+    /*Route::get("pestanaMinero", function()
     {
         return View::make("Pestanas.pestanaMinero");
-    });
+    });*/
     Route::get("pestanaAmbiental", function()
     {
         return View::make("Pestanas.pestanaAmbiental");
@@ -127,5 +109,10 @@ Route::group(array("before" => "auth"), function(){
     /***********************************/
     Route::get("listaMina", "ListaMinaController@listarMinas");
     Route::resource('datosMina', 'DatosMinaController');
-    Route::resource('pestanaMineroPost', 'PestanaMineroController');
+    Route::resource('pestanaMinero', 'PestanaMineroController');
+    Route::resource('pestanaJuridico', 'PestanaJuridicoController');
+    Route::resource('pestanaAmbiental', 'PestanaAmbientalController');
+    Route::resource('pestanaSiso', 'PestanaSisoController');
+    Route::resource('pestanaBiodiversidad', 'PestanaBiodiversidadController');
+    Route::resource('formMinas', 'FormMinaController');
 });

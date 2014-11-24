@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-$('#juridico').load('pestanaJuridico');
+/*$('#juridico').load('pestanaJuridico');
 $('#minero').load('pestanaMinero');
 $('#ambiental').load('pestanaAmbiental');
 $('#siso').load('pestanaSiso');
-$('#biodiversidad').load('pestanaBiodiversidad');
+$('#biodiversidad').load('pestanaBiodiversidad');*/
 
 

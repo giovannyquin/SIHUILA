@@ -1,3 +1,34 @@
+@extends("SbAdmin.index")
+
+@section("Titulo")
+    Pestañas de Mineria
+@stop
+
+@section("NombrePagina")
+    Pestañas de Mineria
+@stop
+@section("JsJQuery")
+    {{ HTML::script('js/FormMinas/FormMinas.js') }}
+@stop
+@section("SeccionTrabajo")
+<div class="container-fluid">
+    @foreach ($minas as $mina)
+    <div class="row">{{$mina->nombre_mina}}</div>
+    @endforeach
+    @foreach ($detalle as $detalle)
+    <div class="row">{{$detalle->num_placa_jur}}</div>
+    @endforeach
+    
+    <div class="tabbable" style="margin-bottom: 18px;">
+          <ul class="nav nav-tabs">
+            <li >{{ link_to("pestanaJuridico/{$mina->id_mina}", "Juridico") }}</li>
+            <li class="">{{ link_to("pestanaMinero/{$mina->id_mina}", "Minero") }}</li>
+            <li class="">{{ link_to("pestanaAmbiental/{$mina->id_mina}", "Ambiental") }}</li>
+            <li class="active"><a href="#" data-toggle="tab">Siso</a></li>
+            <li class="">{{ link_to("pestanaBiodiversidad/{$mina->id_mina}", "Biodiversidad") }}</li>
+          </ul>
+    </div>
+</div>
 <div class="marketing">
     {{ Form::open(array("url" => "pestanaSiso")) }}
     <p class="bg-primary text-center">Información Laboral</p>
@@ -1447,3 +1478,4 @@
         <input type="submit" class="btn btn-primary" name="btnGrabar" id="btnGrabar" value="Grabar">
     </div>
 </div>
+@stop

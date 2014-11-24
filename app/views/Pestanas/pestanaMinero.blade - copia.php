@@ -1,40 +1,9 @@
-@extends("SbAdmin.index")
-
-@section("Titulo")
-    Pestañas de Mineria
-@stop
-
-@section("NombrePagina")
-    Pestañas de Mineria
-@stop
-@section("JsJQuery")
-    {{ HTML::script('js/FormMinas/FormMinas.js') }}
-@stop
-@section("SeccionTrabajo")
-<div class="container-fluid">
-    @foreach ($minas as $mina)
-    <div class="row">{{$mina->nombre_mina}}</div>
-    @endforeach
-    @foreach ($detalle as $detalle)
-    <div class="row">{{$detalle->num_placa_jur}}</div>
-    @endforeach
-    
-    <div class="tabbable" style="margin-bottom: 18px;">
-          <ul class="nav nav-tabs">
-            <li >{{ link_to("pestanaJuridico/{$mina->id_mina}", "Juridico") }}</li>
-            <li class="active"><a href="#ambiental" data-toggle="tab">Minero</a></li>
-            <li class="">{{ link_to("pestanaAmbiental/{$mina->id_mina}", "Ambiental") }}</li>
-            <li class="">{{ link_to("pestanaSiso/{$mina->id_mina}", "Siso") }}</li>
-            <li class="">{{ link_to("pestanaBiodiversidad/{$mina->id_mina}", "Biodiversidad") }}</li>
-          </ul>
-    </div>
-</div>
 <div class="marketing">
     @if(Session::get("id_mina"))
             <div class="alert alert-success">{{ Session::get("id_mina")}}</div>
         @endif
     {{ Form::open(array("url" => "pestanaMineroPost")) }}
-    <p class="bg-primary text-center" >Fecha de la Visita</p>
+    <p class="bg-primary">Fecha de la Visita</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             <label for="txtFecha" class="control-label">fecha en que se realizó la visita</label>
@@ -55,7 +24,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Datos Generales del responsable explotación</p>
+    <p class="bg-primary">Datos Generales del responsable explotación</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("txtPrimer", "Primer Nombre", array("class" => "control-label")) }}
@@ -177,7 +146,7 @@
             @endif  
         </div>
     </div>
-    <p class="bg-primary text-center" >Datos del Operador Minero</p>
+    <p class="bg-primary">Datos del Operador Minero</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("txtPrimerOperador", "Primer Nombre", array("class" => "control-label")) }}
@@ -220,7 +189,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Datos Generales de la Mina</p>
+    <p class="bg-primary">Datos Generales de la Mina</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("txtNombreMina", "Nombre de la Mina", array("class" => "control-label")) }}
@@ -299,7 +268,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Ubicación Georeferenciacion del Frente de la Bocamina (coordenas planas)</p>
+    <p class="bg-primary">Ubicación Georeferenciacion del Frente de la Bocamina (coordenas planas)</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("selFrente", "Frente o Bocamina", array("class" => "control-label")) }}
@@ -400,7 +369,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Producción Mineral</p>
+    <p class="bg-primary">Producción Mineral</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-2">
             {{ Form::label("selMineralProd", "Mineral", array("class" => "control-label")) }}
@@ -481,7 +450,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Producción Otro Mineral</p>
+    <p class="bg-primary">Producción Otro Mineral</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-2">
             {{ Form::label("selMineralProdOtro", "Mineral", array("class" => "control-label")) }}
@@ -562,8 +531,8 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Talento Humano</p>
-    <p class="bg-primary text-center" >Responsable de Explotación Permanente</p>
+    <p class="bg-primary">Talento Humano</p>
+    <p class="bg-primary">Responsable de Explotación Permanente</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{ Form::label("txtProfPer", 'Número de Profesionales', array("class" => "control-label")) }}
@@ -597,7 +566,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Responsable de Explotación Temporal</p>
+    <p class="bg-primary">Responsable de Explotación Temporal</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{ Form::label("txtProfTemp", 'Número de Profesionales', array("class" => "control-label")) }}
@@ -631,7 +600,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Operador Permanente</p>
+    <p class="bg-primary">Operador Permanente</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{ Form::label("txtProfPerOpe", 'Número de Profesionales', array("class" => "control-label")) }}
@@ -665,7 +634,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Operador Temporal</p>
+    <p class="bg-primary">Operador Temporal</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{ Form::label("txtProfTempOpe", 'Número de Profesionales', array("class" => "control-label")) }}
@@ -699,7 +668,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Seguridad Social</p>
+    <p class="bg-primary">Seguridad Social</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("selRegimenSalud", "Regimen", array("class" => "control-label")) }}
@@ -792,7 +761,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Plano</p>
+    <p class="bg-primary">Plano</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("selTipoMina", "Tipo Mineria", array("class" => "control-label")) }}
@@ -842,7 +811,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Método de Explotación</p>
+    <p class="bg-primary">Método de Explotación</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-5">
             {{ Form::label("selMetodoET", "Método de Explotación", array("class" => "control-label")) }}
@@ -941,7 +910,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Infraestructura de Producción - Beneficio Y Transformación</p>
+    <p class="bg-primary">Infraestructura de Producción - Beneficio Y Transformación</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("selTipoInf", "Tipo de Infraestructura", array("class" => "control-label")) }}
@@ -1011,7 +980,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Equipos y Maquinaria</p>
+    <p class="bg-primary">Equipos y Maquinaria</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("selTipoEquipo", "Tipo de Equipo", array("class" => "control-label")) }}
@@ -1085,7 +1054,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Condiciones de Ventilación</p>
+    <p class="bg-primary">Condiciones de Ventilación</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("selMonGas", "Monitor de Gas", array("class" => "control-label")) }}
@@ -1124,7 +1093,7 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" >Instalaciones Eléctricas</p>
+    <p class="bg-primary">Instalaciones Eléctricas</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-2">
             {{ Form::label("selEnergia", "Energía Eléctrica", array("class" => "control-label")) }}
@@ -1193,9 +1162,9 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center" > Aspecto Económico </p>
+    <p class="bg-primary"> Aspecto Económico </p>
     <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+        <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("txtCostoTon", 'Costo Tonelada en frente o bocamina', array("class" => "control-label")) }}
             {{ Form::text("txtCostoTon", Input::old("txtCostoTon"),
                             array("class" => "form-control", "placeholder" => "Costo Tonelada", "autocomplete" => "off")) }}
@@ -1205,7 +1174,7 @@
                 @endforeach
             @endif
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+        <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("txtPrecioVenta", 'Precio de Venta', array("class" => "control-label")) }}
             {{ Form::text("txtPrecioVenta", Input::old("txtPrecioVenta"),
                             array("class" => "form-control", "placeholder" => "Precio de Venta", "autocomplete" => "off")) }}
@@ -1215,7 +1184,7 @@
                 @endforeach
             @endif
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-2">
+        <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("selDestinoEco", "Destino", array("class" => "control-label")) }}
             <select name="selDestinoEco" id="selDestinoEco">
                 <option value="">Seleccione..</option>
@@ -1227,9 +1196,7 @@
             @endif
         </div>
     </div>
-    <br />
     <div id="" align="center" style="right: 0px; bottom: 0px; width: 100%; z-index: 200; height: 30px; position: fixed; background-color: #72317d; background-repeat:repeat-x; display:block">
         <input type="submit" class="btn btn-primary" name="btnGrabar" id="btnGrabar" value="Grabar">
     </div>
 </div>
-@stop

@@ -1,11 +1,5 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 class PestanaMineroController extends BaseController{
    public function index() {
     $mina=Mina::all();
@@ -19,7 +13,13 @@ class PestanaMineroController extends BaseController{
    }
 
    public function show($id) { 
-       return 'Listo Sofia2';
+       $mina= Mina::whereId_mina($id)->get();
+       $detalle = DetalleMina::whereId_mina($id)->get();
+       return View::make("Pestanas.pestanaMinero", 
+               array("minas"=> $mina, 
+                        "detalle" => $detalle,
+                    ));
+       //return 'Listo Sofia2';
    }   
    
    public function create() { 
@@ -90,7 +90,7 @@ class PestanaMineroController extends BaseController{
        return 'aqui grabar '.$id;
    }
    
-   public function datosDetalleMinas($detallemina)
+   /*public function datosDetalleMinas($detallemina)
    {
        $entro=false;
        if(!empty(Input::get("txtFecha")))
@@ -102,5 +102,5 @@ class PestanaMineroController extends BaseController{
        {
            $detallemina->save();
        }
-   }
+   }*/
 }
