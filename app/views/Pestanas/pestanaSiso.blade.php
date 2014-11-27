@@ -7,9 +7,7 @@
 @section("NombrePagina")
     Pestañas de Mineria
 @stop
-@section("JsJQuery")
-    {{ HTML::script('js/FormMinas/FormMinas.js') }}
-@stop
+
 @section("SeccionTrabajo")
 <div class="container-fluid">
     @foreach ($minas as $mina)
@@ -60,32 +58,56 @@
             <input type="button" name="btnSegSoc" id="btnSegSoc" class="btn btn-warning btn-xs" value="Agregar Campo">
         </div>
     </div>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-6">
-            {{ Form::label("selSeg", "Se evidencia pago de afiliacion de los trabajadores  al dia al sistema de seguridad social", array("class" => "control-label")) }}
+    <div class="row" id='divSegSOc'>
+        <div class="row container">
+            <div class="form-group form-group-sm col-xs-12 col-sm-7">
+                {{ Form::label("selSeg", "Se evidencia pago de afiliacion de los trabajadores  al dia al sistema de seguridad social", array("class" => "control-label")) }}
+            </div>
+            <div class="form-group form-group-sm col-xs-12 col-sm-2">
+                {{Form::select("selSeg[]", $SelSegSoc, isset($seleccion_multiple->resultado) ? $seleccion_multiple->resultado : null )}}
+                @if($errors->has("selSeg[]"))
+                    @foreach($errors->get("selSeg[]") as $error)
+                      <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                    @endforeach
+                @endif
+            </div>
+            <div class="form-group form-group-sm col-xs-12 col-sm-2">
+                <select name="selSegSi[]" id="selSegSi1">
+                    <option value="">Seleccione..</option>
+                    <option value="Si">Sí</option>
+                    <option value="No">No</option>
+                </select>
+                @if($errors->has("selSegSi1"))
+                    @foreach($errors->get("selSegSi1") as $error)
+                      <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                    @endforeach
+                @endif
+            </div>
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            <select name="selSeg1" id="selSeg1">
-                <option value="">Seleccione..</option>
-            </select>
-            @if($errors->has("selSeg1"))
-                @foreach($errors->get("selSeg1") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            <select name="selSegSi1" id="selSegSi1">
-                <option value="">Seleccione..</option>
-                <option value="Si">Sí</option>
-                <option value="No">No</option>
-            </select>
-            @if($errors->has("selSegSi1"))
-                @foreach($errors->get("selSegSi1") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
+        @foreach($SegSoc as $segsoc)           
+            <div class="row container">
+                <div class="form-group form-group-sm col-xs-12 col-sm-7">
+                    {{ Form::label("selSeg", "Se evidencia pago de afiliacion de los trabajadores  al dia al sistema de seguridad social", array("class" => "control-label")) }}
+                </div>
+                <div class="form-group form-group-sm col-xs-12 col-sm-2">
+                    {{Form::select("selSeg[]", $SelSegSoc, isset($segsoc['id_topologia']) ? $segsoc['id_topologia'] : null )}}
+                    @if($errors->has("selSeg[]"))
+                        @foreach($errors->get("selSeg[]") as $error)
+                          <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                        @endforeach
+                    @endif
+                </div>
+                <div class="form-group form-group-sm col-xs-12 col-sm-2">
+                    {{Form::select("selSegSi[]", $arraySiNo, isset($segsoc['resultado']) ? $segsoc['resultado'] : null )}}
+                    @if($errors->has("selSegSi[]"))
+                        @foreach($errors->get("selSegSi[]") as $error)
+                          <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                        @endforeach
+                    @endif
+                </div>
+                <a href="{{route('seleccionMultipleElim', array($segsoc['id_mina'], $segsoc['id_topologia'], 'Pago Seg Social')) }}" data-method="delete" rel="nofollow" class="btn btn-danger btn-xs">&times;</a>
+            </div>
+        @endforeach
     </div>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-12">
@@ -1477,5 +1499,54 @@
     <div id="" align="center" style="right: 0px; bottom: 0px; width: 100%; z-index: 200; height: 30px; position: fixed; background-color: #72317d; background-repeat:repeat-x; display:block">
         <input type="submit" class="btn btn-primary" name="btnGrabar" id="btnGrabar" value="Grabar">
     </div>
+    {{ Form::hidden("hidMina",$mina->id_mina) }}
+    {{Form::close()}}
 </div>
+@stop
+@section("JsJQuery")
+{{ HTML::script('js/restfulizer.js') }}
+{{ HTML::script('js/Pestanas/PestanaSiso.js') }}
+<script>
+    $("#btnSegSoc").click(function () { 
+        var MaxInputs       = 8; //Número Maximo de Campos
+        var contenedor      = $("#divSegSOc"); //ID del contenedor
+        var AddButton       = $("#btnSegSoc"); //ID del Botón Agregar
+        //var x = número de campos existentes en el contenedor
+        var x = $("#divSegSoc div").length + 1;
+    var FieldCount = x-1; //para el seguimiento de los campos
+        if(x <= MaxInputs) //max input box allowed
+        {
+            FieldCount++;
+            //agregar campo
+            var temporal='<div class="row container">'+
+                            '<div class="form-group form-group-sm col-xs-12 col-sm-7">'+  
+                            '{{ Form::label("selSeg", "Se evidencia pago de afiliacion de los trabajadores  al dia al sistema de seguridad social", array("class" => "control-label")) }}'+
+                            '</div>'+
+                            '<div class="form-group form-group-sm col-xs-12 col-sm-2">'+
+                                '{{ Form::select("selSeg[]", $SelSegSoc, null); }}'+
+                            '</div>'+
+                            '<div class="form-group form-group-sm col-xs-12 col-sm-2">'+
+                                '<select name="selSegSi[]" id="selSegSi'+x+'">'+
+                                    '<option value="">Seleccione..</option>'+
+                                    '<option value="Si">Sí</option>'+
+                                    '<option value="No">No</option>'+
+                                '</select>'+ 
+                            '</div><a href="#" class="btn btn-danger btn-xs eliminar">&times;</a>'+
+                          '</div>';
+            $(contenedor).append(temporal);
+            x++; //text box increment
+        }
+        return false;
+    });
+
+    $("body").on("click",".eliminar", function(e){ //click en eliminar campo
+        if( x > 1 ) {
+            $(this).parent('div').remove(); //eliminar el campo
+            x--;
+        }
+        return false;
+    });
+
+</script>
+
 @stop

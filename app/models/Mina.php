@@ -13,6 +13,16 @@
         
         public function titularMinero()
         {
-            return $this->hasMany('TitularMinero', 'id_mina');
+            return $this->hasMany('TitularMinero', 'id_mina','id_mina');
+        }
+        
+        public function detalleMina()
+        {
+            return $this->hasOne('DetalleMina','id_mina');
+        }
+        
+        public function seleccionMultiple()
+        {
+            return $this->hasOne('SeleccionMultiple','id_mina');
         }
     }

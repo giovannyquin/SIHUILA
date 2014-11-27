@@ -115,4 +115,7 @@ Route::group(array("before" => "auth"), function(){
     Route::resource('pestanaSiso', 'PestanaSisoController');
     Route::resource('pestanaBiodiversidad', 'PestanaBiodiversidadController');
     Route::resource('formMinas', 'FormMinaController');
+    Route::resource('seleccionMultiple', 'SeleccionMultipleController');
+    
+    Route::delete("seleccionMultipleElim/{id}/{topo}/{asunto}", array("as" => "seleccionMultipleElim", "uses" => "SeleccionMultipleController@eliminar") );
 });

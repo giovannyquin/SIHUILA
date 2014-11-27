@@ -20,11 +20,24 @@ class BaseController extends Controller {
          */
         protected function noBlanco($dato)
         {
-            if (isset($dato) && !empty($dato) && !is_null($dato)) {
-            return true;
-            } else {
+            if (isset($dato) && !is_null($dato) && !empty($dato)) {
+                return true;
+            } 
+            else
                 return false;
+        }
+        
+        /*protected function noBlanco($dato)
+        {
+            if (isset($dato) && !is_null($dato)) {
+                return $dato;
+            } 
+            elseif(empty($dato)) {
+                if(is_numeric($var))
+                    return 0;
+                else
+                    return '';
             }
-    }
+        }*/
 
 }
