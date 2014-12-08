@@ -42,10 +42,10 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-<!--                <li class="dropdown">
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu message-dropdown">
-                       
+                       <!--
                         <li class="message-preview">
                             <a href="#">
                                 <div class="media">
@@ -79,10 +79,10 @@
                         <li class="message-footer">
                             <a href="#">Read All New Messages</a>
                         </li>
-                        
+                        -->
                     </ul>
-                </li>-->
-<!--                <li class="dropdown">
+                </li>
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
                         <li>
@@ -108,11 +108,11 @@
                             <a href="#">View All</a>
                         </li>
                     </ul>
-                </li>-->
+                </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ Auth::user()->primer_nombre.' '.Auth::user()->primer_apellido }}<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ Auth::user()->usuario }}<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-<!--                        <li>
+                        <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
                         <li>
@@ -122,8 +122,8 @@
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li>-->
-<!--                            {{ link_to("cerrarSesion", "Cerrar SesiÃ³n", array("class" => "fa fa-fw fa-power-off")) }}-->
+                        <li>
+<!--                            {{ link_to("cerrarSesion", "Cerrar Sesión", array("class" => "fa fa-fw fa-power-off")) }}-->
                         <a href="{{ URL::to("cerrarSesion") }}"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
                         </li>
                     </ul>
@@ -141,36 +141,30 @@
                     <li>
                         <a href="producto"><i class="fa fa-fw fa-table"></i> Productos</a>
                     </li>-->
-                    @if(Auth::user()->id==11)
                     <li>
                         <!--{{ link_to("usuario", "Usuarios", array("class" => "fa fa-fw fa-edit")) }}-->
                         <a href="{{ URL::to("usuario") }}"><i class="fa fa-fw fa-edit"></i> Usuarios</a>
                     </li>
-                    @endif
                     <li>
-                        <!--{{ link_to("listaMina", "EjecuciÃ³n Minas", array("class" => "fa fa-fw fa-edit")) }}-->
+                        <!--{{ link_to("listaMina", "Ejecución Minas", array("class" => "fa fa-fw fa-edit")) }}-->
                         <a href="{{ URL::to("listaMina") }}"><i class="fa fa-fw fa-desktop"></i> Ejecución Minas</a>
                     </li>
-                    @if(Auth::user()->id==11)
                     <li>
 <!--                        {{ link_to("datosMina", "Crear Minas", array("class" => "fa fa-fw fa-edit")) }}-->
                         <a href="{{ URL::to("datosMina") }}"><i class="fa fa-fw fa-wrench"></i> Crear Minas</a>
                     </li>
-                    @endif
-                    @if(Auth::user()->id==11)
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Adm Encuestas <i class="fa fa-fw fa-caret-down"></i></a>
+                    <!--<li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="{{ URL::to("listaTiposEnc") }}">Editar Encuestas</a>
+                                <a href="#">Dropdown Item</a>
                             </li>
                             <li>
                                 <a href="#">Dropdown Item</a>
                             </li>
                         </ul>
                     </li>
-                    @endif
-                    <!--<li>
+                    <li>
                         <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
                     </li>-->
                 </ul>
@@ -204,7 +198,6 @@
     {{ HTML::script('js/plugins/morris/raphael.min.js') }}
     {{ HTML::script('js/plugins/morris/morris.min.js') }}
     {{ HTML::script('js/plugins/morris/morris-data.js') }}
-    {{ HTML::script('js/google/analytics.js') }}
     <!-- Seccion para adjuntar mas js o jquery -->
     @yield("JsJQuery")
 </body>

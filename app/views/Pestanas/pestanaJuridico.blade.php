@@ -29,19 +29,31 @@
      @if(Session::get("mensaje"))
         <div class="alert alert-success">{{ Session::get("mensaje")}}</div>
     @endif
-    <p class="bg-primary text-center"  style="alignment-adjust: center">Identificación de población sujeto y grado de formalización</p>
+    <p class="bg-primary text-center"  style="alignment-adjust: center">Identificación de población objeto y grado de formalización</p>
+    <div class="row">
+        <div class="form-group form-group-sm col-xs-12 col-sm-6">
+            {{Form::label("selActExtr", "Desarrollan actividades de extracción de minerales")}}
+            {{Form::select("selActExtr", $selOperacion, isset($detalle->extr_min) ? $detalle->extr_min : null )}}
+            <span class="help-block"> Si la respues es "NO", por favor, abstengase de seguir diligenciando este cuestionario. </span>
+            @if($errors->has("selActExtr"))
+                @foreach($errors->get("selActExtr") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+        </div>
+    </div>
     <p class="bg-primary text-center" >Amparo de algún título minero</p>
     <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            <label for="selOperacion">Las operaciones mineras se encuentran bajo el amparo de algún títulos minero?</label>
+        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+            <label for="selOperacion">Las operaciones mineras se encuentran bajo el amparo de algún título minero?</label>
             {{Form::select("selOperacion", $selOperacion, isset($detalle->operaciones_amparo) ? $detalle->operaciones_amparo : null )}}
-            @if($errors->has("selOperacion"))operaciones_amparo
+            @if($errors->has("selOperacion"))
                 @foreach($errors->get("selOperacion") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-2">
+        <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("txtPlaca","Número de la Placa (Si la respuesta Sí)", array("class" => "control-label")) }}
             {{ Form::text("txtPlaca", Input::old('txtPlaca') ? Input::old('txtPlaca') : isset($detalle->num_placa_jur) ? $detalle->num_placa_jur : null ,
                         array("class" => "form-control", "placeholder" => "Número de Placa", "autocomplete" => "off")) }}
@@ -60,7 +72,28 @@
                 @endforeach
             @endif
         </div>
+        
+    </div>
+    <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-2">
+            <label for="selPto">Pto Aprobado</label>
+            {{Form::select("selPto", $selOperacion, isset($detalle->pto_aprob) ? $detalle->pto_aprob : null)}}
+            @if($errors->has("selPto"))
+                @foreach($errors->get("selPto") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+        </div>
+        <div class="form-group form-group-sm col-xs-12 col-sm-3">
+            <label for="selLic">Licencia Ambiental</label>
+            {{Form::select("selLic", $selOperacion, isset($detalle->lic_amb) ? $detalle->lic_amb : null)}}
+            @if($errors->has("selLic"))
+                @foreach($errors->get("selLic") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+        </div>
+        <div class="form-group form-group-sm col-xs-12 col-sm-4">
             <label for="selActoTer">Acto Administrativo Terminado</label>
             {{Form::select("selActoTer", $actoTer, isset($detalle->acto_terminado_jur) ? $detalle->acto_terminado_jur : null )}}
             @if($errors->has("selActoTer"))
@@ -69,7 +102,7 @@
                 @endforeach
             @endif
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-1">
+        <div class="form-group form-group-sm col-xs-12 col-sm-3">
             <label for="selRenuncia">Tipo de Renuncia</label>
             {{Form::select("selRenuncia", $tipoRen, isset($detalle->tipo_renuncia) ? $detalle->tipo_renuncia : null)}}
             @if($errors->has("selRenuncia"))
@@ -100,7 +133,7 @@
             @endif
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            <label for="txtEstadoInst">Estado</label>
+            <label for="txtEstadoInst">Indique el ID y el estado del instrumento para la formalización</label>
             {{ Form::text("txtEstadoInst", Input::old('txtEstadoInst') ? Input::old('txtEstadoInst') : isset($detalle->estado_instrumento) ? $detalle->estado_instrumento : null, 
                 array("class" => "form-control", "placeholder" => "Estado", "autocomplete" => "off")) }}
             @if($errors->has("txtEstadoInst"))

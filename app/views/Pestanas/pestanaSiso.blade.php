@@ -1507,12 +1507,12 @@
 {{ HTML::script('js/restfulizer.js') }}
 {{ HTML::script('js/Pestanas/PestanaSiso.js') }}
 <script>
-    $("#btnSegSoc").click(function () { 
-        var MaxInputs       = 8; //Número Maximo de Campos
+    var MaxInputs       = 8; //Número Maximo de Campos
         var contenedor      = $("#divSegSOc"); //ID del contenedor
         var AddButton       = $("#btnSegSoc"); //ID del Botón Agregar
         //var x = número de campos existentes en el contenedor
-        var x = $("#divSegSoc div").length + 1;
+        var x = $("#divSegSoc div").length + 1; 
+    $("#btnSegSoc").click(function () { 
     var FieldCount = x-1; //para el seguimiento de los campos
         if(x <= MaxInputs) //max input box allowed
         {

@@ -118,4 +118,31 @@ Route::group(array("before" => "auth"), function(){
     Route::resource('seleccionMultiple', 'SeleccionMultipleController');
     
     Route::delete("seleccionMultipleElim/{id}/{topo}/{asunto}", array("as" => "seleccionMultipleElim", "uses" => "SeleccionMultipleController@eliminar") );
+    
+    /******** Encuestas **********/
+    Route::get("listaTiposEnc", "ListadoController@listarTipoEncuestas");
+    Route::resource('TipoEncuesta', 'TipoEncuestaController');
+    Route::resource('AspectosPreguntas', 'AspectosPreguntasController');
+    Route::resource('TipoAspectosPreguntas', 'TipoAspectosPreguntasController');
+    Route::resource('TipoRespuestas', 'TipoRespuestaController');
+    Route::resource('Preguntas', 'PreguntaController');
+    Route::get("MenuEncuesta/{id}", function($id){
+        return View::make("Encuesta.menuEncuesta", array("id" => $id));
+    });
+        /*********** FORMULARIOS DE CREACION ********/
+        Route::get("AspPregCrear/{id}", function($id){
+            return View::make("Encuesta.Aspecto.crear", array("id" => $id));
+        });
+        /*Route::get("TipoAspPregCrear/{id}", function($id){
+            return View::make("Encuesta.TipoAspecto.crear", array("id" => $id));
+        });*/
+        Route::get("TipoAspPregCrear/{id}", "TipoAspectosPreguntasController@formCrear");
+        Route::get("TipoRptaCrear/{id}", "TipoRespuestaController@formCrear");
+        Route::get("TipoRptaCrear/{id_tipo_enc}/{id_tipo_resp}", "TipoRespuestaController@formActualizar");
+        Route::get("PreguntaCrear/{id_tipo_enc}", "PreguntaController@formCrear");
+        /*******************/
+        /********** select dependiente ************/
+        
+        Route::post("selectDependientes", "SelectDependienteController@select");
+        /**********************************/
 });

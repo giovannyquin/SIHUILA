@@ -5,10 +5,9 @@
 @stop
 
 @section("NombrePagina")
-    Pagina de Inicio Proyecto Piloto Huila
+    Página de Inicio Proyecto Piloto Huila
 @stop
 
 @section("SeccionTrabajo")
-<h3>Esta es la sección para colocar el código php</h3>
+<h3>Bienvenidos a "SIHUILA" Sistemas de Información para el proyecto "PROYECTO PILOTO DE FORMALIZACIÓN MINERA EN CUATRO ZONAS DEL DEPARTAMENTO DEL HUOLA -Neiva-"</h3>
 @stop
-

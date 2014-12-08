@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/SIHUILA/app/views/js/PestanaSiso.blade.php</file>
-            <file>file:/C:/xampp/htdocs/SIHUILA/public/js/Pestanas/PestanaSiso.js</file>
-            <file>file:/C:/xampp/htdocs/SIHUILA/app/views/Pestanas/pestanaSiso.blade.php</file>
-            <file>file:/C:/xampp/htdocs/SIHUILA/public/js/FormMinas/FormMinas.js</file>
+            <file>file:/C:/xampp/htdocs/SIHUILA/app/views/Pestanas/pestanaAmbiental.blade.php</file>
+            <file>file:/C:/xampp/htdocs/SIHUILA/app/views/Pestanas/pestanaJuridico.blade.php</file>
+            <file>file:/C:/xampp/htdocs/SIHUILA/app/controllers/PestanaAmbientalController.php</file>
+            <file>file:/C:/xampp/htdocs/SIHUILA/app/controllers/PestanaJuridicoController.php</file>
+            <file>file:/C:/xampp/htdocs/SIHUILA/app/views/Pestanas/pestanaAmbiental2.blade.php</file>
+            <file>file:/C:/xampp/htdocs/SIHUILA/app/views/SbAdmin/index.blade.php</file>
         </group>
     </open-files>
 </project-private>

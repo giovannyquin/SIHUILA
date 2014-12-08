@@ -56,6 +56,12 @@ class PestanaJuridicoController extends BaseController{
                  $detalle= new DetalleMina();
                  if($this->noBlanco(Input::get("hidMina")))
                      $detalle->id_mina=Input::get("hidMina");
+                 if($this->noBlanco(Input::get("selActExtr")))
+                     $detalle->extr_min=Input::get("selActExtr");
+                 if($this->noBlanco(Input::get("selPto")))
+                     $detalle->pto_aprob=Input::get("selPto");
+                 if($this->noBlanco(Input::get("selLic")))
+                     $detalle->lic_amb=Input::get("selLic");
                  if($this->noBlanco(Input::get("txtPlaca")))
                      $detalle->num_placa_jur=Input::get("txtPlaca");
                  if($this->noBlanco(Input::get("selOperacion")))
@@ -103,6 +109,12 @@ class PestanaJuridicoController extends BaseController{
                  $detalle->save();
             }
             else {
+                if($this->noBlanco(Input::get("selActExtr")))
+                     $detalle->extr_min=Input::get("selActExtr");
+                if($this->noBlanco(Input::get("selPto")))
+                     $detalle->pto_aprob=Input::get("selPto");
+                if($this->noBlanco(Input::get("selLic")))
+                     $detalle->lic_amb=Input::get("selLic");
                 if($this->noBlanco(Input::get("txtPlaca")))
                      $detalle->num_placa_jur=Input::get("txtPlaca");
                  if($this->noBlanco(Input::get("selOperacion")))
