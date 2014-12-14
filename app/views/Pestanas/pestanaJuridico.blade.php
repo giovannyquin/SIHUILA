@@ -133,7 +133,7 @@
             @endif
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            <label for="txtEstadoInst">Indique el ID y el estado del instrumento para la formalizaci√≥n</label>
+            <label for="txtEstadoInst">Estado</label>
             {{ Form::text("txtEstadoInst", Input::old('txtEstadoInst') ? Input::old('txtEstadoInst') : isset($detalle->estado_instrumento) ? $detalle->estado_instrumento : null, 
                 array("class" => "form-control", "placeholder" => "Estado", "autocomplete" => "off")) }}
             @if($errors->has("txtEstadoInst"))
@@ -269,7 +269,7 @@
     <hr>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            <label for="selTitDis">T√≠tular dispuesto a Negociar</label>
+            <label for="selTitDis">TÌtular dispuesto a Negociar</label>
             {{Form::select("selTitDis", $selOperacion, isset($detalle->titular_negociar) ? $detalle->titular_negociar : null)}}
             @if($errors->has("selTitDis"))
                 @foreach($errors->get("selTitDis") as $error)
@@ -282,6 +282,33 @@
             {{Form::select("selInfDis", $selOperacion, isset($detalle->informal_formalizar) ? $detalle->informal_formalizar : null)}}
             @if($errors->has("selInfDis"))
                 @foreach($errors->get("selInfDis") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+        </div>
+    </div>
+    <p class="bg-primary text-center" >Descripciones</p>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            {{ Form::label("txtDerOpe", "Derechos reales en las operaciones mineras", array("class" => "control-label")) }}
+            {{ Form::textarea("txtDerOpe", 
+                Input::old('txtDerOpe') ? Input::old('txtDerOpe') : isset($detalle->derechos_reales) ? $detalle->derechos_reales : null,
+                        array("class" => "form-control col-xs-12 col-sm-3", "placeholder" => "DescripciÛn", "autocomplete" => "off", "size" => "30x3")) }}
+            @if($errors->has("txtDerOpe"))
+                @foreach($errors->get("txtDerOpe") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            {{ Form::label("txtAccMin", "Acciones administrativas y/o judiciales contra las operaciones mineras", array("class" => "control-label")) }}
+            {{ Form::textarea("txtAccMin", 
+                Input::old('txtAccMin') ? Input::old('txtAccMin') : isset($detalle->acciones_op_minera) ? $detalle->acciones_op_minera : null,
+                        array("class" => "form-control col-xs-12 col-sm-3", "placeholder" => "DescripciÛn", "autocomplete" => "off", "size" => "30x3")) }}
+            @if($errors->has("txtAccMin"))
+                @foreach($errors->get("txtAccMin") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif

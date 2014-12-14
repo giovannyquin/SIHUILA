@@ -2,7 +2,8 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+#	return View::make('hello');
+        return View:: make("Login.login2");
 });
 
 Route::get("/vendedores", function()
@@ -114,10 +115,15 @@ Route::group(array("before" => "auth"), function(){
     Route::resource('pestanaAmbiental', 'PestanaAmbientalController');
     Route::resource('pestanaSiso', 'PestanaSisoController');
     Route::resource('pestanaBiodiversidad', 'PestanaBiodiversidadController');
-    Route::resource('formMinas', 'FormMinaController');
-    Route::resource('seleccionMultiple', 'SeleccionMultipleController');
-    
-    Route::delete("seleccionMultipleElim/{id}/{topo}/{asunto}", array("as" => "seleccionMultipleElim", "uses" => "SeleccionMultipleController@eliminar") );
+    Route::resource('formMinas','FormMinaController');
+    Route::delete("seleccionMultipleElim/{id}/{topo}/{asunto}/{pestana}",array("as"=>"seleccionMultipleElim","uses"=>"SeleccionMultipleController@eliminar") );
+    Route::delete("talentoHumanoElim/{id}/{tipo}/{asunto}/{pestana}",array("as"=>"talentoHumanoElim","uses"=>"TalentoHumanoController@eliminar") );
+    Route::delete("geoMultipleElim/{id}/{tipo}/{asunto}/{pestana}",array("as"=>"geoMultipleElim","uses"=>"GeoMultipleController@eliminar") );
+    Route::delete("seguridadSocialElim/{id}/{idRegimen}/{idSeguridad}/{idMineria}/{pestana}",array("as"=>"seguridadSocialElim","uses"=>"SeguridadSocialController@eliminar") );
+    Route::delete("especieVegetalElim/{id}/{nombreComun}/{pestana}",array("as"=>"especieVegetalElim","uses"=>"EspeciesVegetalesController@eliminar") );
+    Route::delete("compesacionForestalElim/{id}/{especie}/{pestana}",array("as"=>"compesacionForestalElim","uses"=>"CompesacionForestalController@eliminar") );
+    Route::delete("especieAnimalElim/{id}/{nombreComun}/{pestana}",array("as"=>"especieAnimalElim","uses"=>"EspeciesAnimalesController@eliminar") );
+    Route::delete("contaminanteElim/{id}/{nombreComun}/{pestana}",array("as"=>"contaminanteElim","uses"=>"ContaminantesController@eliminar") );
     
     /******** Encuestas **********/
     Route::get("listaTiposEnc", "ListadoController@listarTipoEncuestas");
@@ -126,6 +132,8 @@ Route::group(array("before" => "auth"), function(){
     Route::resource('TipoAspectosPreguntas', 'TipoAspectosPreguntasController');
     Route::resource('TipoRespuestas', 'TipoRespuestaController');
     Route::resource('Preguntas', 'PreguntaController');
+    
+    Route::resource('Encuestado', 'EncuestadoController');
     Route::get("MenuEncuesta/{id}", function($id){
         return View::make("Encuesta.menuEncuesta", array("id" => $id));
     });
@@ -140,9 +148,19 @@ Route::group(array("before" => "auth"), function(){
         Route::get("TipoRptaCrear/{id}", "TipoRespuestaController@formCrear");
         Route::get("TipoRptaCrear/{id_tipo_enc}/{id_tipo_resp}", "TipoRespuestaController@formActualizar");
         Route::get("PreguntaCrear/{id_tipo_enc}", "PreguntaController@formCrear");
+        
+        Route::get("EncuestadoCrear/{id_tipo_enc}", "EncuestadoController@formCrear");
+        Route::get("EncuestadoCrear/{id_tipo_enc}/{num_docu}", "EncuestadoController@formActualizar");
         /*******************/
         /********** select dependiente ************/
         
         Route::post("selectDependientes", "SelectDependienteController@select");
         /**********************************/
+        /**** Links de eliminacion cuando tienen mas de una variable y no se puede con resource *****/
+        Route::delete("EncuestadoElim/{id_tipo_enc}/{num_docu}", "EncuestadoController@eliminar" );
+        /******************************/
+        Route::get("EncuestaSocial/{id_tipo_enc}/{num_docu}", "EncuestaSocialController@mostrarEncuesta");
+        Route::post("guardaEncuestaSocial", "EncuestaSocialController@guardarTextNumero");
+    Route::get("EncSocial", "ListadoController@listarSocial");
+    /**************** Fin Encuestas ****************************/
 });

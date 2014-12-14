@@ -6,10 +6,9 @@
  * and open the template in the editor.
  */
 
+    class Mineral extends Eloquent{
+        protected $table = 'SIminerales';
+        protected $primaryKey = 'id_mineral';
+        public $timestamps=false;
+    }
 
-class Siso extends Eloquent{
-    protected $table = 'SIsiso';
-    protected $primaryKey="id_mina";
-    public $timestamps=false;
-
-}

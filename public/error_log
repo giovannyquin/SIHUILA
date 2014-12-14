@@ -1,0 +1,28 @@
+[29-Nov-2014 21:42:36 UTC] PHP Fatal error:  Class 'baseController' not found in /home/formaliz/public_html/SIHUILA/app/controllers/LoginController.php on line 10
+[29-Nov-2014 21:43:25 UTC] PHP Fatal error:  Class 'baseController' not found in /home/formaliz/public_html/SIHUILA/app/controllers/LoginController.php on line 10
+[29-Nov-2014 22:51:58 UTC] PHP Fatal error:  Class 'Responsable' not found in /home/formaliz/public_html/SIHUILA/app/controllers/PestanaMineroController.php on line 10
+[30-Nov-2014 00:03:15 UTC] PHP Fatal error:  Class 'Responsable' not found in /home/formaliz/public_html/SIHUILA/app/controllers/PestanaMineroController.php on line 10
+[30-Nov-2014 00:09:47 UTC] PHP Fatal error:  Class 'Responsable' not found in /home/formaliz/public_html/SIHUILA/app/controllers/PestanaMineroController.php on line 10
+[30-Nov-2014 00:11:25 UTC] PHP Fatal error:  Class 'Morfometria' not found in /home/formaliz/public_html/SIHUILA/app/controllers/PestanaAmbientalController.php on line 12
+[30-Nov-2014 00:12:36 UTC] PHP Fatal error:  Class 'Responsable' not found in /home/formaliz/public_html/SIHUILA/app/controllers/PestanaMineroController.php on line 10
+[30-Nov-2014 00:15:31 UTC] PHP Fatal error:  Class 'Operador' not found in /home/formaliz/public_html/SIHUILA/app/controllers/PestanaMineroController.php on line 11
+[30-Nov-2014 00:16:10 UTC] PHP Fatal error:  Class 'Produccion' not found in /home/formaliz/public_html/SIHUILA/app/controllers/PestanaMineroController.php on line 13
+[30-Nov-2014 00:17:02 UTC] PHP Fatal error:  Class 'Mineral' not found in /home/formaliz/public_html/SIHUILA/app/controllers/PestanaMineroController.php on line 23
+[05-Dec-2014 09:30:38 UTC] PHP Fatal error:  Class 'SeguridadSocial' not found in /home/formaliz/public_html/SIHUILA/app/controllers/PestanaMineroController.php on line 53
+[09-Dec-2014 06:08:31 UTC] PHP Fatal error:  Call to a member function lists() on a non-object in /home/formaliz/public_html/SIHUILA/app/controllers/TipoAspectosPreguntasController.php on line 59
+[09-Dec-2014 06:13:45 UTC] PHP Fatal error:  Call to a member function lists() on a non-object in /home/formaliz/public_html/SIHUILA/app/controllers/TipoAspectosPreguntasController.php on line 59
+[09-Dec-2014 06:15:02 UTC] PHP Fatal error:  Call to a member function lists() on a non-object in /home/formaliz/public_html/SIHUILA/app/controllers/TipoAspectosPreguntasController.php on line 59
+[09-Dec-2014 06:21:10 UTC] PHP Fatal error:  Call to a member function lists() on a non-object in /home/formaliz/public_html/SIHUILA/app/controllers/TipoAspectosPreguntasController.php on line 59
+[09-Dec-2014 06:24:46 UTC] PHP Fatal error:  Call to a member function lists() on a non-object in /home/formaliz/public_html/SIHUILA/app/controllers/TipoAspectosPreguntasController.php on line 59
+[09-Dec-2014 06:26:05 UTC] PHP Fatal error:  Call to a member function lists() on a non-object in /home/formaliz/public_html/SIHUILA/app/controllers/TipoAspectosPreguntasController.php on line 59
+[09-Dec-2014 16:26:33 UTC] PHP Fatal error:  Call to a member function lists() on a non-object in /home/formaliz/public_html/SIHUILA/app/controllers/TipoAspectosPreguntasController.php on line 59
+[09-Dec-2014 16:33:54 UTC] PHP Fatal error:  Call to a member function lists() on a non-object in /home/formaliz/public_html/SIHUILA/app/controllers/TipoAspectosPreguntasController.php on line 59
+[09-Dec-2014 16:36:14 UTC] PHP Fatal error:  Call to a member function lists() on a non-object in /home/formaliz/public_html/SIHUILA/app/controllers/TipoAspectosPreguntasController.php on line 59
+[09-Dec-2014 16:41:00 UTC] PHP Fatal error:  Call to a member function lists() on a non-object in /home/formaliz/public_html/SIHUILA/app/controllers/TipoAspectosPreguntasController.php on line 59
+[09-Dec-2014 16:59:24 UTC] PHP Fatal error:  Call to a member function lists() on a non-object in /home/formaliz/public_html/SIHUILA/app/controllers/TipoAspectosPreguntasController.php on line 59
+[10-Dec-2014 04:23:24 UTC] PHP Fatal error:  Cannot use [] for reading in /home/formaliz/public_html/SIHUILA/app/storage/views/8e6ac9116e53738ee913fc3621922dea on line 49
+[10-Dec-2014 04:23:25 UTC] PHP Fatal error:  Cannot use [] for reading in /home/formaliz/public_html/SIHUILA/app/storage/views/8e6ac9116e53738ee913fc3621922dea on line 49
+[10-Dec-2014 04:30:07 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/formaliz/public_html/SIHUILA/app/storage/views/8e6ac9116e53738ee913fc3621922dea on line 101
+[10-Dec-2014 06:06:23 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/formaliz/public_html/SIHUILA/app/storage/views/f2183550d4010a97a523ee2138d74f11 on line 185
+[10-Dec-2014 14:04:52 UTC] PHP Fatal error:  Class 'Infraestructura' not found in /home/formaliz/public_html/SIHUILA/app/controllers/PestanaMineroController.php on line 59
+[10-Dec-2014 22:44:53 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/formaliz/public_html/SIHUILA/app/storage/views/41dc19f62479b44d3d675dfe5d6882da on line 312

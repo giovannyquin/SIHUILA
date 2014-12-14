@@ -6,10 +6,10 @@
  * and open the template in the editor.
  */
 
+    class Plano extends Eloquent{
+        protected $table = 'SIplano';
+        protected $primaryKey = 'id_mina';
+        public $timestamps=false;
+#        public $incrementing=false;
+    }
 
-class Siso extends Eloquent{
-    protected $table = 'SIsiso';
-    protected $primaryKey="id_mina";
-    public $timestamps=false;
-
-}

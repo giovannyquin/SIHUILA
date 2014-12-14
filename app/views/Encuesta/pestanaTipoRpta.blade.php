@@ -13,7 +13,7 @@
     <div class="row">
         {{ link_to("TipoRptaCrear/{$tipoEncuesta}", "Crear Tipo Aspecto", array("class" => "btn btn-primary")) }}
     </div>
-    @if(isset($tipoRpta) && $tipoRpta->count())
+    @if(isset($tipoRpta) && count($tipoRpta))
     <div class="table-responsive">
        <table class="table table-striped table-hover table-bordered table-responsive">
           <thead>
@@ -27,7 +27,6 @@
           </thead>
           <tbody>
           <?php $a=1; ?>
-              <?php var_dump($modoRpta); ?>
           @foreach($tipoRpta as $tipoRpta)
              <tr>
                 <td style="text-align: center;"> {{ $a }} </td>

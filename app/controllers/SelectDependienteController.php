@@ -24,9 +24,33 @@ class SelectDependienteController extends BaseController
                     }
                     else
                     {
-                        return (array("0" => "0"));
+                        $preg= Pregunta::whereId_tipo_encuesta($tipoenc)
+                                ->get();
+                        if($preg->count())
+                        {
+                            $maxpreg= Pregunta::whereId_tipo_encuesta($tipoenc)
+                                ->max('num_pregunta');
+                             //return (array("0" => $maxpreg));
+                            $preg2= Pregunta::whereId_tipo_encuesta($tipoenc)
+                                                ->whereNum_pregunta($maxpreg)->get();
+                            return $preg2->lists("num_pregunta", "id_pregunta");
+                        }
+                        else
+                        {
+                            return (array("0" => "0"));
+                        }                        
                     }
                     
+                break;
+                case "mostrarVereda":
+                    $municipio=Input::get("dato");
+                    $vereda= Vereda::whereId_municipio($municipio);
+                    return $vereda->lists("nombre_vereda", "id_vereda");
+                break;
+                case "mostrarMunicipio":
+                    $depto=Input::get("dato");
+                    $municipio= Municipio::whereId_departamento($depto);
+                    return $municipio->lists("nombre_municipio", "id_municipio");
                 break;
             } 
         }

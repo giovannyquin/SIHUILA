@@ -54,7 +54,7 @@
                 <div class="row">
                     <div class="form-group form-group-sm col-xs-12 col-md-4">
                         {{Form::label("selTipAspPreg", "Subsección a incluir la pregunta")}}
-                        {{Form::select("selTipAspPreg", $tipoasppreg, isset($pregunta->id_aspecto) ? $pregunta->id_aspecto : null )}}
+                        {{Form::select("selTipAspPreg", $tipoasppreg, isset($pregunta->id_tipo_asp_preg) ? $pregunta->id_tipo_asp_preg : null )}}
                         @if($errors->has("selTipAspPreg"))
                         @foreach($errors->get("selTipAspPreg") as $error)
                           <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -65,7 +65,7 @@
                 <div class="row">
                     <div class="form-group form-group-sm col-xs-12 col-md-4">
                         {{Form::label("selDesPreg", "Colocar después de pregunta")}}
-                        {{Form::select("selDesPreg", $numpreg, isset($pregunta->num_pregunta) ? $pregunta->num_pregunta : null )}}
+                        {{Form::select("selDesPreg", $numpreg, isset($pregunta->id_pregunta) ? $pregunta->id_pregunta : null )}}
                         @if($errors->has("selDesPreg"))
                         @foreach($errors->get("selDesPreg") as $error)
                           <span class="help-block alert alert-danger">  * {{ $error }} </span>

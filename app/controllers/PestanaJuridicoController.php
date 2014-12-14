@@ -90,6 +90,9 @@ class PestanaJuridicoController extends BaseController{
                      $detalle->titular_negociar= Input::get("selTitDis"); 
                  if($this->noBlanco(Input::get("selInfDis")))
                      $detalle->informal_formalizar= Input::get("selInfDis");
+                 
+                     $detalle->derechos_reales= input::get("txtDerOpe");
+                    $detalle->acciones_op_minera= input::get("txtAccMin");
 
                      /*$detalle->id_mina=$this->noBlanco(Input::get("hidMina"));
                      $detalle->num_placa_jur=$this->noBlanco(Input::get("txtPlaca"));
@@ -143,6 +146,9 @@ class PestanaJuridicoController extends BaseController{
                      $detalle->titular_negociar= Input::get("selTitDis"); 
                  if($this->noBlanco(Input::get("selInfDis")))
                      $detalle->informal_formalizar= Input::get("selInfDis");
+                 
+                 $detalle->derechos_reales= input::get("txtDerOpe");
+                 $detalle->acciones_op_minera= input::get("txtAccMin");
 
                  /*$detalle->num_placa_jur=$this->noBlanco(Input::get("txtPlaca"));
                      $detalle->operaciones_amparo=$this->noBlanco(Input::get("selOperacion"));

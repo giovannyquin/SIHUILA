@@ -141,7 +141,7 @@
                     <li>
                         <a href="producto"><i class="fa fa-fw fa-table"></i> Productos</a>
                     </li>-->
-                    @if(Auth::user()->id_menu==1)
+                    @if(Auth::user()->id==11)
                     <li>
                         <!--{{ link_to("usuario", "Usuarios", array("class" => "fa fa-fw fa-edit")) }}-->
                         <a href="{{ URL::to("usuario") }}"><i class="fa fa-fw fa-edit"></i> Usuarios</a>
@@ -151,28 +151,26 @@
                         <!--{{ link_to("listaMina", "EjecuciÃ³n Minas", array("class" => "fa fa-fw fa-edit")) }}-->
                         <a href="{{ URL::to("listaMina") }}"><i class="fa fa-fw fa-desktop"></i> Ejecución Minas</a>
                     </li>
-                    @if(Auth::user()->id_menu==1 || Auth::user()->id==14)
+                    @if(Auth::user()->id==11)
                     <li>
 <!--                        {{ link_to("datosMina", "Crear Minas", array("class" => "fa fa-fw fa-edit")) }}-->
                         <a href="{{ URL::to("datosMina") }}"><i class="fa fa-fw fa-wrench"></i> Crear Minas</a>
                     </li>
                     @endif
-                    @if(Auth::user()->id_menu==1)
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Adm Encuestas <i class="fa fa-fw fa-caret-down"></i></a>
+                    <!--<li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="{{ URL::to("listaTiposEnc") }}">Editar Encuestas</a>
+                                <a href="#">Dropdown Item</a>
                             </li>
                             <li>
                                 <a href="#">Dropdown Item</a>
                             </li>
                         </ul>
                     </li>
-                    @endif
                     <li>
-                        <a href="{{ URL::to("EncSocial") }}"><i class="fa fa-fw fa-file"></i> Social</a>
-                    </li>
+                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    </li>-->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

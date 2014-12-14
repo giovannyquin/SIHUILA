@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-class LoginController extends baseController
+class LoginController extends BaseController
 {
     // esta ruta ervirá para iniciar la sesión por medio del usuario y la clave
     // para esta utilizamos la función estratégica attemp de la clase Auth

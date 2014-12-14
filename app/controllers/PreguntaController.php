@@ -97,7 +97,7 @@ class PreguntaController extends BaseController{
             $pregunta->id_tipo_asp_preg= Input::get("selTipAspPreg");
             $pregunta->id_tipo_rpta= Input::get("selTipo");
             $pregunta->nombre= Input::get("txtNombre");
-            if($pregunta->num_pregunta<>Input::get("selDesPreg"))
+            if($pregunta->id_pregunta<>Input::get("selDesPreg"))
             {
                 //codigo para actualizar informacion del numero de la pregunta
             }
@@ -132,16 +132,6 @@ class PreguntaController extends BaseController{
    public function formActualizar($id_tipo_enc, $id_tipo_resp)
    {
        
-       $tiporpta = TipoRespuesta::find($id_tipo_resp);
-       $modoRpta= array("" => "Seleccione..")+ ModoRespuesta::all()->lists('nombre', 'id_modo_rpta');;
-       $respuestasE= RespuestaEncuesta::whereId_tipo_rpta($id_tipo_resp)->whereId_tipo_encuesta($id_tipo_enc)->get();
-       //if(Input::old())
-       //return dd(Input::old());
-       return View::make("Encuesta.TipoRpta.crear", 
-               array("id" => $id_tipo_enc, 
-                        "tiporpta" => $tiporpta, 
-                        "modoRpta" => $modoRpta,
-                        "respuestasE" => $respuestasE));
    }
    
 }

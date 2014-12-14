@@ -12,4 +12,10 @@ class ListadoController extends BaseController
         $TipoEncuesta=TipoEncuesta::all();
         return View::make('Encuesta.listaTipoEncuesta')->with('TipoEncuesta', $TipoEncuesta);
     }
+    
+    public function listarSocial()
+    {
+        $tipoEncuesta= TipoEncuesta::whereNombre("Social")->get(); 
+        return View::make('Encuesta.listaSocial')->with('TipoEncuesta', $tipoEncuesta);
+    }
 }

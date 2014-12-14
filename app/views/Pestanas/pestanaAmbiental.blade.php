@@ -35,26 +35,32 @@
     <p class="bg-primary text-center">Componente Fisico (Uso del recurso Hídrico)</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-6">
+
             {{Form::label("selFueAfe","Existe una fuente hídrica afectada por el proceso de explotación minera")}}
-            {{Form::select("selFueAfe", $arrSiNo,isset($ambiental->fue_afe) ? $ambiental->fue_afe : null) }}
+						{{Form::select("selFueAfe",$arrSiNo,Input::old("selFueAfe") ? Input::old("selFueAfe"):isset($ambiental->fue_afe) ? $ambiental->fue_afe:null ,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selFueAfe"))
                 @foreach($errors->get("selFueAfe") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
+
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
+
+        <div class="form-group form-group-sm col-xs-12 col-sm-6">
+
             {{Form::label("selTipFue","La fuente es")}}
-            {{Form::select("selTipFue", $arrTipFue,isset($ambiental->tipo_fuente) ? $ambiental->tipo_fuente : null) }}
+            {{Form::select("selTipFue",$arrTipFue,Input::old("selFueAfe") ? Input::old("selFueAfe"):isset($ambiental->tipo_fuente) ? $ambiental->tipo_fuente:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selTipFue"))
                 @foreach($errors->get("selTipFue") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
+
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
+
+        <div class="form-group form-group-sm col-xs-12 col-sm-12">
             {{Form::label("selTipFueAfe","Fuente afectada")}}
-            {{Form::select("selTipFueAfe", $arrTipFueAfe,isset($ambiental->tipo_fuente_afe) ? $ambiental->tipo_fuente_afe : null) }}
+            {{Form::select("selTipFueAfe",$arrTipFueAfe,Input::old("selTipFueAfe") ? Input::old("selTipFueAfe"):isset($ambiental->tipo_fuente_afe) ? $ambiental->tipo_fuente_afe:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selTipFueAfe"))
                 @foreach($errors->get("selTipFueAfe") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -64,18 +70,19 @@
     </div>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
+
             {{Form::label("selTipFueSup","Tipo de fuente Superficial")}}
-            {{Form::select("selTipFueSup", $arrTipFueSup,isset($ambiental->tipo_fuente_sup) ? $ambiental->tipo_fuente_sup : null) }}
+            {{Form::select("selTipFueSup",$arrTipFueSup,Input::old("selTipFueSup") ? Input::old("selTipFueSup"):isset($ambiental->tipo_fuente_sup) ? $ambiental->tipo_fuente_sup:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selTipFueSup"))
                 @foreach($errors->get("selTipFueSup") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
+
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-8">
             {{Form::label("txtNomFueSup","Nombre de la Fuente")}}
-            {{Form::text("txtNomFueSup", Input::old("txtNomFueSup") ? Input::old("txtNomFueSup") : isset($ambiental->nombre_fuente_sup) ? $ambiental->nombre_fuente_sup : null,
-                        array("class" => "form-control", "placeholder" => "Fuente Subterránea", "autocomplete" => "off")) }}
+            {{Form::text("txtNomFueSup", Input::old("txtNomFueSup") ? Input::old("txtNomFueSup") : isset($ambiental->nombre_fuente_sup) ? $ambiental->nombre_fuente_sup : null,array("class" => "form-control", "placeholder" => "Fuente Subterránea", "autocomplete" => "off")) }}
             @if($errors->has("txtNomFueSup"))
                 @foreach($errors->get("txtNomFueSup") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -86,7 +93,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selTipFueSub","Tipo de fuente Subterránea")}}
-            {{Form::select("selTipFueSub", $arrTipFueSub,isset($ambiental->tipo_fuente_sub) ? $ambiental->tipo_fuente_sub : null) }}
+            {{Form::select("selTipFueSub",$arrTipFueSub,Input::old("selTipFueSub") ? Input::old("selTipFueSub"):isset($ambiental->tipo_fuente_sub) ? $ambiental->tipo_fuente_sub:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selTipFueSub"))
                 @foreach($errors->get("selTipFueSub") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -95,7 +102,7 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-8">
             {{Form::label("txtNomFueSub","Nombre de la Fuente")}}
-            {{Form::text("txtNomFueSub", Input::old("txtNomFueSub") ? Input::old("txtNomFueSub") : isset($ambiental->nombre_fuente_sup) ? $ambiental->nombre_fuente_sup : null,
+            {{Form::text("txtNomFueSub", Input::old("txtNomFueSub") ? Input::old("txtNomFueSub") : isset($ambiental->nombre_fuente_sub) ? $ambiental->nombre_fuente_sub : null,
                 array("class" => "form-control", "placeholder" => "Fuente Subterránea", "autocomplete" => "off")) }}
             @if($errors->has("txtNomFueSub"))
                 @foreach($errors->get("txtNomFueSub") as $error)
@@ -106,7 +113,7 @@
     </div>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-6">
-            {{Form::label("txtFueX","Ubicación de la fuente (coordenadas geográficas)")}}
+            {{Form::label("txtFueX","Ubicaci�n de la fuente (coordenadas planas)")}}
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-2">
             {{Form::text("txtFueX", Input::old("txtFueX") ? Input::old("txtFueX") : isset($ambiental->fuente_subx) ? $ambiental->fuente_subx : null,
@@ -138,7 +145,7 @@
     </div>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-6">
-            {{Form::label("txtDistFue", "A qué distancia del frente de explotación se encuentra la fuente afectada (mts)")}}
+            {{Form::label("txtDistFue", "A qué distancia del frente de explotación se encuentra la fuente afectada")}}
             {{Form::text("txtDistFue", Input::old("txtDistFue") ? Input::old("txtDistFue") : isset($ambiental->distancia_frente_fuente) ? $ambiental->distancia_frente_fuente : null,
                 array("class" => "form-control", "placeholder" => "Distancia en metros", "autocomplete" => "off")) }}
             @if($errors->has("txtDistFue"))
@@ -149,7 +156,7 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{Form::label("selUsoHidri","Uso del recurso Hídrico")}}
-            {{Form::select("selUsoHidri", $arrSiNo,isset($ambiental->uso_hidrico) ? $ambiental->uso_hidrico : null) }}
+            {{Form::select("selUsoHidri",$arrSiNo,Input::old("selUsoHidri") ? Input::old("selUsoHidri"):isset($ambiental->uso_hidrico) ? $ambiental->uso_hidrico:null ,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selUsoHidri"))
                 @foreach($errors->get("selUsoHidri") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -157,13 +164,15 @@
             @endif
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
+
             {{Form::label("selUsoTipo","Cúal es su uso")}}
-            {{Form::select("selUsoTipo", $arrTipoUso,isset($ambiental->tipo_uso_hid) ? $ambiental->tipo_uso_hid : null) }}
+						{{Form::select("selUsoTipo",$arrTipoUso,Input::old("selUsoTipo") ? Input::old("selUsoTipo"):isset($ambiental->tipo_uso_hid) ? $ambiental->tipo_uso_hid:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selUsoTipo"))
                 @foreach($errors->get("selUsoTipo") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
+
         </div>
     </div>
     <div class="row">
@@ -225,7 +234,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{Form::label("selConsAgua","Cuenta con consesión de agua")}}
-            {{Form::select("selConsAgua", $arrSiNo,isset($ambiental->consesion_agua) ? $ambiental->consesion_agua : null) }}
+            {{Form::select("selConsAgua",$arrSiNo,Input::old("selConsAgua") ? Input::old("selConsAgua"):isset($ambiental->consesion_agua) ? $ambiental->consesion_agua:null ,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selConsAgua"))
                 @foreach($errors->get("selConsAgua") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -234,8 +243,7 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-6">
             {{Form::label("txtRadi","Num radicado")}}
-            {{Form::text("txtRadi", Input::old("txtRadi") ? Input::old("txtRadi") : isset($ambiental->radicado_consesion) ? $ambiental->radicado_consesion : null,
-                array("class" => "form-control", "placeholder" => "Num radicado", "autocomplete" => "off")) }}
+            {{Form::text("txtRadi",Input::old("txtRadi") ? Input::old("txtRadi"):isset($ambiental->radicado_consesion) ? $ambiental->radicado_consesion: null,array("class"=> "form-control","placeholder"=>"Num radicado","autocomplete"=>"off")) }}
             @if($errors->has("txtRadi"))
                 @foreach($errors->get("txtRadi") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -244,19 +252,19 @@
         </div>
     </div>
     <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-5">
+        <div class="form-group form-group-sm col-xs-12 col-sm-6">
             {{Form::label("selTipAfecCal","Qué tipo de afectación en calidad se evidencia en la fuente hídrica")}}
-            {{Form::select("selTipAfecCal", $arrTipAfecCal,isset($ambiental->afec_calidad_hidri) ? $ambiental->afec_calidad_hidri : null) }}
+						{{Form::select("selTipAfecCal",$arrTipAfecCal,Input::old("selTipAfecCal") ? Input::old("selTipAfecCal"):isset($ambiental->afec_calidad_hidri) ? $ambiental->afec_calidad_hidri:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selTipAfecCal"))
                 @foreach($errors->get("selTipAfecCal") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
+
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-7">
-            {{Form::label("txtDescAfeCal","Num radicado")}}
-            {{Form::text("txtDescAfeCal", Input::old("txtDescAfeCal") ? Input::old("txtDescAfeCal") : isset($ambiental->desc_afec_calidad_hidri) ? $ambiental->desc_afec_calidad_hidri : null,
-                array("class" => "form-control", "placeholder" => "Descripción", "autocomplete" => "off")) }}
+        <div class="form-group form-group-sm col-xs-12 col-sm-6">
+            {{Form::label("txtDescAfeCal","Descripcion Afectacion")}}
+            {{Form::text("txtDescAfeCal",Input::old("txtDescAfeCal") ? Input::old("txtDescAfeCal"):isset($ambiental->desc_afec_calidad_hidri) ? $ambiental->desc_afec_calidad_hidri:null,array("class" => "form-control", "placeholder" => "Descripción", "autocomplete" => "off")) }}
             @if($errors->has("txtDescAfeCal"))
                 @foreach($errors->get("txtDescAfeCal") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -267,7 +275,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{Form::label("selManAgua","Se realiza manejo de aguas lluvias en el frene de explotación")}}
-            {{Form::select("selManAgua", $arrSiNo,isset($ambiental->manejo_agua) ? $ambiental->manejo_agua : null) }}
+						{{Form::select("selManAgua",$arrSiNo,Input::old("selManAgua") ? Input::old("selManAgua"):isset($ambiental->manejo_agua) ? $ambiental->manejo_agua:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selManAgua"))
                 @foreach($errors->get("selManAgua") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -276,7 +284,7 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{Form::label("selTipManAgua","Qué tipo de manejo se le realiza a las aguas lluvias")}}
-            {{Form::select("selTipManAgua", $arrTiManAgu,isset($ambiental->tipo_manejo_agua) ? $ambiental->tipo_manejo_agua : null) }}
+            {{Form::select("selTipManAgua",$arrTiManAgu,Input::old("selTipManAgua") ? Input::old("selTipManAgua"):isset($ambiental->tipo_manejo_agua) ? $ambiental->tipo_manejo_agua:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selTipManAgua"))
                 @foreach($errors->get("selTipManAgua") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -285,7 +293,7 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{Form::label("selProRec","Se realiza proceso de recirculación de las aguas")}}
-            {{Form::select("selProRec", $arrSiNo,isset($ambiental->proc_recir) ? $ambiental->proc_recir : null) }}
+						{{Form::select("selProRec",$arrSiNo,Input::old("selProRec") ? Input::old("selProRec"):isset($ambiental->proc_recir) ? $ambiental->proc_recir:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selProRec"))
                 @foreach($errors->get("selProRec") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -294,7 +302,7 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{Form::label("selDerAgua","Existe vertimiento de aguas a una fuente superficial o a un drenaje natural")}}
-            {{Form::select("selDerAgua", $arrSiNo,isset($ambiental->vertim_agua) ? $ambiental->vertim_agua : null) }}
+						{{Form::select("selDerAgua",$arrSiNo,Input::old("selDerAgua") ? Input::old("selDerAgua"):isset($ambiental->vertim_agua) ? $ambiental->vertim_agua:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selDerAgua"))
                 @foreach($errors->get("selDerAgua") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -314,10 +322,10 @@
             @endif
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            {{Form::label("selPerVert","Requiere  permiso de vertimientos")}}
-            {{Form::select("selPerVert", $arrSiNo,isset($ambiental->permiso_vertim) ? $ambiental->permiso_vertim : null) }}
-            @if($errors->has("selPerVert"))
-                @foreach($errors->get("selPerVert") as $error)
+            {{Form::label("selReqPerVert","Requiere  permiso de vertimientos")}}
+						{{Form::select("selReqPerVert",$arrSiNo,Input::old("selReqPerVert") ? Input::old("selReqPerVert"):isset($ambiental->requiere_permiso_vertim) ? $ambiental->requiere_permiso_vertim:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
+            @if($errors->has("selReqPerVert"))
+                @foreach($errors->get("selReqPerVert") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
@@ -327,16 +335,16 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{Form::label("selEmisAtm","Existen emisiones atmosfericas")}}
-            {{Form::select("selEmisAtm", $arrSiNo,isset($ambiental->emision_atmo) ? $ambiental->emision_atmo : null) }}
+						{{Form::select("selEmisAtm",$arrSiNo,Input::old("selEmisAtm") ? Input::old("selEmisAtm"):isset($ambiental->emision_atmo) ? $ambiental->emision_atmo:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selEmisAtm"))
                 @foreach($errors->get("selEmisAtm") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
+        <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selTipEmAt","Tipo de emisiones atmosféricas  encontradas")}}
-            {{Form::select("selTipEmAt", $arrTipEmAt,isset($ambiental->tipo_emision_atm) ? $ambiental->tipo_emision_atm : null) }}
+						{{Form::select("selTipEmAt",$arrTipEmAt,Input::old("selTipEmAt") ? Input::old("selTipEmAt"):isset($ambiental->tipo_emision_atm) ? $ambiental->tipo_emision_atm:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selTipEmAt"))
                 @foreach($errors->get("selTipEmAt") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -359,7 +367,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selFueEmAt","Fuente de las emisiones atmosféricas")}}
-            {{Form::select("selFueEmAt", $arrFueEmAt,isset($ambiental->fuente_emision_atm) ? $ambiental->fuente_emision_atm : null) }}
+						{{Form::select("selFueEmAt",$arrFueEmAt,Input::old("selFueEmAt") ? Input::old("selFueEmAt"):isset($ambiental->fuente_emision_atm) ? $ambiental->fuente_emision_atm:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selFueEmAt"))
                 @foreach($errors->get("selFueEmAt") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -368,7 +376,7 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selPerEmisAtm","Tiene permiso de emisiones atmosféricas")}}
-            {{Form::select("selPerEmisAtm", $arrSiNo,isset($ambiental->permiso_emision_atmo) ? $ambiental->permiso_emision_atmo : null) }}
+						{{Form::select("selPerEmisAtm",$arrSiNo,Input::old("selPerEmisAtm") ? Input::old("selPerEmisAtm"):isset($ambiental->permiso_emision_atmo) ? $ambiental->permiso_emision_atmo:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selPerEmisAtm"))
                 @foreach($errors->get("selPerEmisAtm") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -387,18 +395,18 @@
         </div>
     </div>
     <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-5">
+        <div class="form-group form-group-sm col-xs-12 col-sm-6">
             {{Form::label("selAnaEmAt","Ha realizado análisis de emisiones atmosféricas. (material particulado)")}}
-            {{Form::select("selAnaEmAt", $arrSiNo,isset($ambiental->analisis_em_at) ? $ambiental->analisis_em_at : null) }}
+						{{Form::select("selAnaEmAt",$arrSiNo,Input::old("selAnaEmAt") ? Input::old("selAnaEmAt"):isset($ambiental->analisis_em_at) ? $ambiental->analisis_em_at:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selAnaEmAt"))
                 @foreach($errors->get("selAnaEmAt") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
+        <div class="form-group form-group-sm col-xs-12 col-sm-2">
             {{Form::label("selQuemas","Realizan quemas")}}
-            {{Form::select("selQuemas", $arrSiNo,isset($ambiental->quemas) ? $ambiental->quemas : null) }}
+						{{Form::select("selQuemas",$arrSiNo,Input::old("selQuemas") ? Input::old("selQuemas"):isset($ambiental->quemas) ? $ambiental->quemas:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selQuemas"))
                 @foreach($errors->get("selQuemas") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -407,12 +415,13 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selTipManConAt","Tipos de manejo o mitigación a la contaminación atmosferica")}}
-            {{Form::select("selTipManConAt", $arrTipManConAm,isset($ambiental->tipo_man_con_am) ? $ambiental->tipo_man_con_am : null) }}
+						{{Form::select("selTipManConAt",$arrTipManConAm,Input::old("selTipManConAt") ? Input::old("selTipManConAt"):isset($ambiental->tipo_man_con_am) ? $ambiental->tipo_man_con_am:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selTipManConAt"))
                 @foreach($errors->get("selTipManConAt") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
+
         </div>
     </div>
     <p class="bg-success text-center">Ruido</p>
@@ -441,7 +450,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selGenRui","Existe generación de ruido")}}
-            {{Form::select("selGenRui", $arrSiNo,isset($ambiental->genera_ruido) ? $ambiental->genera_ruido : null) }}
+						{{Form::select("selGenRui",$arrSiNo,Input::old("selGenRui") ? Input::old("selGenRui"):isset($ambiental->genera_ruido) ? $ambiental->genera_ruido:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selGenRui"))
                 @foreach($errors->get("selGenRui") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -460,13 +469,15 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selMonRui","Se ha realizado monitoreo de ruido")}}
-            {{Form::select("selMonRui", $arrSiNo,isset($ambiental->monit_ruido) ? $ambiental->monit_ruido : null) }}
+						{{Form::select("selMonRui",$arrSiNo,Input::old("selMonRui") ? Input::old("selMonRui"):isset($ambiental->monit_ruido) ? $ambiental->monit_ruido:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selMonRui"))
                 @foreach($errors->get("selMonRui") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
+    </div>
+    <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("txtPerMon", "Quien")}}
             {{Form::text("txtPerMon", Input::old("txtPerMon") ? Input::old("txtPerMon") : isset($ambiental->persona_monit) ? $ambiental->persona_monit : null,
@@ -477,8 +488,6 @@
                 @endforeach
             @endif
         </div>
-    </div>
-    <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("txtResRui", "Resultados")}}
             {{Form::textarea("txtResRui", Input::old("txtResRui") ? Input::old("txtResRui") : isset($ambiental->resultados_ruido) ? $ambiental->resultados_ruido : null,
@@ -494,7 +503,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selMonRui","Se ha realizado descapote en la zona")}}
-            {{Form::select("selDescZon", $arrSiNo,isset($ambiental->desc_zona) ? $ambiental->desc_zona : null) }}
+						{{Form::select("selDescZon",$arrSiNo,Input::old("selDescZon") ? Input::old("selDescZon"):isset($ambiental->desc_zona) ? $ambiental->desc_zona:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selDescZon"))
                 @foreach($errors->get("selDescZon") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -503,7 +512,7 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selBanMat","Cuenta con un banco de materia orgánica")}}
-            {{Form::select("selBanMat", $arrSiNo,isset($ambiental->banco_mat_org) ? $ambiental->banco_mat_org : null) }}
+						{{Form::select("selBanMat",$arrSiNo,Input::old("selBanMat") ? Input::old("selBanMat"):isset($ambiental->banco_mat_org) ? $ambiental->banco_mat_org:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selBanMat"))
                 @foreach($errors->get("selBanMat") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -512,7 +521,7 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selMatEst","Se produce material esteril en la explotación")}}
-            {{Form::select("selMatEst", $arrSiNo,isset($ambiental->material_esteril) ? $ambiental->material_esteril : null) }}
+						{{Form::select("selMatEst",$arrSiNo,Input::old("selMatEst") ? Input::old("selMatEst"):isset($ambiental->material_esteril) ? $ambiental->material_esteril:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selMatEst"))
                 @foreach($errors->get("selMatEst") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -521,11 +530,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-6">
+        <div class="form-group form-group-sm col-xs-12 col-sm-7">
             {{Form::label("selManMatEst","Desarrolla un manejo adecuado del material esteril en zodme? (zonas de deposito)")}}
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            {{Form::select("selManMatEst", $arrSiNo,isset($ambiental->man_material_esteril) ? $ambiental->man_material_esteril : null) }}
+						{{Form::select("selManMatEst",$arrSiNo,Input::old("selManMatEst") ? Input::old("selManMatEst"):isset($ambiental->man_material_esteril) ? $ambiental->man_material_esteril:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selManMatEst"))
                 @foreach($errors->get("selManMatEst") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -563,30 +572,51 @@
         </div>
     </div>
     <div class="row" id="divActCier">
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+			<div class="row container">
+        <div class="form-group form-group-sm col-xs-12 col-sm-5">
             {{Form::label("selActCie[]","Qué actividades de cierre y abandono se desarrollan")}}
-            {{Form::select("selActCie[]", $arrActCie, null) }}
-            @if($errors->has("selActCie[]"))
+            {{Form::select("selActCie[]",$arrActCie,Input::old("selActCie[]") ? Input::old('selActCie[]'):null ,array('class'=>'form-control col-xs-12 col-sm-3','autocomplete'=>'off')) }}
+						@if($errors->has("selActCie[]"))
                 @foreach($errors->get("selActCie[]") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
+			</div>
     </div>
+		@foreach($arrSelMulActCie as $selmulactcie)
+			<div class="row">
+				<div class="row container">
+					<div class="form-group form-group-sm col-xs-12 col-sm-5">
+							{{Form::label("selActCie[]","Qué actividades de cierre y abandono se desarrollan")}}
+							{{Form::select("selActCie[]",$arrActCie,Input::old("selActCie[]") ? Input::old('selActCie[]'):isset($selmulactcie->id_topologia) ? $selmulactcie->id_topologia:null ,array('class'=>'form-control col-xs-12 col-sm-3','autocomplete'=>'off')) }}
+							@if($errors->has("selActCie[]"))
+									@foreach($errors->get("selActCie[]") as $error)
+										<span class="help-block alert alert-danger">  * {{ $error }} </span>
+									@endforeach
+							@endif
+					</div>
+					<a href="{{route('seleccionMultipleElim',array($selmulactcie['id_mina'],$selmulactcie['id_topologia'],$selmulactcie['asunto'],'PestanaAmbientalController')) }}" data-method="delete" rel="nofollow" class="btn btn-danger btn-xs">&times;</a>
+				</div>
+			</div>
+		@endforeach
+		
     <p class="bg-primary text-center">Residuos Sólidos</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
+
             {{Form::label("selTipRes","Qué tipo de residuos se generan")}}
-            {{Form::select("selTipRes", $arrTipRes,isset($ambiental->tipo_residuos) ? $ambiental->tipo_residuos : null) }}
+						{{Form::select("selTipRes",$arrTipRes,Input::old("selTipRes") ? Input::old("selTipRes"):isset($ambiental->tipo_residuos) ? $ambiental->tipo_residuos:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selTipRes"))
                 @foreach($errors->get("selTipRes") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
+
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selClasFue","Se realiza clasificación en la fuente")}}
-            {{Form::select("selClasFue", $arrSiNo,isset($ambiental->clas_fuente) ? $ambiental->clas_fuente : null) }}
+						{{Form::select("selClasFue",$arrSiNo,Input::old("selClasFue") ? Input::old("selClasFue"):isset($ambiental->clas_fuente) ? $ambiental->clas_fuente:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selClasFue"))
                 @foreach($errors->get("selClasFue") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -595,7 +625,7 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selEntResi","Entrega los residuos clasificados a  gestores externos")}}
-            {{Form::select("selEntResi", $arrSiNo,isset($ambiental->entrega_residuos) ? $ambiental->entrega_residuos : null) }}
+						{{Form::select("selEntResi",$arrSiNo,Input::old("selEntResi") ? Input::old("selEntResi"):isset($ambiental->entrega_residuos) ? $ambiental->entrega_residuos:null,array('class'=>'form-control col-xs-1 col-sm-1')) }}
             @if($errors->has("selEntResi"))
                 @foreach($errors->get("selEntResi") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -649,18 +679,20 @@
         </div>
     </div>
     <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+        <div class="form-group form-group-sm col-xs-12 col-sm-6">
+
             {{Form::label("selDispFinRes","La disposición final de los residuos se realiza en el frente de explotación")}}
-            {{Form::select("selDispFinRes", $arrDispFinRes,isset($ambiental->disp_final_residuos) ? $ambiental->disp_final_residuos : null) }}
+            {{Form::select("selDispFinRes", $arrDispFinRes,isset($ambiental->disp_final_residuos) ? $ambiental->disp_final_residuos : null,array("class"=>"form-control")) }}
             @if($errors->has("selDispFinRes"))
                 @foreach($errors->get("selDispFinRes") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
+
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selExpET","Requiere de explosivos para la explotación")}}
-            {{Form::select("selExpET", $arrSiNo,isset($ambiental->req_explosivos_et) ? $ambiental->req_explosivos_et : null) }}
+            {{Form::select("selExpET", $arrSiNo,isset($ambiental->req_explosivos_et) ? $ambiental->req_explosivos_et : null,array("class"=>"form-control")) }}
             @if($errors->has("selExpET"))
                 @foreach($errors->get("selExpET") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -671,8 +703,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-12">
             {{Form::label("txtDispCarET", "Describa la forma de disposición de carretes y cajas de los explosivos")}}
-            {{Form::textarea("txtDispCarET", Input::old("txtDispCarET") ? Input::old("txtDispCarET") : isset($ambiental->disp_car_cajas_et) ? $ambiental->disp_car_cajas_et : null,
-                array("class" => "form-control", "placeholder" => "Forma de disposición", "autocomplete" => "off")) }}
+            {{Form::textarea("txtDispCarET",Input::old("txtDispCarET") ? Input::old("txtDispCarET"):isset($ambiental->disp_car_cajas_et) ? $ambiental->disp_car_cajas_et:null,array("class"=>"form-control","placeholder"=>"Forma de disposición","autocomplete"=>"off")) }}
             @if($errors->has("txtDispCarET"))
                 @foreach($errors->get("txtDispCarET") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -684,7 +715,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selCobVeg","Cuando inicio la explotación encontro cobertura vegetal")}}
-            {{Form::select("selCobVeg", $arrSiNo,isset($ambiental->cobertura_vegetal) ? $ambiental->cobertura_vegetal : null) }}
+            {{Form::select("selCobVeg", $arrSiNo,isset($ambiental->cobertura_vegetal) ? $ambiental->cobertura_vegetal : null,array("class"=>"form-control")) }}
             @if($errors->has("selCobVeg"))
                 @foreach($errors->get("selCobVeg") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -693,32 +724,36 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selActDes","Desarrolló actividades de desmonte? (cobertura vegetal) ")}}
-            {{Form::select("selActDes", $arrSiNo,isset($ambiental->acti_desmonte) ? $ambiental->acti_desmonte : null) }}
+            {{Form::select("selActDes", $arrSiNo,isset($ambiental->acti_desmonte) ? $ambiental->acti_desmonte : null,array("class"=>"form-control")) }}
             @if($errors->has("selActDes"))
                 @foreach($errors->get("selActDes") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+        <div class="form-group form-group-sm col-xs-12 col-sm-3">
+
             {{Form::label("selTipCobVeg","Tipo de cobertura vegetal que encontro")}}
-            {{Form::select("selTipCobVeg", $arrTipCobVeg,isset($ambiental->tipo_cob_vegetal) ? $ambiental->tipo_cob_vegetal : null) }}
+            {{Form::select("selTipCobVeg",$arrTipCobVeg,isset($ambiental->tipo_cob_vegetal) ? $ambiental->tipo_cob_vegetal : null,array("class"=>"form-control")) }}
             @if($errors->has("selTipCobVeg"))
                 @foreach($errors->get("selTipCobVeg") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
+
         </div>
     </div>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
+
             {{Form::label("selCobReti","Qué hizo con la cobertura retirada")}}
-            {{Form::select("selCobReti", $arrCobReti,isset($ambiental->cobertura_retirada) ? $ambiental->cobertura_retirada : null) }}
+            {{Form::select("selCobReti",$arrCobReti,isset($ambiental->cobertura_retirada) ? $ambiental->cobertura_retirada : null,array("class"=>"form-control")) }}
             @if($errors->has("selCobReti"))
                 @foreach($errors->get("selCobReti") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
+
         </div>
     </div>
     <div class="row">
@@ -727,20 +762,40 @@
         </div>
     </div>
     <div class="row" id="divDescCobVeg">
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+			<div class="row container">
+        <div class="form-group form-group-sm col-xs-12 col-sm-5">
             {{Form::label("selDescCobVeg[]","Descripcion de la cobertura vegetal de sus alrededores")}}
-            {{Form::select("selDescCobVeg[]", $arrDescCobVeg, null) }}
+						{{Form::select("selDescCobVeg[]",$arrDescCobVeg,Input::old("selDescCobVeg[]") ? Input::old("selDescCobVeg[]"):null ,array("class"=>"form-control col-xs-12 col-sm-3","autocomplete"=>"off")) }}
             @if($errors->has("selDescCobVeg[]"))
                 @foreach($errors->get("selDescCobVeg[]") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
-        </div>
+				</div>
+      </div>
     </div>
-    <div class="row">
+		@foreach($arrSelMulDescCobVeg as $selmuldesccobveg)
+			<div class="row">
+				<div class="row container">
+					<div class="form-group form-group-sm col-xs-12 col-sm-5">
+							{{Form::label("selDescCobVeg[]","Descripcion de la cobertura vegetal de sus alrededores")}}
+							{{Form::select("selDescCobVeg[]",$arrDescCobVeg,Input::old("selDescCobVeg[]") ? Input::old('selDescCobVeg[]'):isset($selmuldesccobveg->id_topologia) ? $selmuldesccobveg->id_topologia:null ,array('class'=>'form-control col-xs-12 col-sm-3','autocomplete'=>'off')) }}
+							@if($errors->has("selDescCobVeg[]"))
+                @foreach($errors->get("selDescCobVeg[]") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            	@endif
+					</div>
+					<a href="{{route('seleccionMultipleElim',array($selmuldesccobveg['id_mina'],$selmuldesccobveg['id_topologia'],$selmuldesccobveg['asunto'],'PestanaAmbientalController')) }}" data-method="delete" rel="nofollow" class="btn btn-danger btn-xs">&times;</a>
+				</div>
+			</div>
+		@endforeach
+
+		
+		<div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selEspVeg","Dentro del desarrollo de la explotación minera utiliza especies vegetales")}}
-            {{Form::select("selEspVeg", $arrSiNo,isset($ambiental->especies_vegetales) ? $ambiental->especies_vegetales : null) }}
+            {{Form::select("selEspVeg",$arrSiNo,isset($ambiental->especies_vegetales) ? $ambiental->especies_vegetales : null,array("class"=>"form-control")) }}
             @if($errors->has("selEspVeg"))
                 @foreach($errors->get("selEspVeg") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -754,17 +809,17 @@
         </div>
     </div>
     <div class="row" id="divEspVeg">
+			<div class="row container">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            {{Form::label("txtNomEspVeg[]", "Nombre Común")}}
-            {{Form::text("txtNomEspVeg[]", Input::old("txtNomEspVeg[]") ? Input::old("txtNomEspVeg[]") : isset($especie_vegetal->nombre_comun) ? $especie_vegetal->nombre_comun : null,
-                array("class" => "form-control", "placeholder" => "Nombre Común", "autocomplete" => "off")) }}
+            {{Form::label("txtNomEspVeg[]","Nombre Común")}}
+            {{Form::text("txtNomEspVeg[]",Input::old("Yii") ? Input::old("YII"):isset($especie_vegetal->nombre_comun) ? $especie_vegetal->nombre_comun:null,array("class"=>"form-control","placeholder"=>"Nombre Común","autocomplete"=>"off")) }}
             @if($errors->has("txtNomEspVeg[]"))
                 @foreach($errors->get("txtNomEspVeg[]") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-6">
+        <div class="form-group form-group-sm col-xs-12 col-sm-5">
             {{Form::label("txtUsoEspVeg[]", "Usos")}}
             {{Form::text("txtUsoEspVeg[]", Input::old("txtUsoEspVeg[]") ? Input::old("txtUsoEspVeg[]") : isset($especie_vegetal->uso) ? $especie_vegetal->uso : null,
                 array("class" => "form-control", "placeholder" => "Nombre Común", "autocomplete" => "off")) }}
@@ -784,11 +839,52 @@
                 @endforeach
             @endif
         </div>
+				</div>
     </div>
+		@foreach($arrEspecieVegetal as $especie_vegetal)
+			<div class="row">
+				<div class="row container">
+					<div class="form-group form-group-sm col-xs-12 col-sm-3">
+            {{Form::label("txtNomEspVeg[]", "Nombre Común")}}
+            {{Form::text("txtNomEspVeg[]", Input::old("txtNomEspVeg[]") ? Input::old("txtNomEspVeg[]") : isset($especie_vegetal->nombre_comun) ? $especie_vegetal->nombre_comun : null,
+                array("class" => "form-control", "placeholder" => "Nombre Común", "autocomplete" => "off")) }}
+            @if($errors->has("txtNomEspVeg[]"))
+                @foreach($errors->get("txtNomEspVeg[]") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+        </div>
+        <div class="form-group form-group-sm col-xs-12 col-sm-5">
+            {{Form::label("txtUsoEspVeg[]", "Usos")}}
+            {{Form::text("txtUsoEspVeg[]", Input::old("txtUsoEspVeg[]") ? Input::old("txtUsoEspVeg[]") : isset($especie_vegetal->uso) ? $especie_vegetal->uso : null,
+                array("class" => "form-control", "placeholder" => "Nombre Común", "autocomplete" => "off")) }}
+            @if($errors->has("txtUsoEspVeg[]"))
+                @foreach($errors->get("txtUsoEspVeg[]") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+        </div>
+        <div class="form-group form-group-sm col-xs-12 col-sm-3">
+            {{Form::label("txtOrigExtr[]", "Origen  Extracción")}}
+            {{Form::text("txtOrigExtr[]", Input::old("txtOrigExtr[]") ? Input::old("txtOrigExtr[]") : isset($especie_vegetal->origen_extraccion) ? $especie_vegetal->origen_extraccion : null,
+                array("class" => "form-control", "placeholder" => "Nombre Común", "autocomplete" => "off")) }}
+            @if($errors->has("txtOrigExtr[]"))
+                @foreach($errors->get("txtOrigExtr[]") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+        </div>
+					<a href="{{route('especieVegetalElim',array($especie_vegetal['id_mina'],$especie_vegetal['nombre_comun'],'PestanaAmbientalController')) }}" data-method="delete" rel="nofollow" class="btn btn-danger btn-xs">&times;</a>
+				</div>
+			</div>
+		@endforeach
+
+
+
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selActPermAm","Las actividades de uso forestal realizadas, obtuvieron permiso ambiental")}}
-            {{Form::select("selActPermAm", $arrSiNo,isset($ambiental->permisos_act_forestal) ? $ambiental->permisos_act_forestal : null) }}
+            {{Form::select("selActPermAm",$arrSiNo,isset($ambiental->permisos_act_forestal) ? $ambiental->permisos_act_forestal:null,array("class"=>"form-control")) }}
             @if($errors->has("selActPermAm"))
                 @foreach($errors->get("selActPermAm") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -796,18 +892,17 @@
             @endif
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::label("selTipoActPermAm","Si rpta anterior fue si, eliga tipo de permiso")}}
-            {{Form::select("selTipoActPermAm", $arrTipoActPermAm,isset($ambiental->tipo_permisos_act_forestal) ? $ambiental->tipo_permisos_act_forestal : null) }}
-            @if($errors->has("selTipoActPermAm"))
-                @foreach($errors->get("selTipoActPermAm") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
+					{{Form::label("selTipoActPermAm","Si rpta anterior fue si, eliga tipo de permiso")}}
+					{{Form::select("selTipoActPermAm",$arrTipoActPermAm,isset($ambiental->tipo_permisos_act_forestal) ? $ambiental->tipo_permisos_act_forestal : null,array("class"=>"form-control")) }}
+					@if($errors->has("selTipoActPermAm"))
+							@foreach($errors->get("selTipoActPermAm") as $error)
+								<span class="help-block alert alert-danger">  * {{ $error }} </span>
+							@endforeach
+					@endif
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::label("txtNumActPermAm","Si rpta anterior fue si, eliga tipo de permiso")}}
-            {{Form::text("txtNumActPermAm", Input::old("txtNumActPermAm") ? Input::old("txtNumActPermAm") : isset($especie_vegetal->num_permisos_act_forestal) ? $especie_vegetal->num_permisos_act_forestal : null,
-                array("class" => "form-control", "placeholder" => "Nombre Común", "autocomplete" => "off")) }}
+            {{Form::label("txtNumActPermAm","Si rpta anterior fue si, ingrese el nuemro del permiso")}}
+            {{Form::text("txtNumActPermAm",Input::old("txtNumActPermAm") ? Input::old("txtNumActPermAm") : isset($ambiental->num_permisos_act_forestal) ? $ambiental->num_permisos_act_forestal : null,array("class"=>"form-control","placeholder"=>"Nombre Común","autocomplete"=>"off")) }}
             @if($errors->has("txtNumActPermAm"))
                 @foreach($errors->get("txtNumActPermAm") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -818,7 +913,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selActComFor","Realiza actividades de compensacion forestal")}}
-            {{Form::select("selActComFor", $arrSiNo,isset($ambiental->compens_forestal) ? $ambiental->compens_forestal : null) }}
+            {{Form::select("selActComFor",$arrSiNo,isset($ambiental->compens_forestal) ? $ambiental->compens_forestal : null,array("class"=>"form-control")) }}
             @if($errors->has("selActComFor"))
                 @foreach($errors->get("selActComFor") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -832,60 +927,121 @@
         </div>
     </div>
     <div class="row" id="divActCompFor">
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            {{Form::label("txtEspec","Especie")}}
-            {{Form::text("txtEspec", Input::old("txtEspec") ? Input::old("txtEspec") : isset($act_comp_for->especie) ? $act_comp_for->especie : null,
+			<div class="row container">
+        <div class="form-group form-group-sm col-xs-12 col-sm-2">
+            {{Form::label("txtEspec[]","Especie")}}
+            {{Form::text("txtEspec[]", Input::old("txtEspec[]") ? Input::old("txtEspec[]") : isset($act_comp_for->especie) ? $act_comp_for->especie : null,
                 array("class" => "form-control", "placeholder" => "Especie", "autocomplete" => "off")) }}
-            @if($errors->has("txtEspec"))
-                @foreach($errors->get("txtEspec") as $error)
+            @if($errors->has("txtEspec[]"))
+                @foreach($errors->get("txtEspec[]") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-2">
-            {{Form::label("txtCantCompFor","Cantidad")}}
-            {{Form::text("txtCantCompFor", Input::old("txtCantCompFor") ? Input::old("txtCantCompFor") : isset($act_comp_for->cantidad) ? $act_comp_for->cantidad : null,
-                array("class" => "form-control", "placeholder" => "Cantidad", "autocomplete" => "off")) }}
-            @if($errors->has("txtCantCompFor"))
-                @foreach($errors->get("txtCantCompFor") as $error)
+            {{Form::label("txtCantCompFor[]","Cantidad")}}
+            {{Form::text("txtCantCompFor[]", Input::old("txtCantCompFor[]") ? Input::old("txtCantCompFor[]") : isset($act_comp_for->cantidad) ? $act_comp_for->cantidad : null,array("class" => "form-control", "placeholder" => "Cantidad", "autocomplete" => "off")) }}
+            @if($errors->has("txtCantCompFor[]"))
+                @foreach($errors->get("txtCantCompFor[]") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-2">
-            {{Form::label("selVerComFor","Vereda")}}
-            {{Form::select("selVerComFor", $arrVereda,isset($act_comp_for->vereda) ? $act_comp_for->vereda : null) }}
-            @if($errors->has("selVerComFor"))
-                @foreach($errors->get("selVerComFor") as $error)
+        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+
+            {{Form::label("txtVerComFor[]","Vereda")}}
+            {{Form::text("txtVerComFor[]", Input::old("txtVerComFor[]") ? Input::old("txtVerComFor[]") : isset($act_comp_for->vereda) ? $act_comp_for->cantidad : null,array("class" => "form-control", "placeholder" => "Nombre Vereda", "autocomplete" => "off")) }}
+						@if($errors->has("txtVerComFor[]"))
+                @foreach($errors->get("txtVerComFor[]") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
+
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-2">
-            {{Form::label("txtXCompFor","Coor X")}}
-            {{Form::text("txtXCompFor", Input::old("txtXCompFor") ? Input::old("txtXCompFor") : isset($act_comp_for->ccor_x) ? $act_comp_for->ccor_x : null,
+        <div class="form-group form-group-sm col-xs-12 col-sm-1">
+            {{Form::label("txtXCompFor[]","Coor X")}}
+            {{Form::text("txtXCompFor[]", Input::old("txtXCompFor[]") ? Input::old("txtXCompFor[]") : isset($act_comp_for->ccor_x) ? $act_comp_for->ccor_x : null,
                 array("class" => "form-control", "placeholder" => "X", "autocomplete" => "off")) }}
-            @if($errors->has("txtXCompFor"))
-                @foreach($errors->get("txtXCompFor") as $error)
+            @if($errors->has("txtXCompFor[]"))
+                @foreach($errors->get("txtXCompFor[]") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+        </div>
+        <div class="form-group form-group-sm col-xs-12 col-sm-1">
+            {{Form::label("txtYCompFor[]","Coor Y")}}
+            {{Form::text("txtYCompFor[]", Input::old("txtYCompFor[]") ? Input::old("txtYCompFor[]") : isset($act_comp_for->ccor_y) ? $act_comp_for->ccor_y : null,
+                array("class" => "form-control", "placeholder" => "Y", "autocomplete" => "off")) }}
+            @if($errors->has("txtYCompFor[]"))
+                @foreach($errors->get("txtYCompFor[]") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+        </div>
+			</div>
+    </div>
+    @foreach($arrCompesacionForestal as $act_comp_for)
+			
+				<div class="row container">
+<div class="form-group form-group-sm col-xs-12 col-sm-2">
+            {{Form::label("txtEspec[]","Especie")}}
+            {{Form::text("txtEspec[]", Input::old("txtEspec[]") ? Input::old("txtEspec[]") : isset($act_comp_for->especie) ? $act_comp_for->especie : null,
+                array("class" => "form-control", "placeholder" => "Especie", "autocomplete" => "off")) }}
+            @if($errors->has("txtEspec[]"))
+                @foreach($errors->get("txtEspec[]") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-2">
-            {{Form::label("txtYCompFor","Coor Y")}}
-            {{Form::text("txtYCompFor", Input::old("txtYCompFor") ? Input::old("txtYCompFor") : isset($act_comp_for->ccor_y) ? $act_comp_for->ccor_y : null,
-                array("class" => "form-control", "placeholder" => "Y", "autocomplete" => "off")) }}
-            @if($errors->has("txtYCompFor"))
-                @foreach($errors->get("txtYCompFor") as $error)
+            {{Form::label("txtCantCompFor[]","Cantidad")}}
+            {{Form::text("txtCantCompFor[]", Input::old("txtCantCompFor[]") ? Input::old("txtCantCompFor[]") : isset($act_comp_for->cantidad) ? $act_comp_for->cantidad : null,array("class" => "form-control", "placeholder" => "Cantidad", "autocomplete" => "off")) }}
+            @if($errors->has("txtCantCompFor[]"))
+                @foreach($errors->get("txtCantCompFor[]") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
-    </div>
-    <div class="row">
+        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+
+            {{Form::label("txtVerComFor[]","Vereda")}}
+            {{Form::text("txtVerComFor[]", Input::old("txtVerComFor[]") ? Input::old("txtVerComFor[]") : isset($act_comp_for->vereda) ? $act_comp_for->cantidad : null,array("class" => "form-control", "placeholder" => "Nombre Vereda", "autocomplete" => "off")) }}
+						@if($errors->has("txtVerComFor[]"))
+                @foreach($errors->get("txtVerComFor[]") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+
+        </div>
+        <div class="form-group form-group-sm col-xs-12 col-sm-1">
+            {{Form::label("txtXCompFor[]","Coor X")}}
+            {{Form::text("txtXCompFor[]", Input::old("txtXCompFor[]") ? Input::old("txtXCompFor[]") : isset($act_comp_for->ccor_x) ? $act_comp_for->ccor_x : null,
+                array("class" => "form-control", "placeholder" => "X", "autocomplete" => "off")) }}
+            @if($errors->has("txtXCompFor[]"))
+                @foreach($errors->get("txtXCompFor[]") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+        </div>
+        <div class="form-group form-group-sm col-xs-12 col-sm-1">
+            {{Form::label("txtYCompFor[]","Coor Y")}}
+            {{Form::text("txtYCompFor[]", Input::old("txtYCompFor[]") ? Input::old("txtYCompFor[]") : isset($act_comp_for->ccor_y) ? $act_comp_for->ccor_y : null,
+                array("class" => "form-control", "placeholder" => "Y", "autocomplete" => "off")) }}
+            @if($errors->has("txtYCompFor[]"))
+                @foreach($errors->get("txtYCompFor[]") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+				</div>
+				<a href="{{route('compesacionForestalElim',array($act_comp_for['id_mina'],$act_comp_for['especie'],'PestanaAmbientalController')) }}" data-method="delete" rel="nofollow" class="btn btn-danger btn-xs">&times;</a>
+			</div>
+		@endforeach
+		
+		
+		<div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-6">
             {{Form::label("selResHid","Se respeta la ronda de protección hidrica  de las fuentes aledañas a la explotación o utilizadas por la explotación")}}
-            {{Form::select("selResHid", $arrSiNo,isset($ambiental->respeto_ronda_hidrica) ? $ambiental->respeto_ronda_hidrica : null) }}
+            {{Form::select("selResHid",$arrSiNo,isset($ambiental->respeto_ronda_hidrica) ? $ambiental->respeto_ronda_hidrica : null,array("class"=>"form-control")) }}
             @if($errors->has("selResHid"))
                 @foreach($errors->get("selResHid") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -906,8 +1062,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-12">
             {{Form::label("txtDesEsp","Descripción de las especies encontradas")}}
-            {{Form::textarea("txtDesEsp", Input::old("txtDesEsp") ? Input::old("txtDesEsp") : isset($ambiental->desc_especies_encontr) ? $ambiental->desc_especies_encontr : null,
-                array("class" => "form-control", "placeholder" => "Descripción", "autocomplete" => "off")) }}
+            {{Form::textarea("txtDesEsp", Input::old("txtDesEsp") ? Input::old("txtDesEsp") : isset($ambiental->desc_especies_encontr) ? $ambiental->desc_especies_encontr : null,array("class" => "form-control", "placeholder" => "Descripción", "autocomplete" => "off")) }}
             @if($errors->has("txtDesEsp"))
                 @foreach($errors->get("txtDesEsp") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -918,7 +1073,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-6">
             {{Form::label("selAreaProt","Existen áreas protegidas de tipo Regional, Local y Nacional")}}
-            {{Form::select("selAreaProt", $arrSiNo,isset($ambiental->area_protegida) ? $ambiental->area_protegida : null) }}
+            {{Form::select("selAreaProt", $arrSiNo,isset($ambiental->area_protegida) ? $ambiental->area_protegida : null,array("class"=>"form-control")) }}
             @if($errors->has("selAreaProt"))
                 @foreach($errors->get("selAreaProt") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -937,18 +1092,18 @@
         </div>
     </div>
     <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+        <div class="form-group form-group-sm col-xs-12 col-sm-5">
             {{Form::label("selDentroResFor","Se encuentran  dentro de la reserva forestal Ley 2")}}
-            {{Form::select("selDentroResFor", $arrSiNo,isset($ambiental->dentro_res_forestal) ? $ambiental->dentro_res_forestal : null) }}
+            {{Form::select("selDentroResFor", $arrSiNo,isset($ambiental->dentro_res_forestal) ? $ambiental->dentro_res_forestal : null,array("class"=>"form-control")) }}
             @if($errors->has("selDentroResFor"))
                 @foreach($errors->get("selDentroResFor") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+        <div class="form-group form-group-sm col-xs-12 col-sm-5">
             {{Form::label("selSusArRes","Tiene algún proceso de sustracción del área de reserva")}}
-            {{Form::select("selSusArRes", $arrSiNo,isset($ambiental->proceso_sustraccion) ? $ambiental->proceso_sustraccion : null) }}
+            {{Form::select("selSusArRes", $arrSiNo,isset($ambiental->proceso_sustraccion) ? $ambiental->proceso_sustraccion : null,array("class"=>"form-control")) }}
             @if($errors->has("selSusArRes"))
                 @foreach($errors->get("selSusArRes") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -970,8 +1125,7 @@
     <div class="row" id="divEspZona">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("txtEspZona[]","Nombre Común")}}
-            {{Form::text("txtEspZona[]", Input::old("txtEspZona[]") ? Input::old("txtEspZona[]") : isset($especies_animales->nombre_comun) ? $especies_animales->nombre_comun : null,
-                array("class" => "form-control", "placeholder" => "Nombre Común", "autocomplete" => "off")) }}
+            {{Form::text("txtEspZona[]", Input::old("txtEspZona[]") ? Input::old("txtEspZona[]") : isset($especies_animales->nombre_comun) ? $especies_animales->nombre_comun : null,array("class" => "form-control", "placeholder" => "Nombre Común", "autocomplete" => "off")) }}
             @if($errors->has("txtEspZona[]"))
                 @foreach($errors->get("txtEspZona[]") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -980,8 +1134,7 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("txtUsoZona[]","Uso")}}
-            {{Form::text("txtUsoZona[]", Input::old("txtUsoZona[]") ? Input::old("txtUsoZona[]") : isset($especies_animales->uso) ? $especies_animales->uso : null,
-                array("class" => "form-control", "placeholder" => "Nombre Común", "autocomplete" => "off")) }}
+            {{Form::text("txtUsoZona[]", Input::old("txtUsoZona[]") ? Input::old("txtUsoZona[]") : isset($especies_animales->uso) ? $especies_animales->uso : null,array("class" => "form-control", "placeholder" => "Nombre Común", "autocomplete" => "off")) }}
             @if($errors->has("txtUsoZona[]"))
                 @foreach($errors->get("txtUsoZona[]") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -989,15 +1142,45 @@
             @endif
         </div>
     </div>
-    <div class="row">
+    
+		@foreach($arrEspecieAnimal as $especies_animales)
+			<div class="row">
+				<div class="row container">
+        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+            {{Form::label("txtEspZona[]","Nombre Común")}}
+            {{Form::text("txtEspZona[]", Input::old("txtEspZona[]") ? Input::old("txtEspZona[]") : isset($especies_animales->nombre_comun) ? $especies_animales->nombre_comun : null,array("class" => "form-control", "placeholder" => "Nombre Común", "autocomplete" => "off")) }}
+            @if($errors->has("txtEspZona[]"))
+                @foreach($errors->get("txtEspZona[]") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+        </div>
+        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+            {{Form::label("txtUsoZona[]","Uso")}}
+            {{Form::text("txtUsoZona[]", Input::old("txtUsoZona[]") ? Input::old("txtUsoZona[]") : isset($especies_animales->uso) ? $especies_animales->uso : null,array("class" => "form-control", "placeholder" => "Nombre Común", "autocomplete" => "off")) }}
+            @if($errors->has("txtUsoZona[]"))
+                @foreach($errors->get("txtUsoZona[]") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+        </div>
+					<a href="{{route('especieAnimalElim',array($especies_animales['id_mina'],$especies_animales['nombre_comun'],'PestanaAmbientalController')) }}" data-method="delete" rel="nofollow" class="btn btn-danger btn-xs">&times;</a>
+				</div>
+			</div>
+		@endforeach
+		
+		
+		<div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-6">
+
             {{Form::label("selAmeAni","Cuál es la mayor amenaza para los animales silvestres en esta zona")}}
-            {{Form::select("selAmeAni", $arrAmeAni,isset($ambiental->amenaza_animales) ? $ambiental->amenaza_animales : null) }}
+            {{Form::select("selAmeAni", $arrAmeAni,isset($ambiental->amenaza_animales) ? $ambiental->amenaza_animales : null,array("class"=>"form-control")) }}
             @if($errors->has("selAmeAni"))
                 @foreach($errors->get("selAmeAni") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
+
         </div>
     </div>
     <div class="row">
@@ -1026,7 +1209,7 @@
     </div>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-12">
-            {{Form::label("txtAmeFaun","Cuales son las amenazas  naturales sobre la fauna")}}
+            {{Form::label("txtAmeFaun","Cuales son las amenazas  naturales sobre la fauna (depredadores)")}}
             {{Form::text("txtAmeFaun", Input::old("txtAmeFaun") ? Input::old("txtAmeFaun") : isset($ambiental->amenazas_natural_fauna) ? $ambiental->amenazas_natural_fauna : null,
                 array("class" => "form-control", "placeholder" => "Amenazas naturales", "autocomplete" => "off")) }}
             @if($errors->has("txtAmeFaun"))
@@ -1039,7 +1222,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selPesZon","Realizan actividades de pesca en la zona")}}
-            {{Form::select("selPesZon", $arrSiNo,isset($ambiental->pesca_zona) ? $ambiental->pesca_zona : null) }}
+            {{Form::select("selPesZon", $arrSiNo,isset($ambiental->pesca_zona) ? $ambiental->pesca_zona : null,array("class"=>"form-control")) }}
             @if($errors->has("selPesZon"))
                 @foreach($errors->get("selPesZon") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -1050,8 +1233,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-12">
             {{Form::label("txtPezCons","Cuales son los peces de mayor consumo")}}
-            {{Form::text("txtPezCons", Input::old("txtPezCons") ? Input::old("txtPezCons") : isset($ambiental->peces_consumo) ? $ambiental->peces_consumo : null,
-                array("class" => "form-control", "placeholder" => "Peces de mayor consumo", "autocomplete" => "off")) }}
+            {{Form::text("txtPezCons", Input::old("txtPezCons") ? Input::old("txtPezCons") : isset($ambiental->peces_consumo) ? $ambiental->peces_consumo : null,array("class" => "form-control", "placeholder" => "Peces de mayor consumo", "autocomplete" => "off")) }}
             @if($errors->has("txtPezCons"))
                 @foreach($errors->get("txtPezCons") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -1063,7 +1245,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-7">
             {{Form::label("selUsoHidZon","Hace usos del recurso hídrico en el proceso de beneficio o transformación del mineral")}}
-            {{Form::select("selUsoHidZon", $arrSiNo,isset($ambiental->uso_hidrico) ? $ambiental->uso_hidrico : null) }}
+            {{Form::select("selUsoHidZon", $arrSiNo,isset($ambiental->uso_hidrico_ben) ? $ambiental->uso_hidrico_ben : null,array("class"=>"form-control")) }}
             @if($errors->has("selUsoHidZon"))
                 @foreach($errors->get("selUsoHidZon") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -1074,7 +1256,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selPerAgua","Cuenta con permiso de concesión de aguas")}}
-            {{Form::select("selPerAgua", $arrSiNo,isset($ambiental->perm_concesion_agua) ? $ambiental->perm_concesion_agua : null) }}
+            {{Form::select("selPerAgua", $arrSiNo,isset($ambiental->perm_concesion_agua) ? $ambiental->perm_concesion_agua : null,array("class"=>"form-control")) }}
             @if($errors->has("selPerAgua"))
                 @foreach($errors->get("selPerAgua") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -1104,15 +1286,17 @@
     </div>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
+
             {{Form::label("selTipAflu","Qué tipo de afluente utiliza en el proceso de beneficio o transformación")}}
-            {{Form::select("selTipAflu", $arrTipAflu,isset($ambiental->tipo_afluente) ? $ambiental->tipo_afluente : null) }}
+            {{Form::select("selTipAflu",$arrTipAflu,isset($ambiental->tipo_afluente) ? $ambiental->tipo_afluente : null,array("class"=>"form-control")) }}
             @if($errors->has("selTipAflu"))
                 @foreach($errors->get("selTipAflu") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
+
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-5">
+        <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{Form::label("txtNomFuente","Nombre de la fuente")}}
             {{Form::text("txtNomFuente", Input::old("txtNomFuente") ? Input::old("txtNomFuente") : isset($ambiental->nombre_fuente) ? $ambiental->nombre_fuente : null,
                 array("class" => "form-control", "placeholder" => "Nombre de la fuente", "autocomplete" => "off")) }}
@@ -1122,7 +1306,7 @@
                 @endforeach
             @endif
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
+        <div class="form-group form-group-sm col-xs-12 col-sm-5">
             {{Form::label("txtDistABoc","A qué distancia de la planta de beneficio se encuentra la bocatoma (metros)")}}
             {{Form::text("txtDistABoc", Input::old("txtDistABoc") ? Input::old("txtDistABoc") : isset($ambiental->distancia_planta_bocatoma) ? $ambiental->distancia_planta_bocatoma : null,
                 array("class" => "form-control", "placeholder" => "Distancia", "autocomplete" => "off")) }}
@@ -1156,14 +1340,15 @@
                 @endforeach
             @endif
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+        <div class="form-group form-group-sm col-xs-12 col-sm-7">
             {{Form::label("selAfeHid","Qué tipo de afectación en calidad y cantidad se evidencia en el recurso hídrico")}}
-            {{Form::select("selAfeHid", $arrAfeHid,isset($ambiental->afe_hidrica) ? $ambiental->afe_hidrica : null) }}
+            {{Form::select("selAfeHid",$arrAfeHid,isset($ambiental->afe_hidrica) ? $ambiental->afe_hidrica : null,array("class"=>"form-control")) }}
             @if($errors->has("selAfeHid"))
                 @foreach($errors->get("selAfeHid") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
+
         </div>
     </div>
     <div class="row">
@@ -1172,44 +1357,63 @@
         </div>
     </div>
     <div class="row" id="divContam">
+			<div class="row container">
         <div class="form-group form-group-sm col-xs-12 col-sm-6">
             {{Form::label("txtContAgua[]","Agregue los contaminantes que se le agregan al agua dentro del proceso")}}
-        </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::text("txtContAgua[]", Input::old("txtContAgua[]") ? Input::old("txtContAgua[]") : null,
-                array("class" => "form-control", "placeholder" => "Un solo contaminante", "autocomplete" => "off")) }}
+            {{Form::text("txtContAgua[]", Input::old("txtContAgua[]") ? Input::old("txtContAgua[]"):null,array("class" => "form-control", "placeholder" => "Un solo contaminante","autocomplete" => "off")) }}
             @if($errors->has("txtContAgua[]"))
                 @foreach($errors->get("txtContAgua[]") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
+			</div>
     </div>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+		@foreach($arrContaminate as $contaminate)
+			<div class="row">
+				<div class="row container">
+				<div class="form-group form-group-sm col-xs-12 col-sm-6">
+            {{Form::label("txtContAgua[]","Agregue los contaminantes que se le agregan al agua dentro del proceso")}}
+						{{Form::text("txtContAgua[]",Input::old("txtContAgua[]") ? Input::old('txtContAgua[]'):isset($contaminate->contaminate_agregado) ? $contaminate->contaminate_agregado:null ,array('class'=>'form-control col-xs-12 col-sm-3','autocomplete'=>'off')) }}
+            @if($errors->has("txtContAgua[]"))
+                @foreach($errors->get("txtContAgua[]") as $error)
+                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
+                @endforeach
+            @endif
+        </div>
+					<a href="{{route('contaminanteElim',array($contaminate['id_mina'],$contaminate['contaminate_agregado'],'PestanaAmbientalController')) }}" data-method="delete" rel="nofollow" class="btn btn-danger btn-xs">&times;</a>
+				</div>
+			</div>
+		@endforeach
+    
+		
+		
+		<div class="row">
+        <div class="form-group form-group-sm col-xs-12 col-sm-5">
             {{Form::label("selManAguaLluv","Se realiza manejo de aguas lluvias en la planta de beneficio")}}
-            {{Form::select("selManAguaLluv", $arrSiNo,isset($ambiental->manejo_agua_lluvia) ? $ambiental->manejo_agua_lluvia : null) }}
+            {{Form::select("selManAguaLluv",$arrSiNo,isset($ambiental->manejo_agua_lluvia) ? $ambiental->manejo_agua_lluvia : null,array("class"=>"form-control")) }}
             @if($errors->has("selManAguaLluv"))
                 @foreach($errors->get("selManAguaLluv") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+        <div class="form-group form-group-sm col-xs-12 col-sm-5">
             {{Form::label("selMTipAguaLluv","Qué tipo de manejo se le realiza a las aguas lluvias")}}
-            {{Form::select("selMTipAguaLluv", $arrTipManAguLluv,isset($ambiental->tipo_manejo_agua_lluvia) ? $ambiental->tipo_manejo_agua_lluvia : null) }}
+            {{Form::select("selMTipAguaLluv", $arrTipManAguLluv,isset($ambiental->tipo_manejo_agua_lluvia) ? $ambiental->tipo_manejo_agua_lluvia : null,array("class"=>"form-control")) }}
             @if($errors->has("selMTipAguaLluv"))
                 @foreach($errors->get("selMTipAguaLluv") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
+
         </div>
     </div>
     <p class="bg-primary text-center">Vertimiento</p>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selVerFue","Existe vertimiento de aguas a una fuente superficial o a un drenaje natural")}}
-            {{Form::select("selVerFue", $arrSiNo,isset($ambiental->vertimiento_fuente) ? $ambiental->vertimiento_fuente : null) }}
+            {{Form::select("selVerFue", $arrSiNo,isset($ambiental->vertimiento_fuente) ? $ambiental->vertimiento_fuente : null,array("class"=>"form-control")) }}
             @if($errors->has("selVerFue"))
                 @foreach($errors->get("selVerFue") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -1218,7 +1422,7 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selTipVer","Tipo de Vertimento")}}
-            {{Form::select("selTipVer", $arrTipVert,isset($ambiental->tipo_vertimiento) ? $ambiental->tipo_vertimiento : null) }}
+            {{Form::select("selTipVer", $arrTipVert,isset($ambiental->tipo_vertimiento) ? $ambiental->tipo_vertimiento : null,array("class"=>"form-control")) }}
             @if($errors->has("selTipVer"))
                 @foreach($errors->get("selTipVer") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -1228,7 +1432,7 @@
     </div>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-5">
-            Ubicación del vertimiento (coordenadas geográficas)
+            Ubicaci�n del vertimiento (coordenadas planas)
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-2">
             {{Form::label("txtVerX","X")}}
@@ -1262,10 +1466,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
+        <div class="form-group form-group-sm col-xs-12 col-sm-2">
             {{Form::label("txtCaudVert","Caudal (l/s)")}}
-            {{Form::text("txtCaudVert", Input::old("txtCaudVert") ? Input::old("txtCaudVert") : isset($ambiental->vertimiento_caudal) ? $ambiental->vertimiento_caudal : null,
-                array("class" => "form-control", "placeholder" => "Caudal", "autocomplete" => "off")) }}
+            {{Form::text("txtCaudVert", Input::old("txtCaudVert") ? Input::old("txtCaudVert") : isset($ambiental->vertimiento_caudal) ? $ambiental->vertimiento_caudal : null,array("class" => "form-control", "placeholder" => "Caudal", "autocomplete" => "off")) }}
             @if($errors->has("txtCaudVert"))
                 @foreach($errors->get("txtCaudVert") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -1274,7 +1477,7 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{Form::label("selPerVert","Tiene permiso de vertimientos")}}
-            {{Form::select("selPerVert", $arrSiNo,isset($ambiental->vertimiento_permiso) ? $ambiental->vertimiento_permiso : null) }}
+            {{Form::select("selPerVert", $arrSiNo,isset($ambiental->vertimiento_permiso) ? $ambiental->vertimiento_permiso : null,array("class"=>"form-control")) }}
             @if($errors->has("selPerVert"))
                 @foreach($errors->get("selPerVert") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -1283,15 +1486,14 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{Form::label("txtNumVert","Si la rpta anterior fue Si, Número")}}
-            {{Form::text("txtNumVert", Input::old("txtNumVert") ? Input::old("txtNumVert") : isset($ambiental->vertimiento_num_permiso) ? $ambiental->vertimiento_num_permiso : null,
-                array("class" => "form-control", "placeholder" => "Número Permiso", "autocomplete" => "off")) }}
+            {{Form::text("txtNumVert", Input::old("txtNumVert") ? Input::old("txtNumVert") : isset($ambiental->vertimiento_num_permiso) ? $ambiental->vertimiento_num_permiso : null,array("class" => "form-control", "placeholder" => "Número Permiso", "autocomplete" => "off")) }}
             @if($errors->has("txtNumVert"))
                 @foreach($errors->get("txtNumVert") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
+        <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("txtNumRadVert","Si la rpta anterior fue Si, Num radicado")}}
             {{Form::text("txtNumRadVert", Input::old("txtNumRadVert") ? Input::old("txtNumRadVert") : isset($ambiental->vertimiento_num_radicado) ? $ambiental->vertimiento_num_radicado : null,
                 array("class" => "form-control", "placeholder" => "Número Radicado", "autocomplete" => "off")) }}
@@ -1303,18 +1505,18 @@
         </div>
     </div>
     <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-6">
+        <div class="form-group form-group-sm col-xs-12 col-sm-7">
             {{Form::label("selPlanTrat","Cuenta con planta de tratamiento de aguas producto del beneficio o transformación")}}
-            {{Form::select("selPlanTrat", $arrSiNo,isset($ambiental->planta_tratamiento) ? $ambiental->planta_tratamiento : null) }}
+            {{Form::select("selPlanTrat", $arrSiNo,isset($ambiental->planta_tratamiento) ? $ambiental->planta_tratamiento : null,array("class"=>"form-control")) }}
             @if($errors->has("selPlanTrat"))
                 @foreach($errors->get("selPlanTrat") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
         </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
+        <div class="form-group form-group-sm col-xs-12 col-sm-5">
             {{Form::label("selTipTratAgu","Qué tipo de tratamiento le realiza a las aguas residuales")}}
-            {{Form::select("selTipTratAgu", $arrTipTratAgu,isset($ambiental->tipo_trat_agua_resid) ? $ambiental->tipo_trat_agua_resid : null) }}
+            {{Form::select("selTipTratAgu", $arrTipTratAgu,isset($ambiental->tipo_trat_agua_resid) ? $ambiental->tipo_trat_agua_resid : null,array("class"=>"form-control")) }}
             @if($errors->has("selTipTratAgu"))
                 @foreach($errors->get("selTipTratAgu") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -1337,7 +1539,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selProCir","Se realiza proceso de circulación de las aguas del beneficio")}}
-            {{Form::select("selProCir", $arrSiNo,isset($ambiental->proc_circ_agua) ? $ambiental->proc_circ_agua : null) }}
+            {{Form::select("selProCir", $arrSiNo,isset($ambiental->proc_circ_agua) ? $ambiental->proc_circ_agua : null,array("class"=>"form-control")) }}
             @if($errors->has("selProCir"))
                 @foreach($errors->get("selProCir") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -1346,7 +1548,7 @@
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-4">
             {{Form::label("selTipManAgSer","Qué tipo de manejo realiza a las aguas servidas")}}
-            {{Form::select("selTipManAgSer", $arrManAguSer,isset($ambiental->tipo_man_agua_serv) ? $ambiental->tipo_man_agua_serv : null) }}
+            {{Form::select("selTipManAgSer", $arrTipTratAgu,isset($ambiental->tipo_trat_agua_resid) ? $ambiental->tipo_trat_agua_resid : null,array("class"=>"form-control")) }}
             @if($errors->has("selTipManAgSer"))
                 @foreach($errors->get("selTipManAgSer") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
@@ -1364,293 +1566,6 @@
             @endif
         </div>
     </div>
-    <p class="bg-primary text-center">Recurso Atmosférico</p>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::label("selEmAt","Existen emisiones atmosfericas en la planta de beneficio")}}
-            {{Form::select("selEmAt", $arrSiNo,isset($ambiental->emision_atmos_pla_ben) ? $ambiental->emision_atmos_pla_ben : null) }}
-            @if($errors->has("selEmAt"))
-                @foreach($errors->get("selEmAt") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::label("selTipEmAt","Tipo de Fuente")}}
-            {{Form::select("selTipEmAt", $arrTipEmAt,isset($ambiental->tipo_emis_atmos_pla_ben) ? $ambiental->tipo_emis_atmos_pla_ben : null) }}
-            @if($errors->has("selTipEmAt"))
-                @foreach($errors->get("selTipEmAt") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-12">
-            {{Form::label("txtDesFuAtm","Describa la fuente de emisiones atmosféricas dentro del proceso")}}
-            {{Form::textarea("txtDesFuAtm", Input::old("txtDesFuAtm") ? Input::old("txtDesFuAtm") : isset($ambiental->desc_fuente_atmos) ? $ambiental->desc_fuente_atmos : null,
-                array("class" => "form-control", "placeholder" => "Descripción", "autocomplete" => "off")) }}
-            @if($errors->has("txtDesFuAtm"))
-                @foreach($errors->get("txtDesFuAtm") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-7">
-            {{Form::label("selMinHor","El proceso de beneficio o transformación del mineral requiere del uso de hornos")}}
-            {{Form::select("selMinHor", $arrSiNo,isset($ambiental->mineral_uso_horno) ? $ambiental->mineral_uso_horno : null) }}
-            <span class="help-block">  * Si la respuesta es afirmativa diligenciar formato hornos </span>
-            @if($errors->has("selMinHor"))
-                @foreach($errors->get("selMinHor") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::label("selPerEmAt","Tiene permiso de emisiones atmosféricas")}}
-            {{Form::select("selPerEmAt", $arrSiNo,isset($ambiental->permiso_em_atmos) ? $ambiental->permiso_em_atmos : null) }}
-            <span class="help-block">  * Si la respuesta es afirmativa diligenciar formato hornos </span>
-            @if($errors->has("selPerEmAt"))
-                @foreach($errors->get("selPerEmAt") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            {{Form::label("txtNumPerEmAt","Número")}}
-            {{Form::text("txtNumPerEmAt", Input::old("txtNumPerEmAt") ? Input::old("txtNumPerEmAt") : isset($ambiental->num_permiso_em_atmos) ? $ambiental->num_permiso_em_atmos : null,
-                array("class" => "form-control", "placeholder" => "Número", "autocomplete" => "off")) }}
-            @if($errors->has("txtNumPerEmAt"))
-                @foreach($errors->get("txtNumPerEmAt") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            {{Form::label("txtRadPerEmAt","Radicado")}}
-            {{Form::text("txtRadPerEmAt", Input::old("txtRadPerEmAt") ? Input::old("txtRadPerEmAt") : isset($ambiental->radi_permiso_em_atmos) ? $ambiental->radi_permiso_em_atmos : null,
-                array("class" => "form-control", "placeholder" => "Radicado", "autocomplete" => "off")) }}
-            @if($errors->has("txtRadPerEmAt"))
-                @foreach($errors->get("txtRadPerEmAt") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::label("selAnaEmAt","Ha realizado análisis de emisiones atmosféricas")}}
-            {{Form::select("selAnaEmAt", $arrSiNo,isset($ambiental->analisis_em_atmos) ? $ambiental->analisis_em_atmos : null) }}
-            @if($errors->has("selAnaEmAt"))
-                @foreach($errors->get("selAnaEmAt") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            {{Form::label("txtPerAnaEmAt","Quien")}}
-            {{Form::text("txtPerAnaEmAt", Input::old("txtPerAnaEmAt") ? Input::old("txtPerAnaEmAt") : isset($ambiental->persona_analisis_em_atmos) ? $ambiental->persona_analisis_em_atmos : null,
-                array("class" => "form-control", "placeholder" => "Quien", "autocomplete" => "off")) }}
-            @if($errors->has("txtPerAnaEmAt"))
-                @foreach($errors->get("txtPerAnaEmAt") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::label("selResMon","Resultados de los monitoreos (mg/m3)")}}
-            {{Form::select("selResMon", $arrResMon,isset($ambiental->resultado_monitores) ? $ambiental->resultado_monitores : null) }}
-            @if($errors->has("selResMon"))
-                @foreach($errors->get("selResMon") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            {{Form::label("txtDisVivCer","A qué distancia se encuentran viviendas cercanas (metros)")}}
-            {{Form::text("txtDisVivCer", Input::old("txtDisVivCer") ? Input::old("txtDisVivCer") : isset($ambiental->distancia_vivi_cercana) ? $ambiental->distancia_vivi_cercana : null,
-                array("class" => "form-control", "placeholder" => "Distancia en metros", "autocomplete" => "off")) }}
-            @if($errors->has("txtDisVivCer"))
-                @foreach($errors->get("txtDisVivCer") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            {{Form::label("selGenRuido","Hay generación de ruido")}}
-            {{Form::select("selGenRuido", $arrSiNo,isset($ambiental->generacion_ruido) ? $ambiental->generacion_ruido : null) }}
-            @if($errors->has("selGenRuido"))
-                @foreach($errors->get("selGenRuido") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::label("txtFuGenRu","Fuente de generación de ruido")}}
-            {{Form::text("txtFuGenRu", Input::old("txtFuGenRu") ? Input::old("txtFuGenRu") : isset($ambiental->fuente_ruido_atm) ? $ambiental->fuente_ruido_atm : null,
-                array("class" => "form-control", "placeholder" => "Fuente de generación", "autocomplete" => "off")) }}
-            @if($errors->has("txtFuGenRu"))
-                @foreach($errors->get("txtFuGenRu") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            {{Form::label("selMonRuido","Se ha realizado monitoreo de ruido")}}
-            {{Form::select("selMonRuido", $arrSiNo,isset($ambiental->monit_ruido_atm) ? $ambiental->monit_ruido_atm : null) }}
-            @if($errors->has("selMonRuido"))
-                @foreach($errors->get("selMonRuido") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            {{Form::label("txtPerMonRui","Quien")}}
-            {{Form::text("txtPerMonRui", Input::old("txtPerMonRui") ? Input::old("txtPerMonRui") : isset($ambiental->persona_monit_ruido) ? $ambiental->persona_monit_ruido : null,
-                array("class" => "form-control", "placeholder" => "Quien", "autocomplete" => "off")) }}
-            @if($errors->has("txtPerMonRui"))
-                @foreach($errors->get("txtPerMonRui") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <p class="bg-primary text-center">Recurso Suelo</p>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::label("selImpSuel","Qué tipo de impacto al suelo se esta generando")}}
-            {{Form::select("selImpSuel", $arrImpSuel,isset($ambiental->impacto_suelo) ? $ambiental->impacto_suelo : null) }}
-            @if($errors->has("selImpSuel"))
-                @foreach($errors->get("selImpSuel") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-12">
-            {{Form::label("txtDesTipImp","Describa el tipo de impacto")}}
-            {{Form::textarea("txtDesTipImp", Input::old("txtDesTipImp") ? Input::old("txtDesTipImp") : isset($ambiental->tipo_imp_suelo) ? $ambiental->tipo_imp_suelo : null,
-                array("class" => "form-control", "placeholder" => "Tipo de Impacto", "autocomplete" => "off")) }}
-            @if($errors->has("txtDesTipImp"))
-                @foreach($errors->get("txtDesTipImp") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::label("selUsoSobr","Qué hace con los lodos, arenas y/o sobrantes sólidos del beneficio")}}
-            {{Form::select("selUsoSobr", $arrUsoSobr,isset($ambiental->uso_sobrantes) ? $ambiental->uso_sobrantes : null) }}
-            @if($errors->has("selUsoSobr"))
-                @foreach($errors->get("selUsoSobr") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::label("txtCanSobr","Cantidad de sobrantes sólidos del proceso de beneficio (Kg/ mes)")}}
-            {{Form::text("txtCanSobr", Input::old("txtCanSobr") ? Input::old("txtCanSobr") : isset($ambiental->cantidad_sobrantes) ? $ambiental->cantidad_sobrantes : null,
-                array("class" => "form-control", "placeholder" => "Cantidad de sobrantes", "autocomplete" => "off")) }}
-            @if($errors->has("txtCanSobr"))
-                @foreach($errors->get("txtCanSobr") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <p class="bg-primary text-center">Residúos Sólidos</p>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::label("selTipResGen","Qué tipo de residuos se generan")}}
-            {{Form::select("selTipResGen", $arrTipResGen,isset($ambiental->tipo_resi_genera) ? $ambiental->tipo_resi_genera : null) }}
-            @if($errors->has("selTipResGen"))
-                @foreach($errors->get("selTipResGen") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::label("selClasFueRes","Se realiza clasificación en la fuente")}}
-            {{Form::select("selClasFueRes", $arrSiNo,isset($ambiental->clas_fuente_res) ? $ambiental->clas_fuente_res : null) }}
-            @if($errors->has("selClasFueRes"))
-                @foreach($errors->get("selClasFueRes") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::label("selClasResExt","Entrega los residuos clasificados a externos")}}
-            {{Form::select("selClasResExt", $arrSiNo,isset($ambiental->residuos_externo) ? $ambiental->residuos_externo : null) }}
-            @if($errors->has("selClasResExt"))
-                @foreach($errors->get("selClasResExt") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            Nombre los gestores externos que hacen la dispocisión final
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-12">
-            {{Form::label("txtResIns","Residuos inservibles:")}}
-            {{Form::text("txtResIns", Input::old("txtResIns") ? Input::old("txtResIns") : isset($ambiental->residuos_inservible) ? $ambiental->residuos_inservible : null,
-                array("class" => "form-control", "placeholder" => "Inservibles", "autocomplete" => "off")) }}
-            @if($errors->has("txtResIns"))
-                @foreach($errors->get("txtResIns") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-12">
-            {{Form::label("txtResRec","Residuos recuperables:")}}
-            {{Form::text("txtResRec", Input::old("txtResRec") ? Input::old("txtResRec") : isset($ambiental->residuos_recuperable) ? $ambiental->residuos_recuperable : null,
-                array("class" => "form-control", "placeholder" => "Recuperables", "autocomplete" => "off")) }}
-            @if($errors->has("txtResRec"))
-                @foreach($errors->get("txtResRec") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-12">
-            {{Form::label("txtResRec","Residuos peligrosos o especiales:")}}
-            {{Form::text("txtResPel", Input::old("txtResPel") ? Input::old("txtResPel") : isset($ambiental->residuos_peligroso) ? $ambiental->residuos_peligroso : null,
-                array("class" => "form-control", "placeholder" => "Peligrosos o especiales", "autocomplete" => "off")) }}
-            @if($errors->has("txtResPel"))
-                @foreach($errors->get("txtResPel") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group form-group-sm col-xs-12 col-sm-4">
-            {{Form::label("selDisResi"," La disposición final de los residuos se realiza en")}}
-            {{Form::select("selDisResi", $arrDisResi,isset($ambiental->disposicion_residuos) ? $ambiental->disposicion_residuos : null) }}
-            @if($errors->has("selDisResi"))
-                @foreach($errors->get("selDisResi") as $error)
-                  <span class="help-block alert alert-danger">  * {{ $error }} </span>
-                @endforeach
-            @endif
-        </div>
-    </div>
-    <p class="bg-primary text-center">Componente Fisico (Uso del recurso Hídrico)</p>
     <div id="" align="center" style="right: 0px; bottom: 0px; width: 100%; z-index: 200; height: 30px; position: fixed; background-color: #72317d; background-repeat:repeat-x; display:block">
         <input type="submit" class="btn btn-primary" name="btnGrabar" id="btnGrabar" value="Grabar">
     </div>
@@ -1660,7 +1575,212 @@
 @stop
 
 @section("JsJQuery")
-{{ HTML::script('js/restfulizer.js') }}
+    {{ HTML::script('js/FormMinas/FormMinas.js') }}
+		{{ HTML::script('js/restfulizer.js') }}
 
+<script>
+		
+		var MaxInputs       = 8; //Número Maximo de Campos
+		var contenedor1      = $("#divActCier"); //ID del contenedor
+		var AddButton       = $("#btnActCier"); //ID del Botón Agregar
+		//var x = número de campos existentes en el contenedor
+		var x = $("#divActCier div").length + 1;
+		var FieldCount = x-1; //para el seguimiento de los campos
+    $("#btnActCier").click(function () {
+//    if(x <= MaxInputs) {//max input box allowed
+			FieldCount++;
+			//agregar campo
+			var temporal='<div class="form-group form-group-sm col-xs-12 col-sm-4">'+
+            '{{Form::label("selActCie[]","Qué actividades de cierre y abandono se desarrollan")}}'+
+            '{{Form::select("selActCie[]",$arrActCie,Input::old("selActCie[]") ? Input::old("selActCie[]"):null ,array("class"=>"form-control col-xs-12 col-sm-3","autocomplete"=>"off")) }}'+
+						'@if($errors->has("selActCie[]"))'+
+                '@foreach($errors->get("selActCie[]") as $error)'+
+                  '<span class="help-block alert alert-danger">  * {{ $error }} </span>'+
+                '@endforeach'+
+            '@endif'+
+								  	'<a href="#" class="btn btn-danger btn-xs eliminar">&times;</a>'+
+								'</div>';
+			$(contenedor1).append(temporal);
+			x++; //text box increment
+//	    }
+        return false;
+    });
+
+
+		var MaxInputs       = 8; //Número Maximo de Campos
+		var contenedor2      = $("#divDescCobVeg"); //ID del contenedor
+		var AddButton       = $("#btnDescCobVeg"); //ID del Botón Agregar
+		//var x = número de campos existentes en el contenedor
+		var x = $("#divDescCobVeg div").length + 1;
+		var FieldCount = x-1; //para el seguimiento de los campos
+    $("#btnDescCobVeg").click(function () {
+//    if(x <= MaxInputs) {//max input box allowed
+			FieldCount++;
+			//agregar campo
+			var temporal='<div class="row container">'+
+        '<div class="form-group form-group-sm col-xs-12 col-sm-5">'+
+            '{{Form::label("selDescCobVeg[]","Descripcion de la cobertura vegetal de sus alrededores")}}'+
+						'{{Form::select("selDescCobVeg[]",$arrDescCobVeg,Input::old("selDescCobVeg[]") ? Input::old("selDescCobVeg[]"):null ,array("class"=>"form-control col-xs-12 col-sm-3","autocomplete"=>"off")) }}'+
+            '@if($errors->has("selDescCobVeg[]"))'+
+                '@foreach($errors->get("selDescCobVeg[]") as $error)'+
+                  '<span class="help-block alert alert-danger">  * {{ $error }} </span>'+
+                '@endforeach'+
+            '@endif'+
+								  	'<a href="#" class="btn btn-danger btn-xs eliminar">&times;</a>'+
+								'</div>';
+			$(contenedor2).append(temporal);
+			x++; //text box increment
+//	    }
+        return false;
+    });
+
+
+		var MaxInputs       = 8; //Número Maximo de Campos
+		var contenedor3      = $("#divActCompFor"); //ID del contenedor
+		var AddButton       = $("#btnActCompFor"); //ID del Botón Agregar
+		//var x = número de campos existentes en el contenedor
+		var x = $("#divActCompFor div").length + 1;
+		var FieldCount = x-1; //para el seguimiento de los campos
+    $("#btnActCompFor").click(function () {
+//    if(x <= MaxInputs) {//max input box allowed
+			FieldCount++;
+			//agregar campo
+			var temporal='<div class="row container">'+
+        '<div class="form-group form-group-sm col-xs-12 col-sm-2">'+
+            '{{Form::label("txtEspec[]","Especie")}}'+
+            '{{Form::text("txtEspec[]",Input::old("txtEspec[]") ? Input::old("txtEspec[]"): null,array("class" => "form-control", "placeholder" => "Especie", "autocomplete" => "off")) }}'+
+            '@if($errors->has("txtEspec[]"))'+
+                '@foreach($errors->get("txtEspec[]") as $error)'+
+                  '<span class="help-block alert alert-danger">  * {{ $error }} </span>'+
+                '@endforeach'+
+            '@endif'+
+        '</div>'+
+        '<div class="form-group form-group-sm col-xs-12 col-sm-2">'+
+            '{{Form::label("txtCantCompFor[]","Cantidad")}}'+
+            '{{Form::text("txtCantCompFor[]", Input::old("txtCantCompFor[]") ? Input::old("txtCantCompFor[]") : isset($act_comp_for->cantidad) ? $act_comp_for->cantidad : null,array("class" => "form-control", "placeholder" => "Cantidad", "autocomplete" => "off")) }}'+
+            '@if($errors->has("txtCantCompFor[]"))'+
+                '@foreach($errors->get("txtCantCompFor[]") as $error)'+
+                  '<span class="help-block alert alert-danger">  * {{ $error }} </span>'+
+                '@endforeach'+
+            '@endif'+
+        '</div>'+
+        '<div class="form-group form-group-sm col-xs-12 col-sm-4">'+
+
+            '{{Form::label("txtVerComFor[]","Vereda")}}'+
+            '{{Form::text("txtVerComFor[]", Input::old("txtVerComFor[]") ? Input::old("txtVerComFor[]") : isset($act_comp_for->vereda) ? $act_comp_for->cantidad : null,array("class" => "form-control", "placeholder" => "Nombre Vereda", "autocomplete" => "off")) }}'+
+						'@if($errors->has("txtVerComFor[]"))'+
+                '@foreach($errors->get("txtVerComFor[]") as $error)'+
+                  '<span class="help-block alert alert-danger">  * {{ $error }} </span>'+
+                '@endforeach'+
+            '@endif'+
+
+        '</div>'+
+        '<div class="form-group form-group-sm col-xs-12 col-sm-1">'+
+            '{{Form::label("txtXCompFor[]","Coor X")}}'+
+            '{{Form::text("txtXCompFor[]", Input::old("txtXCompFor[]") ? Input::old("txtXCompFor[]") : isset($act_comp_for->ccor_x) ? $act_comp_for->ccor_x : null,array("class" => "form-control", "placeholder" => "X", "autocomplete" => "off")) }}'+
+            '@if($errors->has("txtXCompFor[]"))'+
+                '@foreach($errors->get("txtXCompFor[]") as $error)'+
+                  '<span class="help-block alert alert-danger">  * {{ $error }} </span>'+
+                '@endforeach'+
+            '@endif'+
+        '</div>'+
+        '<div class="form-group form-group-sm col-xs-12 col-sm-1">'+
+            '{{Form::label("txtYCompFor[]","Coor Y")}}'+
+            '{{Form::text("txtYCompFor[]", Input::old("txtYCompFor[]") ? Input::old("txtYCompFor[]") : isset($act_comp_for->ccor_y) ? $act_comp_for->ccor_y : null,array("class" => "form-control", "placeholder" => "Y", "autocomplete" => "off")) }}'+
+            '@if($errors->has("txtYCompFor[]"))'+
+                '@foreach($errors->get("txtYCompFor[]") as $error)'+
+                  '<span class="help-block alert alert-danger">  * {{ $error }} </span>'+
+                '@endforeach'+
+            '@endif'+
+								  	'</div><a href="#" class="btn btn-danger btn-xs eliminar">&times;</a>'+
+								'</div>';
+			$(contenedor3).append(temporal);
+			x++; //text box increment
+//	    }
+        return false;
+    });
+
+		
+		var MaxInputs       = 8; //Número Maximo de Campos
+		var contenedor4      = $("#divContam"); //ID del contenedor
+		var AddButton       = $("#btnContam"); //ID del Botón Agregar
+		//var x = número de campos existentes en el contenedor
+		var x = $("#divContam div").length + 1;
+		var FieldCount = x-1; //para el seguimiento de los campos
+    $("#btnContam").click(function () {
+//    if(x <= MaxInputs) {//max input box allowed
+			FieldCount++;
+			//agregar campo
+			var temporal='<div class="form-group form-group-sm col-xs-12 col-sm-6">'+
+            '{{Form::label("txtContAgua[]","Agregue los contaminantes que se le agregan al agua dentro del proceso")}}'+
+            '{{Form::text("txtContAgua[]", Input::old("txtContAgua[]") ? Input::old("txtContAgua[]"):null,array("class" => "form-control", "placeholder" => "Un solo contaminante","autocomplete" => "off")) }}'+
+            '@if($errors->has("txtContAgua[]"))'+
+                '@foreach($errors->get("txtContAgua[]") as $error)'+
+                  '<span class="help-block alert alert-danger">  * {{ $error }} </span>'+
+                '@endforeach'+
+            '@endif'+
+								  	'<a href="#" class="btn btn-danger btn-xs eliminar">&times;</a>'+
+								'</div>';
+			$(contenedor4).append(temporal);
+			x++; //text box increment
+//	    }
+        return false;
+    });
+
+		
+		var MaxInputs       = 8; //Número Maximo de Campos
+		var contenedor5      = $("#divEspVeg"); //ID del contenedor
+		var AddButton       = $("#btnEspVeg"); //ID del Botón Agregar
+		//var x = número de campos existentes en el contenedor
+		var x = $("#divEspVeg div").length + 1;
+		var FieldCount = x-1; //para el seguimiento de los campos
+    $("#btnEspVeg").click(function () {
+//    if(x <= MaxInputs) {//max input box allowed
+			FieldCount++;
+			//agregar campo
+			var temporal='<div class="row container">'+
+						'<div class="form-group form-group-sm col-xs-12 col-sm-3">'+
+            '{{Form::label("txtNomEspVeg[]","Nombre Común")}}'+
+            '{{Form::text("txtNomEspVeg[]",Input::old("yii") ? Input::old("yii"):null,array("class"=>"form-control","placeholder"=>"Nombre Común","autocomplete"=>"off")) }}'+
+            '@if($errors->has("txtNomEspVeg[]"))'+
+                '@foreach($errors->get("txtNomEspVeg[]") as $error)'+
+                  '<span class="help-block alert alert-danger">  * {{ $error }} </span>'+
+                '@endforeach'+
+            '@endif'+
+        '</div>'+
+        '<div class="form-group form-group-sm col-xs-12 col-sm-5">'+
+            '{{Form::label("txtUsoEspVeg[]","Usos")}}'+
+            '{{Form::text("txtUsoEspVeg[]",Input::old("yii") ? Input::old("yii"):null,array("class" => "form-control", "placeholder" => "Nombre Común", "autocomplete" => "off")) }}'+
+            '@if($errors->has("txtUsoEspVeg[]"))'+
+                '@foreach($errors->get("txtUsoEspVeg[]") as $error)'+
+                  '<span class="help-block alert alert-danger">  * {{ $error }} </span>'+
+                '@endforeach'+
+            '@endif'+
+        '</div>'+
+        '<div class="form-group form-group-sm col-xs-12 col-sm-3">'+
+            '{{Form::label("txtOrigExtr[]", "Origen  Extracción")}}'+
+            '{{Form::text("txtOrigExtr[]",Input::old("yii") ? Input::old("yii"): null,array("class" => "form-control", "placeholder" => "Nombre Común", "autocomplete" => "off")) }}'+
+            '@if($errors->has("txtOrigExtr[]"))'+
+                '@foreach($errors->get("txtOrigExtr[]") as $error)'+
+                  '<span class="help-block alert alert-danger">  * {{ $error }} </span>'+
+                '@endforeach'+
+            '@endif'+
+								'</div><a href="#" class="btn btn-danger btn-xs eliminar">&times;</a></div>';
+			$(contenedor5).append(temporal);
+			x++; //text box increment
+//	    }
+        return false;
+    });
+
+
+    $("body").on("click",".eliminar", function(e){ //click en eliminar campo
+        if( x > 1 ) {
+            $(this).parent('div').remove(); //eliminar el campo
+            x--;
+        }
+        return false;
+    });
+
+</script>
 
 @stop

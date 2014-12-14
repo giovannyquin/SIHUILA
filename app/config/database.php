@@ -65,14 +65,14 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-			'host'     => 'localhost',
-			'database' => 'SistemaInformacion',
-			'username' => 'postgres',
-			'password' => 'nicolas18',
+			'host'     => '127.0.0.1',
+			'database' => 'formaliz_sistemainformacion',
+			'username' => 'formaliz_pilotohuila',
+			'password' => 'softHuila_57',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
-                        'port'     => '5433',
+                        
 		),
 
 		'sqlsrv' => array(

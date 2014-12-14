@@ -29,7 +29,7 @@ class SeleccionMultipleController extends BaseController{
    {
        
    }
-   public function eliminar($id, $id_topologia, $asunto) { 
+   public function eliminar($id,$id_topologia,$asunto,$pestana) { 
        $arr['id_topologia']=$id_topologia;
        $arr['asunto']=$asunto;
        $sele= SeleccionMultiple::find($id, $arr);
@@ -39,7 +39,7 @@ class SeleccionMultipleController extends BaseController{
                     ->where('asunto','=',$asunto)
                     ->delete();
        
-       return Redirect::action('PestanaSisoController@show', array($id));
+       return Redirect::action($pestana.'@show', array($id));
        if (Request::ajax())
         {
             return Response::json(array (

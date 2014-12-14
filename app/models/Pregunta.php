@@ -36,6 +36,7 @@ class Pregunta extends Eloquent{
      * @Autor Giovanny Quintero
      * @Fecha 06-Dic-2014
      * @param $numSelect Integer
+     * numselect es el id de la pregunta
      */
     public function validarNum($numSelect, $idTipoEnc)
     {
@@ -45,7 +46,14 @@ class Pregunta extends Eloquent{
         }
         else
         {
-            $numSelect=$numSelect+1;
+            /** traemos el numero de la pregunta ***/
+            $numpreg= Pregunta::whereId_tipo_encuesta($idTipoEnc)->whereId_pregunta($numSelect)->first();
+            if($numpreg->count()>0)
+            {
+                $num=$numpreg->num_pregunta;
+                $numSelect=$num+1;
+            }
+            //$numSelect=$numSelect+1;
             $preg= Pregunta::whereId_tipo_encuesta($idTipoEnc)->whereNum_pregunta($numSelect)->get();
             if($preg->count())
             {

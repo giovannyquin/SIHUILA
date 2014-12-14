@@ -27,7 +27,10 @@ class TipoRespuestaController extends BaseController{
            $tipoRpta= DB::table('ENCtipo_rpta')
                          ->join('ENCrespuestas', 'ENCtipo_rpta.id_tipo_rpta', '=', 'ENCrespuestas.id_tipo_rpta')
                          ->join('ENCrespuesta_encuesta', 'ENCrespuestas.id_respuesta', '=', 'ENCrespuesta_encuesta.id_respuesta')
-                         ->where('ENCrespuesta_encuesta.id_tipo_encuesta', '=', $id)->get();
+                         ->where('ENCrespuesta_encuesta.id_tipo_encuesta', '=', $id)
+                         ->select('ENCtipo_rpta.nombre','ENCtipo_rpta.id_tipo_rpta', 'ENCtipo_rpta.id_modo_rpta', 'ENCtipo_rpta.descripcion')
+                         ->distinct() 
+                        ->get();
            $modoRpta=null;
        }
        else
@@ -36,7 +39,7 @@ class TipoRespuestaController extends BaseController{
             $tipoRpta= null;
             $modoRpta= ModoRespuesta::all();
        }
-       return dd($tipoRpta);
+       //return dd($tipoRpta);
        return View::make("Encuesta.pestanaTipoRpta", 
                array("tipoEncuesta"=> $id, 
                         "rptaEncuesta" => $rptaEncuesta,

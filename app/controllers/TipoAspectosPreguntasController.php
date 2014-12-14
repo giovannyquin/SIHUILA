@@ -56,7 +56,7 @@ class TipoAspectosPreguntasController extends BaseController{
    public function formCrear($id_tipo_enc)
    {
        
-       $aspecto= array("" => "Seleccione..")+AspectosPreguntas::find($id_tipo_enc)->lists('nombre', 'id_aspecto_preg');
+       $aspecto= array("" => "Seleccione..")+AspectosPreguntas::whereId_tipo_encuesta($id_tipo_enc)->lists('nombre', 'id_aspecto_preg');
        return View::make("Encuesta.TipoAspecto.crear", array("id" => $id_tipo_enc, "aspecto" => $aspecto));
    }
    
