@@ -22,11 +22,9 @@
     
     <div class="tabbable" style="margin-bottom: 18px;">
           <ul class="nav nav-tabs">
-            <li >{{ link_to("pestanaJuridico/{$mina->id_mina}", "Juridico") }}</li>
             <li class="">{{ link_to("pestanaMinero/{$mina->id_mina}", "Minero") }}</li>
             <li class="active"><a href="#" data-toggle="tab">Ambiental</a></li>
             <li class="">{{ link_to("pestanaSiso/{$mina->id_mina}", "Siso") }}</li>
-            <li class="">{{ link_to("pestanaBiodiversidad/{$mina->id_mina}", "Biodiversidad") }}</li>
           </ul>
     </div>
 </div>
@@ -113,7 +111,7 @@
     </div>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-6">
-            {{Form::label("txtFueX","Ubicación de la fuente (coordenadas planas)")}}
+            {{Form::label("txtFueX","Ubicaciï¿½n de la fuente (coordenadas planas)")}}
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-2">
             {{Form::text("txtFueX", Input::old("txtFueX") ? Input::old("txtFueX") : isset($ambiental->fuente_subx) ? $ambiental->fuente_subx : null,
@@ -1432,7 +1430,7 @@
     </div>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-5">
-            Ubicación del vertimiento (coordenadas planas)
+            Ubicaciï¿½n del vertimiento (coordenadas planas)
         </div>
         <div class="form-group form-group-sm col-xs-12 col-sm-2">
             {{Form::label("txtVerX","X")}}

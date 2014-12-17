@@ -39,7 +39,7 @@
                 <!--<td style="text-align: center;"> Ver </td>-->
                 <!--<td style="text-align: center;">{{ link_to('datosMina/'.$item->id, 'Ver') }}</td>-->
                 <!--<td style="text-align: center;"> Editar </td>-->
-                <td style="text-align: center;"> {{ link_to('pestanaJuridico/'.$item->id_mina.'/', 'Editar') }} </td>
+                <td style="text-align: center;"> {{ link_to('pestanaMinero/'.$item->id_mina.'/', 'Editar') }} </td>
                 <!--<td style="text-align: center;"> Eliminar </td>-->
 <!--
                 <td style="text-align: center;"> 

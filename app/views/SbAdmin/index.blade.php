@@ -153,8 +153,23 @@
                     </li>
                     @if(Auth::user()->id_menu==1 || Auth::user()->id==14)
                     <li>
+                        <!--{{ link_to("listaMina", "EjecuciÃ³n Minas", array("class" => "fa fa-fw fa-edit")) }}-->
+                        <a href="{{ URL::to("ListarUnidades") }}"><i class="fa fa-fw fa-desktop"></i> Ejecución Unidades Mineras</a>
+                    </li>
+                    @endif
+                    @if(Auth::user()->id_menu==1 || Auth::user()->id==14)
+                    <li>
 <!--                        {{ link_to("datosMina", "Crear Minas", array("class" => "fa fa-fw fa-edit")) }}-->
-                        <a href="{{ URL::to("datosMina") }}"><i class="fa fa-fw fa-wrench"></i> Crear Minas</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#mineria"><i class="fa fa-fw fa-wrench"></i> Adm Mineria <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="mineria" class="collapse">
+                            <li>
+                                <a href="{{ URL::to("UnidadMinera") }}"><i class="fa fa-fw fa-wrench"></i> Adm Unidades Mineras</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ URL::to("datosMina") }}"><i class="fa fa-fw fa-wrench"></i> Crear Unidades Mineras</a>
+                            </li>
+                        </ul>
                     </li>
                     @endif
                     @if(Auth::user()->id_menu==1)
@@ -163,9 +178,6 @@
                         <ul id="demo" class="collapse">
                             <li>
                                 <a href="{{ URL::to("listaTiposEnc") }}">Editar Encuestas</a>
-                            </li>
-                            <li>
-                                <a href="#">Dropdown Item</a>
                             </li>
                         </ul>
                     </li>

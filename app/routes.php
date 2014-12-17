@@ -109,6 +109,10 @@ Route::group(array("before" => "auth"), function(){
     });
     /***********************************/
     Route::get("listaMina", "ListaMinaController@listarMinas");
+        /**********Unidades Mineras *************/
+        Route::resource('ListarUnidades', 'UnidadMineraController@listarUnidades');
+        Route::resource('ListarFrentes', 'FrenteMineroController@listarFrentes');
+        /**********Fin Unidades Mineras**********/
     Route::resource('datosMina', 'DatosMinaController');
     Route::resource('pestanaMinero', 'PestanaMineroController');
     Route::resource('pestanaJuridico', 'PestanaJuridicoController');
@@ -162,5 +166,16 @@ Route::group(array("before" => "auth"), function(){
         Route::get("EncuestaSocial/{id_tipo_enc}/{num_docu}", "EncuestaSocialController@mostrarEncuesta");
         Route::post("guardaEncuestaSocial", "EncuestaSocialController@guardarTextNumero");
     Route::get("EncSocial", "ListadoController@listarSocial");
+        /******* Resultados ********/
+        Route::get("ResultadoTipo/{id_tipo_enc}", "ResultadoTipoEncController@resultados");
+        Route::get("mostrarResulTexto/{id_pregunta}/{id_tipo_encuest}", "ResultadoTipoEncController@resultadosTexto");
     /**************** Fin Encuestas ****************************/
+    /***************** Unidades Mineras******************/
+    Route::resource('UnidadMinera', 'UnidadMineraController');
+    Route::get("UnidadCrear/{id?}", "UnidadMineraController@formCrear");
+    Route::resource('FrenteMinero', 'FrenteMineroController');
+    Route::get('FrenteCrear/{id}', 'FrenteMineroController@formCrear');
+    Route::resource('PlantaBeneficio', 'PlantaBeneficioController');
+    Route::get('PlantaBeneficioCrear/{idmina}', 'PlantaBeneficioController@formCrear');
+    /******************************************************/
 });

@@ -18,4 +18,5 @@ class ListadoController extends BaseController
         $tipoEncuesta= TipoEncuesta::whereNombre("Social")->get(); 
         return View::make('Encuesta.listaSocial')->with('TipoEncuesta', $tipoEncuesta);
     }
+    
 }

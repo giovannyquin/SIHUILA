@@ -21,11 +21,9 @@
     
     <div class="tabbable" style="margin-bottom: 18px;">
           <ul class="nav nav-tabs">
-            <li >{{ link_to("pestanaJuridico/{$mina->id_mina}", "Juridico") }}</li>
             <li class="">{{ link_to("pestanaMinero/{$mina->id_mina}", "Minero") }}</li>
             <li class="">{{ link_to("pestanaAmbiental/{$mina->id_mina}", "Ambiental") }}</li>
             <li class="active"><a href="#" data-toggle="tab">Siso</a></li>
-            <li class="">{{ link_to("pestanaBiodiversidad/{$mina->id_mina}", "Biodiversidad") }}</li>
           </ul>
     </div>
 </div>

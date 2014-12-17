@@ -19,6 +19,7 @@
              <th style="width: 300px; border-bottom: solid 1px #000;"> Número  </th>
              <th style="width: 200px; border-bottom: solid 1px #000;"> Nombre </th>
              <th style="width: 200px; border-bottom: solid 1px #000;"> Link </th>
+             <th style="width: 200px; border-bottom: solid 1px #000;"> Resultados </th>
           </tr>
           </thead>
           <tbody>
@@ -28,6 +29,7 @@
                 <td style="text-align: center;"> {{ $a }} </td>
                 <td style="text-align: center;"> {{ $TipoEncuesta->nombre }} </td>
                 <td style="text-align: center;"> {{ link_to('Encuestado/'.$TipoEncuesta->id_tipo_encuesta.'/', 'Editar') }} </td>
+                <td style="text-align: center;"> {{ link_to('ResultadoTipo/'.$TipoEncuesta->id_tipo_encuesta.'/', 'Ir a Resultados') }} </td>
              </tr>
              {{$a++}}
           @endforeach

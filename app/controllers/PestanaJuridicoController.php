@@ -7,12 +7,12 @@ class PestanaJuridicoController extends BaseController{
 
    public function show($pestanaJuridico) { 
        //$mina= Mina::whereId_mina($pestanaJuridico)->get();
-       $mina= Mina::find($pestanaJuridico);
-       $detalle = DetalleMina::whereId_mina($pestanaJuridico)->first();
+       $mina= MinaMina::whereId_minamina($pestanaJuridico)->first(); //return $mina;
+       $detalle = DetalleMinaMina::whereId_minamina($pestanaJuridico)->first();
        //$detalle =  DetalleMina::find($pestanaJuridico);
        //$titular= $mina->titularMinero;
        //$titular = $mina->titularMinero()->where('id_mina','=',$pestanaJuridico)->first();
-       $titular= TitularMinero::whereId_mina($pestanaJuridico)->first();
+       $titular= TitularMinero::whereId_minamina($pestanaJuridico)->first();
        $arraySelOperacion=array(""=>"Seleccione..","Si" => "Sí", "No" => "No");
        $arrayTipCon=array("" => "Seleccione..")+Topologia::where('cod_topologia','=','TIPTIT')->lists('descripcion_toplogia', 'id_topologia');
        $arrayActoTer=array(""=>"Seleccione..","Si" => "Sí", "No" => "No");
@@ -21,7 +21,7 @@ class PestanaJuridicoController extends BaseController{
        $arrayTipoInsFor=array("" => "Seleccione..")+Topologia::where('cod_topologia','=','INSLEG')->lists('descripcion_toplogia', 'id_topologia');;
        $arraySubTit=array(""=>"Seleccione..","Si" => "Sí", "No" => "No");
        //return dd($detalle);
-       return View::make("Pestanas.pestanaJuridico", 
+       return View::make("PestanasUnidades.pestanaJuridico", 
                array("minas"=> $mina, 
                         "detalle" => $detalle,
                         "titular" => $titular,
@@ -44,18 +44,18 @@ class PestanaJuridicoController extends BaseController{
        if($respuesta["error"]==true)
        {
            //return var_dump($respuesta["mensaje"]);
-           return Redirect::action('PestanaJuridicoController@show', array(1))
+           return Redirect::action('PestanaJuridicoController@show', array(Input::get("hidMina")))
                     ->withErrors($respuesta["mensaje"])->withInput();
        }
        else
        {
-           $detalle= DetalleMina::find(Input::get("hidMina"));
+           $detalle= DetalleMinaMina::find(Input::get("hidMina"));
             //return dd($detalle);
             if(is_null($detalle))
             {
-                 $detalle= new DetalleMina();
+                 $detalle= new DetalleMinaMina();
                  if($this->noBlanco(Input::get("hidMina")))
-                     $detalle->id_mina=Input::get("hidMina");
+                     $detalle->id_minamina=Input::get("hidMina");
                  if($this->noBlanco(Input::get("selActExtr")))
                      $detalle->extr_min=Input::get("selActExtr");
                  if($this->noBlanco(Input::get("selPto")))
@@ -176,8 +176,8 @@ class PestanaJuridicoController extends BaseController{
                     $query->where('id_mina', '=',Input::get("hidMina"))
                             ->where('cedula_titular', '=', Input::get("txtCedTit"));
                 })->first();*/
-                $titular = TitularMinero::where('id_mina', '=',Input::get("hidMina"))
-                        ->where('cedula_titular', '=', Input::get("txtCedTit"))->first();
+                $titular = TitularMinero::where('id_minamina', '=',Input::get("hidMina"))
+                        ->first();
      //return count($titular);
                  /*$titular= DB::table('SItitular')
                          ->join('SIminas', 'SItitular.id_mina', '=', 'SIminas.id_mina')
@@ -188,7 +188,7 @@ class PestanaJuridicoController extends BaseController{
                      if($this->noBlanco(Input::get("txtCedTit")))
                           $titular->cedula_titular= Input::get("txtCedTit");
                      if($this->noBlanco(Input::get("hidMina")))
-                         $titular->id_mina=Input::get("hidMina");
+                         $titular->id_minamina=Input::get("hidMina");
                      if($this->noBlanco(Input::get("txtPrimerTit")))
                           $titular->primer_nombre= Input::get("txtPrimerTit");
                      if($this->noBlanco(Input::get("txtSegundoTit")))
@@ -211,7 +211,7 @@ class PestanaJuridicoController extends BaseController{
                      if($this->noBlanco(Input::get("txtCedTit")))
                           $titular->cedula_titular= Input::get("txtCedTit");
                      if($this->noBlanco(Input::get("hidMina")))
-                         $titular->id_mina=Input::get("hidMina");
+                         $titular->id_minamina=Input::get("hidMina");
                      if($this->noBlanco(Input::get("txtPrimerTit")))
                           $titular->primer_nombre= Input::get("txtPrimerTit");
                      if($this->noBlanco(Input::get("txtSegundoTit")))
@@ -235,7 +235,7 @@ class PestanaJuridicoController extends BaseController{
             //return Redirect::route("pestanaJuridico", array("detalle" => $detalle, "selOperacion" => $arraySelOperacion));
             //return View::make("Pestanas.pestanaJuridico", array("minas"=> $mina, "detalle" => $detalle));
             //return Input::all();
-            return Redirect::action('PestanaJuridicoController@show', array($detalle->id_mina));
+            return Redirect::action('PestanaJuridicoController@show', array($detalle->id_minamina));
        }
        
    }
