@@ -13,8 +13,6 @@ class PestanaMineroController extends BaseController{
 #       var_dump($arrAgno);exit();
        $minas=Mina::whereId_mina($id)->get();
        $detalle=DetalleMina::whereId_mina($id)->get();
-       $responsable=Responsable::whereId_mina($id)->get();
-       $operador=Operador::whereId_mina($id)->get();
        $geo=Geo::whereId_mina($id)->get();
        $produccion=Produccion::whereId_mina($id)->get();
        $talentohumano=TalentoHumano::whereId_mina($id)->get();
@@ -62,7 +60,7 @@ class PestanaMineroController extends BaseController{
        $arrTipCombustible=array(""=>"Seleccione..")+Topologia::where('cod_topologia','=','TIPOCOMB')->lists('descripcion_toplogia', 'id_topologia');
        $arrTipPlano=array(""=>"Seleccione..")+Topologia::where('cod_topologia','=','TIPOPLAN')->lists('descripcion_toplogia', 'id_topologia');
        return View::make('Pestanas.pestanaMinero',compact('comDeptno','comMunici','comVereda','comSiNo','minas','geo','detalle',
-               'produccion','talentohumano','comTipoMineria','plano','comMetExplotacion','responsable','operador','comMineral',
+               'produccion','talentohumano','comTipoMineria','plano','comMetExplotacion','comMineral',
                'comFrenteBocamina','comBuReMa','comUnidad','comTipoContrato','metodoexplotacion','comSisArranque','arrMes',
                'comSisTransporte','comSisCargue','comTipFuenteEneria','comDesCosVenBocamina','arrTalHumResExpPer','arrAgno',
                'arrTalHumResExpTem','arrTalHumOpePer','arrTalHumOpeTem','arrTipEstado','arrEstado','arrMinPpal','arrMinOtro',
@@ -208,7 +206,7 @@ class PestanaMineroController extends BaseController{
           foreach($selEstadoFrente as $clave => $valor){
               if($this->noBlanco($valor)){
                   $arr['id_estado']=$selEstadoFrente[$clave];
-                  $arr['frente_bocamina']=$selFrente[$clave];
+                  //$arr['frente_bocamina']=$selFrente[$clave];
                   unset($geoMul);
                   $geoMul=GeoMultiple::find(Input::get("hidMina"),$arr);
                   if(is_null($geoMul)){ //para crear registros

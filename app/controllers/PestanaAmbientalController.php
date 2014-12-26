@@ -55,7 +55,7 @@ class PestanaAmbientalController extends BaseController{
        $arrEspecieVegetal=EspeciesVegetales::whereId_mina($id)->get();
        $arrCompesacionForestal=CompensacionForestal::whereId_mina($id)->get();
        $arrEspecieAnimal=EspeciesAnimales::whereId_mina($id)->get();
-       $arrContaminate=Contaminantes::whereId_mina($id)->get();
+       $arrContaminate=Contaminantes::whereId_planta($id)->get();
        $arrDispFinRes=array(''=>'Seleccione..','Botadero a cielo abierto'=>'Botadero a cielo abierto','Celda de relleno sanitario'=>'Celda de relleno sanitario','Enterrados'=>'Enterrados','Incinerados'=>'Incinerados');
        $arrTipCobVeg=array(''=>'Seleccione..','Arborea'=>'Arborea','Arbustiva'=>'Arbustiva','Herbacea'=>'Herbacea','Cultivo'=>'Cultivo');
        $arrCobReti=array(''=>'Seleccione..','Almaceno'=>'Almacenó','Utilizo la madera'=>'Utilizo la madera','Desecho'=>'Desechó');
@@ -63,9 +63,9 @@ class PestanaAmbientalController extends BaseController{
        $arrAmeAni=array(''=>'Seleccione..','Caceria'=>'Caceria','Ganaderia'=>'Ganaderia','Agricultura'=>'Agricultura','Turismo'=>'Turismo');
        $arrTipAflu=array(''=>'Seleccione..','Acueducto'=>'Acueducto','Pozo o aljibe'=>'Pozo o aljibe','Aguas superficiales'=>'Aguas superficiales','Aguas lluvias'=>'Aguas lluvias');
        $arrAfeHid=array(''=>'Seleccione..','Fisica'=>'Física','Quimica'=>'Química','Bacteriologica'=>'Bacteriológica');
-       $arrTipManAguLluv=array(''=>'Seleccione..','Canal Perimetral'=>'Canal Perimetral','Zanjas de coronacion'=>'Zanjas de coronación','Sedimentador'=>'Sedimentador','Desarenador'=>'Desarenador', 'Ninguno' => 'Ninguno');
+       $arrTipManAguLluv=array(''=>'Seleccione..','Canal Perimetral'=>'Canal Perimetral','Zanjas de coronacion'=>'Zanjas de coronación','Sedimentador'=>'Sedimentador','Desarenador'=>'Desarenador');
        $arrTipVert=array('' => 'Seleccione..','Difuso'=>'Difuso','Puntual'=>'Puntual');
-       $arrTipTratAgu=array('' => 'Seleccione..','Fisico'=>'Físico','Quimico'=>'Químico','Quimico'=>'Químico', 'Alcantarillado'=>'Alcantarillado', 'Ninguno' => 'Ninguno');
+       $arrTipTratAgu=array('' => 'Seleccione..','Fisico'=>'Físico','Quimico'=>'Químico','Quimico'=>'Químico');
        return View::make('Pestanas.pestanaAmbiental',compact('mina','detalle','ambiental','comRoca','comEstructura','comFracturacion',
                'comMeteorizacion','comColuvion','comAluvial','comRelleno','comErocion','comMovRoca','comMovSuelo','comEstilo',
                'comActividad','comSecRep','morfometria','comCondiAgua','arrConAgua','arrEstadoObra','arrHumSuelo','arrVegetacion',
@@ -152,6 +152,7 @@ class PestanaAmbientalController extends BaseController{
        if($this->noBlanco(Input::get("selDerAgua"))) $ambiental->vertim_agua=Input::get("selDerAgua");
        if($this->noBlanco(Input::get("txtCaudalVert"))) $ambiental->caudal_vertimento=Input::get("txtCaudalVert");
        if($this->noBlanco(Input::get("selReqPerVert"))) $ambiental->requiere_permiso_vertim=Input::get("selReqPerVert");
+       if($this->noBlanco(Input::get("txtObseCompFisi"))) $ambiental->observ_compo_fisico=Input::get("txtObseCompFisi");
        if($this->noBlanco(Input::get("selEmisAtm"))) $ambiental->emision_atmo=Input::get("selEmisAtm");
        if($this->noBlanco(Input::get("selTipEmAt"))) $ambiental->tipo_emision_atm=Input::get("selTipEmAt");
        if($this->noBlanco(Input::get("txtDescTiAt"))) $ambiental->desc_tip_em_at=Input::get("txtDescTiAt");
@@ -161,6 +162,7 @@ class PestanaAmbientalController extends BaseController{
        if($this->noBlanco(Input::get("selAnaEmAt"))) $ambiental->analisis_em_at=Input::get("selAnaEmAt");
        if($this->noBlanco(Input::get("selQuemas"))) $ambiental->quemas=Input::get("selQuemas");
        if($this->noBlanco(Input::get("selTipManConAt"))) $ambiental->tipo_man_con_am=Input::get("selTipManConAt");
+       if($this->noBlanco(Input::get("txtObseRecuAtmo"))) $ambiental->observ_recur_atmo=Input::get("txtObseRecuAtmo");
        if($this->noBlanco(Input::get("txtAreaPob"))) $ambiental->distancia_pob_cerc=Input::get("txtAreaPob");
        if($this->noBlanco(Input::get("txtNomSec"))) $ambiental->nombre_sec_pob=Input::get("txtNomSec");
        if($this->noBlanco(Input::get("selGenRui"))) $ambiental->genera_ruido=Input::get("selGenRui");
@@ -168,12 +170,14 @@ class PestanaAmbientalController extends BaseController{
        if($this->noBlanco(Input::get("selMonRui"))) $ambiental->monit_ruido=Input::get("selMonRui");
        if($this->noBlanco(Input::get("txtPerMon"))) $ambiental->persona_monit=Input::get("txtPerMon");
        if($this->noBlanco(Input::get("txtResRui"))) $ambiental->resultados_ruido=Input::get("txtResRui");
+       if($this->noBlanco(Input::get("txtObseRuido"))) $ambiental->observ_ruido=Input::get("txtObseRuido");
        if($this->noBlanco(Input::get("selDescZon"))) $ambiental->desc_zona=Input::get("selDescZon");
        if($this->noBlanco(Input::get("selBanMat"))) $ambiental->banco_mat_org=Input::get("selBanMat");
        if($this->noBlanco(Input::get("selMatEst"))) $ambiental->material_esteril=Input::get("selMatEst");
        if($this->noBlanco(Input::get("selManMatEst"))) $ambiental->man_material_esteril=Input::get("selManMatEst");
        if($this->noBlanco(Input::get("txtDesManMet"))) $ambiental->desc_man_materia_org=Input::get("txtDesManMet");
        if($this->noBlanco(Input::get("txtImpSuel"))) $ambiental->tipo_imp_suelo=Input::get("txtImpSuel");
+       if($this->noBlanco(Input::get("txtObseRecuSuelo"))) $ambiental->observ_recur_suelo=Input::get("txtObseRecuSuelo");
        if($this->noBlanco(Input::get("selTipRes"))) $ambiental->tipo_residuos=Input::get("selTipRes");
        if($this->noBlanco(Input::get("selClasFue"))) $ambiental->clas_fuente=Input::get("selClasFue");
        if($this->noBlanco(Input::get("selEntResi"))) $ambiental->entrega_residuos=Input::get("selEntResi");
@@ -195,16 +199,19 @@ class PestanaAmbientalController extends BaseController{
        if($this->noBlanco(Input::get("txtAncRon"))) $ambiental->ancho_ronda=Input::get("txtAncRon");
        if($this->noBlanco(Input::get("txtDesEsp"))) $ambiental->desc_especies_encontr=Input::get("txtDesEsp");
        if($this->noBlanco(Input::get("txtDispCarET"))) $ambiental->disp_car_cajas_et=Input::get("txtDispCarET");
+       if($this->noBlanco(Input::get("txtObseResiSolido"))) $ambiental->observ_resid_solido=Input::get("txtObseResiSolido");
        if($this->noBlanco(Input::get("selAreaProt"))) $ambiental->area_protegida=Input::get("selAreaProt");
        if($this->noBlanco(Input::get("txtCualArPro"))) $ambiental->cual_area_prot=Input::get("txtCualArPro");
        if($this->noBlanco(Input::get("selDentroResFor"))) $ambiental->dentro_res_forestal=Input::get("selDentroResFor");
        if($this->noBlanco(Input::get("selSusArRes"))) $ambiental->proceso_sustraccion=Input::get("selSusArRes");
+       if($this->noBlanco(Input::get("txtObseRecuFlora"))) $ambiental->observ_recur_flora=Input::get("txtObseRecuFlora");
        if($this->noBlanco(Input::get("selAmeAni"))) $ambiental->amenaza_animales=Input::get("selAmeAni");
        if($this->noBlanco(Input::get("txtAniCons"))) $ambiental->animales_consumidos=Input::get("txtAniCons");
        if($this->noBlanco(Input::get("txtAniNoVis"))) $ambiental->animales_no_vistos=Input::get("txtAniNoVis");
        if($this->noBlanco(Input::get("txtAmeFaun"))) $ambiental->amenazas_natural_fauna=Input::get("txtAmeFaun");
        if($this->noBlanco(Input::get("selPesZon"))) $ambiental->pesca_zona=Input::get("selPesZon");
        if($this->noBlanco(Input::get("txtPezCons"))) $ambiental->peces_consumo=Input::get("txtPezCons");
+       if($this->noBlanco(Input::get("txtObseRecuFauna"))) $ambiental->observ_recur_fauna=Input::get("txtObseRecuFauna");
        if($this->noBlanco(Input::get("selUsoHidZon"))) $ambiental->uso_hidrico_ben=Input::get("selUsoHidZon");
        if($this->noBlanco(Input::get("selPerAgua"))) $ambiental->perm_concesion_agua=Input::get("selPerAgua");
        if($this->noBlanco(Input::get("txtNumPerAgua"))) $ambiental->num_perm_conc_agua=Input::get("txtNumPerAgua");
@@ -392,7 +399,7 @@ class PestanaAmbientalController extends BaseController{
                    $selMul=Contaminantes::find(Input::get("hidMina"),$arr);
                    if(is_null($selMul)){ //para crear registros
                        $selMul= new Contaminantes();
-                       $selMul->id_mina=Input::get("hidMina");
+                       $selMul->id_planta=Input::get("hidMina");
                        $selMul->contaminate_agregado=$txtContAgua[$clave];
                        $selMul->save();
                    }

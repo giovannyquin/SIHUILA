@@ -8,6 +8,6 @@
 
     class Responsable extends Eloquent{
         protected $table = 'SIresponsable_ET';
-        protected $primaryKey = 'id_mina';
+        protected $primaryKey = 'id_minamina';
         public $timestamps=false;
     }

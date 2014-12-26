@@ -147,16 +147,15 @@
                         <a href="{{ URL::to("usuario") }}"><i class="fa fa-fw fa-edit"></i> Usuarios</a>
                     </li>
                     @endif
-                    <li>
-                        <!--{{ link_to("listaMina", "EjecuciÃ³n Minas", array("class" => "fa fa-fw fa-edit")) }}-->
+<!--                    <li>
                         <a href="{{ URL::to("listaMina") }}"><i class="fa fa-fw fa-desktop"></i> Ejecución Minas</a>
-                    </li>
-                    @if(Auth::user()->id_menu==1 || Auth::user()->id==14)
+                    </li>-->
+                    
                     <li>
                         <!--{{ link_to("listaMina", "EjecuciÃ³n Minas", array("class" => "fa fa-fw fa-edit")) }}-->
-                        <a href="{{ URL::to("ListarUnidades") }}"><i class="fa fa-fw fa-desktop"></i> Ejecución Unidades Mineras</a>
+                        <a href="{{ URL::to("ListarUnidades") }}"><i class="fa fa-fw fa-desktop"></i> Unidades Mineras</a>
                     </li>
-                    @endif
+                    
                     @if(Auth::user()->id_menu==1 || Auth::user()->id==14)
                     <li>
 <!--                        {{ link_to("datosMina", "Crear Minas", array("class" => "fa fa-fw fa-edit")) }}-->
@@ -166,9 +165,9 @@
                                 <a href="{{ URL::to("UnidadMinera") }}"><i class="fa fa-fw fa-wrench"></i> Adm Unidades Mineras</a>
                             </li>
 
-                            <li>
+<!--                            <li>
                                 <a href="{{ URL::to("datosMina") }}"><i class="fa fa-fw fa-wrench"></i> Crear Unidades Mineras</a>
-                            </li>
+                            </li>-->
                         </ul>
                     </li>
                     @endif

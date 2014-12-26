@@ -26,3 +26,57 @@
 [10-Dec-2014 06:06:23 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/formaliz/public_html/SIHUILA/app/storage/views/f2183550d4010a97a523ee2138d74f11 on line 185
 [10-Dec-2014 14:04:52 UTC] PHP Fatal error:  Class 'Infraestructura' not found in /home/formaliz/public_html/SIHUILA/app/controllers/PestanaMineroController.php on line 59
 [10-Dec-2014 22:44:53 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/formaliz/public_html/SIHUILA/app/storage/views/41dc19f62479b44d3d675dfe5d6882da on line 312
+[14-Dec-2014 23:02:24 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'Object of class Illuminate\Database\Eloquent\Collection could not be converted to int' in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php:90
+Stack trace:
+#0 /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php(90): Illuminate\Exception\Handler->handleError(8, 'Object of class...', '/home/formaliz/...', 90, Array)
+#1 [internal function]: UnidadMineraController->formCrear()
+#2 /home/formaliz/public_html/SIHUILA/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(231): call_user_func_array(Array, Array)
+#3 /home/formaliz/public_html/SIHUILA/bootstrap/compiled.php(5776): Illuminate\Routing\Controller->callAction('formCrear', Array)
+#4 /home/formaliz/public_html/SIHUILA/bootstrap/compiled.php(5764): Illuminate\Routing\ControllerDispatcher->call(Object(UnidadMineraController), Object(Illuminate\Routing\Route), 'formCrear')
+#5 /home/formaliz/public_html/SIHUILA/bootstrap/compiled.php(4971): Illuminate\ in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 90
+[14-Dec-2014 23:02:24 UTC] PHP Fatal error:  Unsupported operand types in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 90
+[14-Dec-2014 23:27:50 UTC] PHP Parse error:  syntax error, unexpected 'c' (T_STRING) in /home/formaliz/public_html/SIHUILA/app/storage/views/b40abd8035b3c8e7d967a733fbad5813 on line 42
+[14-Dec-2014 23:30:52 UTC] PHP Parse error:  syntax error, unexpected '(', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 9
+[14-Dec-2014 23:46:10 UTC] PHP Fatal error:  Call to a member function first() on a non-object in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 11
+[15-Dec-2014 00:11:46 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'Object of class Illuminate\Database\Eloquent\Collection could not be converted to int' in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php:76
+Stack trace:
+#0 /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php(76): Illuminate\Exception\Handler->handleError(8, 'Object of class...', '/home/formaliz/...', 76, Array)
+#1 [internal function]: UnidadMineraController->edit('2')
+#2 /home/formaliz/public_html/SIHUILA/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(231): call_user_func_array(Array, Array)
+#3 /home/formaliz/public_html/SIHUILA/bootstrap/compiled.php(5776): Illuminate\Routing\Controller->callAction('edit', Array)
+#4 /home/formaliz/public_html/SIHUILA/bootstrap/compiled.php(5764): Illuminate\Routing\ControllerDispatcher->call(Object(UnidadMineraController), Object(Illuminate\Routing\Route), 'edit')
+#5 /home/formaliz/public_html/SIHUILA/bootstrap/compiled.php(4971): Illuminate\Routing\Cont in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 76
+[15-Dec-2014 00:11:46 UTC] PHP Fatal error:  Unsupported operand types in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 76
+[15-Dec-2014 00:12:31 UTC] PHP Fatal error:  Unsupported operand types in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 77
+[15-Dec-2014 00:17:57 UTC] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/formaliz/public_html/SIHUILA/app/storage/views/fb5e2c1cf82d30f8d542c0cdaf7a21bd on line 26
+[15-Dec-2014 00:20:29 UTC] PHP Parse error:  syntax error, unexpected '$unidad' (T_VARIABLE), expecting '(' in /home/formaliz/public_html/SIHUILA/app/storage/views/fb5e2c1cf82d30f8d542c0cdaf7a21bd on line 39
+[15-Dec-2014 01:15:50 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/formaliz/public_html/SIHUILA/app/storage/views/165e8d9b7fa656818461c643d254ba7f on line 43
+[15-Dec-2014 01:43:58 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/formaliz/public_html/SIHUILA/app/storage/views/ea3b970a2ab9037cee98daa6d04ee972 on line 39
+[15-Dec-2014 01:46:49 UTC] PHP Parse error:  syntax error, unexpected '{' in /home/formaliz/public_html/SIHUILA/app/storage/views/ea3b970a2ab9037cee98daa6d04ee972 on line 93
+[15-Dec-2014 01:47:20 UTC] PHP Parse error:  syntax error, unexpected '{' in /home/formaliz/public_html/SIHUILA/app/storage/views/ea3b970a2ab9037cee98daa6d04ee972 on line 93
+[15-Dec-2014 04:04:47 UTC] PHP Fatal error:  Class 'Planta' not found in /home/formaliz/public_html/SIHUILA/app/controllers/PlantaBeneficioController.php on line 22
+[15-Dec-2014 04:13:51 UTC] PHP Fatal error:  Class 'Planta' not found in /home/formaliz/public_html/SIHUILA/app/controllers/PlantaBeneficioController.php on line 45
+[15-Dec-2014 21:18:48 UTC] PHP Parse error:  syntax error, unexpected 'UnidadMineraController' (T_STRING) in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 1
+[15-Dec-2014 21:19:29 UTC] PHP Parse error:  syntax error, unexpected 'UnidadMineraController' (T_STRING) in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 1
+[15-Dec-2014 21:19:35 UTC] PHP Parse error:  syntax error, unexpected 'UnidadMineraController' (T_STRING) in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 1
+[15-Dec-2014 21:20:12 UTC] PHP Parse error:  syntax error, unexpected 'UnidadMineraController' (T_STRING) in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 1
+[15-Dec-2014 21:24:55 UTC] PHP Parse error:  syntax error, unexpected 'UnidadMineraController' (T_STRING) in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 1
+[15-Dec-2014 21:26:30 UTC] PHP Parse error:  syntax error, unexpected 'UnidadMineraController' (T_STRING) in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 1
+[15-Dec-2014 21:27:49 UTC] PHP Parse error:  syntax error, unexpected 'UnidadMineraController' (T_STRING) in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 1
+[15-Dec-2014 21:30:56 UTC] PHP Parse error:  syntax error, unexpected 'UnidadMineraController' (T_STRING) in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 1
+[15-Dec-2014 21:53:25 UTC] PHP Parse error:  syntax error, unexpected 'UnidadMineraController' (T_STRING) in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 1
+[16-Dec-2014 02:43:39 UTC] PHP Fatal error:  Call to a member function get() on a non-object in /home/formaliz/public_html/SIHUILA/app/controllers/ResultadoTipoEncController.php on line 23
+[16-Dec-2014 03:51:36 UTC] PHP Parse error:  syntax error, unexpected '{' in /home/formaliz/public_html/SIHUILA/app/storage/views/b12a52a072ef73116683c58c14dd4531 on line 39
+[16-Dec-2014 04:26:07 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/formaliz/public_html/SIHUILA/app/storage/views/b12a52a072ef73116683c58c14dd4531 on line 52
+[16-Dec-2014 05:19:42 UTC] PHP Parse error:  syntax error, unexpected '$resultadoPreg' (T_VARIABLE) in /home/formaliz/public_html/SIHUILA/app/controllers/ResultadoTipoEncController.php on line 33
+[17-Dec-2014 01:36:43 UTC] PHP Parse error:  syntax error, unexpected 'UnidadMineraController' (T_STRING) in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 1
+[17-Dec-2014 01:37:11 UTC] PHP Parse error:  syntax error, unexpected 'UnidadMineraController' (T_STRING) in /home/formaliz/public_html/SIHUILA/app/controllers/UnidadMineraController.php on line 1
+[17-Dec-2014 02:50:11 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/formaliz/public_html/SIHUILA/app/storage/views/ecd20bf1aba58f76e5d89680d0ce278f on line 20
+[17-Dec-2014 02:50:12 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/formaliz/public_html/SIHUILA/app/storage/views/ecd20bf1aba58f76e5d89680d0ce278f on line 20
+[17-Dec-2014 02:50:14 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/formaliz/public_html/SIHUILA/app/storage/views/ecd20bf1aba58f76e5d89680d0ce278f on line 20
+[17-Dec-2014 02:50:14 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/formaliz/public_html/SIHUILA/app/storage/views/ecd20bf1aba58f76e5d89680d0ce278f on line 20
+[17-Dec-2014 02:50:14 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/formaliz/public_html/SIHUILA/app/storage/views/ecd20bf1aba58f76e5d89680d0ce278f on line 20
+[18-Dec-2014 00:17:17 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/formaliz/public_html/SIHUILA/app/controllers/PestanaJuridicoController.php on line 51
+[18-Dec-2014 00:45:41 UTC] PHP Fatal error:  Cannot use isset() on the result of a function call (you can use "null !== func()" instead) in /home/formaliz/public_html/SIHUILA/app/storage/views/24deea969a49bee0a68c8c2e91e1d9d6 on line 226
+[18-Dec-2014 00:46:17 UTC] PHP Parse error:  syntax error, unexpected ',' in /home/formaliz/public_html/SIHUILA/app/storage/views/24deea969a49bee0a68c8c2e91e1d9d6 on line 226
+[18-Dec-2014 01:06:09 UTC] PHP Parse error:  syntax error, unexpected 'array' (T_ARRAY) in /home/formaliz/public_html/SIHUILA/app/storage/views/24deea969a49bee0a68c8c2e91e1d9d6 on line 227

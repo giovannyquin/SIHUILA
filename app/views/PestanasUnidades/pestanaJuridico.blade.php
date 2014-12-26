@@ -1,11 +1,11 @@
 @extends("SbAdmin.index")
 
 @section("Titulo")
-    Pestañas de Mineria
+    Aspectos Jurídicos
 @stop
 
 @section("NombrePagina")
-    Pestañas de Mineria
+    {{ link_to("ListarUnidades", $minas->nombre) }} / Aspectos Jurídicos
 @stop
 @section("JsJQuery")
     {{ HTML::script('js/FormMinas/FormMinas.js') }}
@@ -15,7 +15,7 @@
     <div class="tabbable" style="margin-bottom: 18px;">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#juridico" data-toggle="tab">Juridico</a></li>
-            <li class="">{{ link_to("pestanaMinero/{$minas->id_minamina}", "Minero") }}</li>
+            <li class="">{{ link_to("pestanaMineroUnidad/{$minas->id_minamina}", "Minero") }}</li>
           </ul>
     </div>
 </div>
@@ -23,6 +23,9 @@
     {{ Form::open(array("route" => "pestanaJuridico.store")) }}
      @if(Session::get("mensaje"))
         <div class="alert alert-success">{{ Session::get("mensaje")}}</div>
+    @endif
+    @if(Session::get("errors"))
+        <div class="alert alert-danger">Hay {{count($errors)}} error(es) al momento de guardar, por favor revisar el formulario </div>
     @endif
     <p class="bg-primary text-center"  style="alignment-adjust: center">Identificación de población objeto y grado de formalización</p>
     <div class="row">
@@ -175,7 +178,7 @@
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("txtPrimerTit", "Primer Nombre", array("class" => "control-label")) }}
-            {{ Form::text("txtPrimerTit", Input::old('txtPrimerTit') ? Input::old('txtPrimerTit') : isset($titular->primer_nombre) ? $titular->primer_nombre : null,
+            {{ Form::text("txtPrimerTit", Input::old('txtPrimerTit', object_get($titular,'primer_nombre')),
                         array("class" => "form-control col-xs-12 col-sm-3", "placeholder" => "Primer Nombre", "autocomplete" => "off")) }}
             @if($errors->has("txtPrimerTit"))
                 @foreach($errors->get("txtPrimerTit") as $error)
@@ -196,14 +199,14 @@
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("txtPrimerApeTit", "Primer Apellido", array("class" => "control-label")) }}
             {{ Form::text("txtPrimerApeTit",
-                Input::old('txtPrimerApeTit') ? Input::old('txtPrimerApeTit') : isset($titular->primer_apellido) ? $titular->primer_apellido : null,
+                        Input::old('txtPrimerApeTit', object_get($titular,'primer_apellido')),
                         array("class" => "form-control col-xs-12 col-sm-3", "placeholder" => "Primer Apellido", "autocomplete" => "off")) }}
             @if($errors->has("txtPrimerApeTit"))
                 @foreach($errors->get("txtPrimerApeTit") as $error)
                   <span class="help-block alert alert-danger">  * {{ $error }} </span>
                 @endforeach
             @endif
-        </div>
+        </div> 
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
             {{ Form::label("txtSegundoApeTit", "Segundo Apellido", array("class" => "control-label")) }}
             {{ Form::text("txtSegundoApeTit", 
@@ -264,7 +267,7 @@
     <hr>
     <div class="row">
         <div class="form-group form-group-sm col-xs-12 col-sm-3">
-            <label for="selTitDis">T�tular dispuesto a Negociar</label>
+            <label for="selTitDis">Títular dispuesto a Negociar</label>
             {{Form::select("selTitDis", $selOperacion, isset($detalle->titular_negociar) ? $detalle->titular_negociar : null)}}
             @if($errors->has("selTitDis"))
                 @foreach($errors->get("selTitDis") as $error)

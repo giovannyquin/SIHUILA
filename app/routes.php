@@ -109,16 +109,19 @@ Route::group(array("before" => "auth"), function(){
     });
     /***********************************/
     Route::get("listaMina", "ListaMinaController@listarMinas");
-        /**********Unidades Mineras *************/
+        /********* Listar (Unidades mineras, frentes y plantas) *************/
         Route::resource('ListarUnidades', 'UnidadMineraController@listarUnidades');
         Route::resource('ListarFrentes', 'FrenteMineroController@listarFrentes');
+        Route::resource('ListarPlantas', 'PlantaBeneficioController@listarPlantas');
+        Route::resource('pestanaJuridico', 'PestanaJuridicoController');
+        Route::resource('pestanaMineroUnidad', 'PestanaMineroUnidadController');
         /**********Fin Unidades Mineras**********/
     Route::resource('datosMina', 'DatosMinaController');
     Route::resource('pestanaMinero', 'PestanaMineroController');
-    Route::resource('pestanaJuridico', 'PestanaJuridicoController');
     Route::resource('pestanaAmbiental', 'PestanaAmbientalController');
     Route::resource('pestanaSiso', 'PestanaSisoController');
     Route::resource('pestanaBiodiversidad', 'PestanaBiodiversidadController');
+    Route::resource('pestanaGeologica', 'PestanaGeologicaController');
     Route::resource('formMinas','FormMinaController');
     Route::delete("seleccionMultipleElim/{id}/{topo}/{asunto}/{pestana}",array("as"=>"seleccionMultipleElim","uses"=>"SeleccionMultipleController@eliminar") );
     Route::delete("talentoHumanoElim/{id}/{tipo}/{asunto}/{pestana}",array("as"=>"talentoHumanoElim","uses"=>"TalentoHumanoController@eliminar") );
@@ -128,7 +131,9 @@ Route::group(array("before" => "auth"), function(){
     Route::delete("compesacionForestalElim/{id}/{especie}/{pestana}",array("as"=>"compesacionForestalElim","uses"=>"CompesacionForestalController@eliminar") );
     Route::delete("especieAnimalElim/{id}/{nombreComun}/{pestana}",array("as"=>"especieAnimalElim","uses"=>"EspeciesAnimalesController@eliminar") );
     Route::delete("contaminanteElim/{id}/{nombreComun}/{pestana}",array("as"=>"contaminanteElim","uses"=>"ContaminantesController@eliminar") );
-    
+        /********Pestanas de Plantas de beneficio *******/
+        Route::resource('pestanaAmbientalPlanta', 'PestanaAmbientalPlantaController');
+        /*********Fin Plantas de beneficio **********/
     /******** Encuestas **********/
     Route::get("listaTiposEnc", "ListadoController@listarTipoEncuestas");
     Route::resource('TipoEncuesta', 'TipoEncuestaController');
@@ -165,7 +170,7 @@ Route::group(array("before" => "auth"), function(){
         /******************************/
         Route::get("EncuestaSocial/{id_tipo_enc}/{num_docu}", "EncuestaSocialController@mostrarEncuesta");
         Route::post("guardaEncuestaSocial", "EncuestaSocialController@guardarTextNumero");
-    Route::get("EncSocial", "ListadoController@listarSocial");
+        Route::get("EncSocial", "ListadoController@listarSocial");
         /******* Resultados ********/
         Route::get("ResultadoTipo/{id_tipo_enc}", "ResultadoTipoEncController@resultados");
         Route::get("mostrarResulTexto/{id_pregunta}/{id_tipo_encuest}", "ResultadoTipoEncController@resultadosTexto");

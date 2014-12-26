@@ -5,7 +5,7 @@ class CompesacionForestalController extends BaseController{
         $arr['especie']=$especie;
         $sele= CompensacionForestal::find($id,$arr);
         DB::table('SIcompensacion_forestal')
-                ->where('id_mina','=', $id)
+                ->where('id_planta','=', $id)
                 ->where('especie','=', $especie)
                 ->delete();
         return Redirect::action($pestana.'@show',array($id));

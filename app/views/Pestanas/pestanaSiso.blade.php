@@ -1,18 +1,17 @@
 @extends("SbAdmin.index")
-
+@foreach ($mina as $mina)
+@endforeach
 @section("Titulo")
-    Pestañas de Mineria
+    Aspectos Siso
 @stop
 
 @section("NombrePagina")
-    Pestañas de Mineria
+    {{ link_to("ListarFrentes/{$mina->id_minamina}", $mina->nombre_mina) }} / Aspectos Siso
 @stop
 
 @section("SeccionTrabajo")
 <div class="container-fluid">
-    @foreach ($mina as $mina)
-    <div class="row">{{$mina->nombre_mina}}</div>
-    @endforeach
+    
     @foreach ($detalle as $detalle)
     <div class="row">{{$detalle->num_placa_jur}}</div>
     @endforeach
@@ -24,6 +23,7 @@
             <li class="">{{ link_to("pestanaMinero/{$mina->id_mina}", "Minero") }}</li>
             <li class="">{{ link_to("pestanaAmbiental/{$mina->id_mina}", "Ambiental") }}</li>
             <li class="active"><a href="#" data-toggle="tab">Siso</a></li>
+            <li class="">{{ link_to("pestanaGeologica/{$mina->id_mina}", "Geologico") }}</li>
           </ul>
     </div>
 </div>

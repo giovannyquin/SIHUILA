@@ -8,7 +8,7 @@
 
     class Operador extends Eloquent{
         protected $table = 'SIoperador';
-        protected $primaryKey = 'id_mina';
+        protected $primaryKey = 'id_minamina';
         public $timestamps=false;
     }
 
